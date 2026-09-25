@@ -9,7 +9,7 @@ arch=('x86_64')
 url="https://calamares.codeberg.page/"
 license=('GPL-3.0-or-later' 'BSD-2-Clause' 'LGPL-2.1-or-later')
 source=(
-  "calamares-${pkgver}.tar.gz::https://codeberg.org/Calamares/calamares/archive/v${pkgver}.tar.gz"
+  "calamares-${pkgver}.tar.gz::https://codeberg.org/Calamares/calamares/releases/download/v${pkgver}/calamares-${pkgver}.tar.gz"
 )
 sha256sums=('733bbbb00dc9f84874bd5c22960952f317ea2537565431179fa2152b2fbfdccc')
 
