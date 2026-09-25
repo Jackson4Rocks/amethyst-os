@@ -1,8 +1,10 @@
 [Desktop Entry]
 Name=Install Calypso Linux
-Comment=Install Calypso Linux with Aurora Dotfiles
+GenericName=Calypso Linux Installer
+Comment=Install Calypso Linux with KDE Plasma or Aurora Hyprland
 Exec=calypso-installer
-Icon=system-software-install
+Icon=calypso-linux
 Terminal=true
 Type=Application
-Categories=System;
+Categories=System;Settings;
+Keywords=Calypso;Linux;Install;Plasma;Hyprland;
