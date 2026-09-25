@@ -25,12 +25,6 @@ The project is being built around:
 - ⚡ **Fastfetch** — system information
 - 🛠️ **Calypso Installer** — native guided installation flow
 
-## 🌐 Website
-
-The repository contains the static GitHub Pages site for Calypso Linux and the canonical Calypso Linux brand assets and Aurora Dotfiles.
-
-Once Pages is enabled, the project site will be available from GitHub's Pages URL for this repository.
-
 ## 📦 Releases
 
 Release ISOs and mirrors will be linked here as they are published.
