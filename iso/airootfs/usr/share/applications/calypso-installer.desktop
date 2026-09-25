@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Install Calypso Linux
+Comment=Install Calypso Linux with Aurora Dotfiles
+Exec=calypso-installer
+Icon=system-software-install
+Terminal=true
+Type=Application
+Categories=System;
