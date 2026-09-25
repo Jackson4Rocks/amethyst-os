@@ -25,4 +25,5 @@ file_permissions=(
   ["/usr/local/bin/livecd-sound"]="0:0:755"
   ["/usr/local/bin/calypso-live-welcome"]="0:0:755"
   ["/usr/local/bin/calypso-install-wallpapers"]="0:0:755"
+  ["/usr/local/bin/calypso-apply-wallpaper"]="0:0:755"
 )
