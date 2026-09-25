@@ -145,7 +145,7 @@ fi
 ###############################################################################
 
 chmod 0755 /usr/local/bin/calypso-installer 2>/dev/null || true
-chmod 0755 /usr/local/bin/aos-live-welcome 2>/dev/null || true
+chmod 0755 /usr/local/bin/calypso-live-welcome 2>/dev/null || true
 chmod 0644 /usr/share/applications/calypso-installer.desktop 2>/dev/null || true
 
 ###############################################################################
