@@ -1,0 +1,9 @@
+[Unit]
+Description=Calypso Linux curated wallpaper sync
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/usr/local/bin/calypso-install-wallpapers
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/calypso-install-wallpapers /usr/share/backgrounds/calypso/stock
