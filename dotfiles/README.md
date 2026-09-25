@@ -1,6 +1,6 @@
 # Amethyst OS AURORA Dotfiles
 
-The reference desktop configuration for Amethyst OS.
+The reference desktop configuration for Amethyst OS. The canonical brand mark is `assets/amethyst-mark.svg`; reuse it everywhere instead of creating alternate logos.
 
 ## Design
 
