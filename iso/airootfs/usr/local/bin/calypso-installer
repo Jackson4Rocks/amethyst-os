@@ -1,0 +1,311 @@
+#!/bin/bash
+set -euo pipefail
+
+# Calypso Linux
+# Aurora Dotfiles — native guided UEFI installer.
+# WARNING: this installer erases the selected disk completely.
+
+if [ "$EUID" -ne 0 ]; then
+    exec sudo "$0" "$@"
+fi
+
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+CYAN='\033[1;36m'
+RESET='\033[0m'
+
+die() {
+    printf '\n%bERROR:%b %s\n' "$RED" "$RESET" "$*"
+    exit 1
+}
+
+cleanup() {
+    sync || true
+    umount -R /mnt 2>/dev/null || true
+    swapoff -a 2>/dev/null || true
+}
+trap cleanup EXIT
+
+clear
+printf '%s\n' '============================================================'
+printf '%b%s%b\n' "$CYAN" '                    CALYPSO LINUX' "$RESET"
+printf '%s\n' '                    AURORA DOTFILES'
+printf '%s\n' '                    GUIDED INSTALLER'
+printf '%s\n' '============================================================'
+printf '\n'
+printf 'Calypso Linux is an Arch-based system built around Hyprland.\n'
+printf 'Aurora Dotfiles provide the desktop configuration and shell.\n\n'
+printf '%bWARNING:%b Whole-disk installation only.\n' "$RED" "$RESET"
+printf '%bWARNING:%b The selected disk will be completely erased.\n' "$RED" "$RESET"
+printf 'This first installer does not provide dual-boot partitioning.\n\n'
+
+[ -d /sys/firmware/efi ] || die "Boot the ISO in UEFI mode."
+command -v pacstrap >/dev/null 2>&1 || die "pacstrap is missing."
+command -v bootctl >/dev/null 2>&1 || die "bootctl is missing."
+
+printf 'Checking network...\n'
+getent hosts archlinux.org >/dev/null 2>&1 || {
+    printf 'Connect with nmtui or nmcli, then return here.\n'
+    read -r -p 'Press Enter when the network is ready... ' _
+    getent hosts archlinux.org >/dev/null 2>&1 || die "Network is unavailable."
+}
+printf '%bNetwork: OK%b\n\n' "$GREEN" "$RESET"
+
+printf 'Available disks:\n'
+lsblk -dpno NAME,SIZE,MODEL,TYPE | awk '$4=="disk"{print}'
+printf '\n'
+
+read -r -p 'Target disk (example: /dev/nvme0n1): ' DISK
+[ -b "$DISK" ] || die "Invalid disk: $DISK"
+
+if ! lsblk -dnpo NAME,TYPE | awk -v d="$DISK" '$1==d && $2=="disk"{ok=1} END{exit(ok?0:1)}'; then
+    die "Select a whole disk, not a partition."
+fi
+
+printf '\n'
+lsblk "$DISK"
+printf '\n'
+printf '%bFINAL WARNING:%b %s will be erased.\n' "$RED" "$RESET" "$DISK"
+printf 'Type exactly: %bWIPE %s%b\n' "$RED" "$RESET" "$DISK"
+read -r -p '> ' CONFIRM
+[ "$CONFIRM" = "WIPE $DISK" ] || die "Confirmation did not match."
+
+read -r -p 'Username [calypso]: ' USERNAME
+if [ -z "$USERNAME" ]; then USERNAME=calypso; fi
+[[ "$USERNAME" =~ ^[a-z_][a-z0-9_-]*$ ]] || die "Invalid username."
+
+read -r -p 'Hostname [calypso]: ' HOSTNAME
+if [ -z "$HOSTNAME" ]; then HOSTNAME=calypso; fi
+[[ "$HOSTNAME" =~ ^[a-zA-Z0-9][a-zA-Z0-9.-]*$ ]] || die "Invalid hostname."
+
+read -r -p 'Timezone [Asia/Kolkata]: ' TIMEZONE
+if [ -z "$TIMEZONE" ]; then TIMEZONE=Asia/Kolkata; fi
+[ -f "/usr/share/zoneinfo/$TIMEZONE" ] || die "Unknown timezone."
+
+case "$DISK" in
+    *[0-9]) PART_PREFIX="$DISK"p ;;
+    *) PART_PREFIX="$DISK" ;;
+esac
+
+EFI_PART="$PART_PREFIX"1
+ROOT_PART="$PART_PREFIX"2
+
+while read -r PART; do
+    [ -n "$PART" ] || continue
+    umount -R "$PART" 2>/dev/null || true
+done < <(lsblk -nrpo NAME "$DISK")
+swapoff -a 2>/dev/null || true
+
+printf '\nCreating GPT layout...\n'
+wipefs -af "$DISK"
+parted -s "$DISK" \
+    mklabel gpt \
+    mkpart ESP fat32 1MiB 1025MiB \
+    set 1 esp on \
+    mkpart ROOT ext4 1025MiB 100%
+
+partprobe "$DISK" 2>/dev/null || true
+udevadm settle
+sleep 2
+
+[ -b "$EFI_PART" ] || die "EFI partition was not created."
+[ -b "$ROOT_PART" ] || die "Root partition was not created."
+
+printf 'Formatting target filesystems...\n'
+mkfs.fat -F32 "$EFI_PART"
+mkfs.ext4 -F "$ROOT_PART"
+
+mount "$ROOT_PART" /mnt
+mkdir -p /mnt/boot
+mount "$EFI_PART" /mnt/boot
+
+printf '\nInstalling the Calypso Linux base system...\n'
+pacstrap -K /mnt \
+    base base-devel linux linux-firmware sudo zsh git \
+    networkmanager systemd-resolvconf sddm \
+    hyprland quickshell hyprpaper kitty fastfetch matugen fuzzel yazi jq \
+    pipewire pipewire-pulse wireplumber \
+    xdg-desktop-portal xdg-desktop-portal-hyprland xorg-xwayland mesa \
+    polkit polkit-gnome brightnessctl playerctl grim slurp wl-clipboard \
+    power-profiles-daemon noto-fonts
+
+CPU_VENDOR="$(lscpu | awk -F: '/Vendor ID/{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2; exit}')"
+case "$CPU_VENDOR" in
+    GenuineIntel) pacstrap -K /mnt intel-ucode ;;
+    AuthenticAMD) pacstrap -K /mnt amd-ucode ;;
+esac
+
+genfstab -U /mnt > /mnt/etc/fstab
+ROOT_UUID="$(blkid -s UUID -o value "$ROOT_PART")"
+[ -n "$ROOT_UUID" ] || die "Could not determine root UUID."
+
+printf '\nConfiguring installed Calypso Linux...\n'
+
+arch-chroot /mnt /bin/bash -s -- \
+    "$TIMEZONE" "$HOSTNAME" "$USERNAME" "$ROOT_UUID" <<'CHROOT'
+set -e
+
+TIMEZONE="$1"
+HOSTNAME="$2"
+USERNAME="$3"
+ROOT_UUID="$4"
+
+ln -sf "/usr/share/zoneinfo/$TIMEZONE" /etc/localtime
+hwclock --systohc
+
+printf 'en_US.UTF-8 UTF-8\n' > /etc/locale.gen
+locale-gen
+printf 'LANG=en_US.UTF-8\n' > /etc/locale.conf
+printf '%s\n' "$HOSTNAME" > /etc/hostname
+
+cat > /etc/hosts <<EOF_HOSTS
+127.0.0.1   localhost
+::1         localhost
+127.0.1.1   $HOSTNAME.localdomain $HOSTNAME
+EOF_HOSTS
+
+mkinitcpio -P
+bootctl --esp-path=/boot install
+
+mkdir -p /boot/loader/entries
+cat > /boot/loader/loader.conf <<'EOF_LOADER'
+default calypso.conf
+timeout 3
+console-mode auto
+editor no
+EOF_LOADER
+
+cat > /boot/loader/entries/calypso.conf <<EOF_ENTRY
+title   Calypso Linux
+linux   /vmlinuz-linux
+initrd  /initramfs-linux.img
+options root=UUID=$ROOT_UUID rw
+EOF_ENTRY
+
+if [ -f /boot/intel-ucode.img ]; then
+    sed -i '/initrd  \/initramfs-linux.img/i initrd  /intel-ucode.img' /boot/loader/entries/calypso.conf
+fi
+if [ -f /boot/amd-ucode.img ]; then
+    sed -i '/initrd  \/initramfs-linux.img/i initrd  /amd-ucode.img' /boot/loader/entries/calypso.conf
+fi
+
+systemctl enable NetworkManager.service
+systemctl enable systemd-resolved.service
+systemctl enable sddm.service
+systemctl enable power-profiles-daemon.service
+
+mkdir -p /etc/NetworkManager/conf.d
+cat > /etc/NetworkManager/conf.d/10-dns.conf <<'EOF_NM'
+[main]
+dns=systemd-resolved
+EOF_NM
+rm -f /etc/resolv.conf
+ln -s /run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+
+cat > /usr/lib/os-release <<'EOF_OS'
+NAME="Calypso Linux"
+ID=calypso
+ID_LIKE=arch
+PRETTY_NAME="Calypso Linux"
+VERSION="0.1"
+VERSION_ID="0.1"
+HOME_URL="https://github.com/Jackson4Rocks/amethyst-os"
+SUPPORT_URL="https://github.com/Jackson4Rocks/amethyst-os/issues"
+BUG_REPORT_URL="https://github.com/Jackson4Rocks/amethyst-os/issues"
+EOF_OS
+rm -f /etc/os-release
+ln -s ../usr/lib/os-release /etc/os-release
+
+install -d -m 0755 /etc/sudoers.d
+cat > /etc/sudoers.d/calypso-wheel <<'EOF_SUDO'
+%wheel ALL=(ALL:ALL) ALL
+EOF_SUDO
+chmod 0440 /etc/sudoers.d/calypso-wheel
+
+useradd -m -G wheel -s /usr/bin/zsh "$USERNAME"
+
+install -d -m 0755 /etc/sddm.conf.d
+cat > /etc/sddm.conf.d/calypso.conf <<EOF_SDDM
+[General]
+DisplayServer=wayland
+
+[Autologin]
+User=$USERNAME
+Session=hyprland.desktop
+Relogin=false
+EOF_SDDM
+
+install -d -m 0755 /etc/xdg/autostart
+cat > /etc/xdg/autostart/polkit-gnome-authentication-agent-1.desktop <<'EOF_POLKIT'
+[Desktop Entry]
+Name=Polkit Authentication Agent
+Comment=Authentication Agent
+Exec=/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+Terminal=false
+Type=Application
+NoDisplay=true
+X-GNOME-Autostart-Phase=Initialization
+EOF_POLKIT
+
+# Copy the complete Aurora Dotfiles skeleton supplied by the ISO.
+cp -a /etc/skel/. "/home/$USERNAME/"
+
+# Remove live-only welcome startup from the installed user.
+rm -f "/home/$USERNAME/.config/systemd/user/aos-live-welcome.service"
+rm -f "/home/$USERNAME/.config/systemd/user/calypso-live-welcome.service"
+rm -f "/home/$USERNAME/.config/systemd/user/default.target.wants/aos-live-welcome.service"
+rm -f "/home/$USERNAME/.config/systemd/user/default.target.wants/calypso-live-welcome.service"
+rmdir "/home/$USERNAME/.config/systemd/user/default.target.wants" 2>/dev/null || true
+
+cat > "/home/$USERNAME/.profile" <<'EOF_PROFILE'
+export CALYPSO_NAME="Calypso Linux"
+export CALYPSO_DOTFILES="Aurora Dotfiles"
+export QT_QPA_PLATFORM=wayland
+export GDK_BACKEND=wayland,x11
+export SDL_VIDEODRIVER=wayland
+export MOZ_ENABLE_WAYLAND=1
+EOF_PROFILE
+
+cat > "/home/$USERNAME/.zshenv" <<'EOF_ZSHENV'
+export CALYPSO_NAME="Calypso Linux"
+export CALYPSO_DOTFILES="Aurora Dotfiles"
+EOF_ZSHENV
+
+if [ -f "/home/$USERNAME/.local/share/calypso/calypso-mark.svg" ]; then
+    install -d -m 0755 /usr/share/icons/hicolor/scalable/apps
+    install -m 0644 "/home/$USERNAME/.local/share/calypso/calypso-mark.svg" \
+        /usr/share/icons/hicolor/scalable/apps/calypso-linux.svg
+fi
+
+mkdir -p "/home/$USERNAME/Pictures/wallpapers"
+if [ -f /usr/share/backgrounds/calypso/CALYPSO-16x9.png ]; then
+    cp -f /usr/share/backgrounds/calypso/CALYPSO-16x9.png "/home/$USERNAME/Pictures/wallpapers/"
+fi
+
+chown -R "$USERNAME:$USERNAME" "/home/$USERNAME"
+chmod 0700 "/home/$USERNAME"
+CHROOT
+
+printf '\nSet the password for %s.\n' "$USERNAME"
+arch-chroot /mnt passwd "$USERNAME"
+
+printf '\nRunning installation checks...\n'
+[ -f /mnt/etc/fstab ] || die "fstab missing."
+[ -f /mnt/boot/loader/entries/calypso.conf ] || die "systemd-boot entry missing."
+[ -f /mnt/etc/sddm.conf.d/calypso.conf ] || die "SDDM config missing."
+[ -f "/mnt/home/$USERNAME/.config/hypr/hyprland.lua" ] || die "Hyprland configuration missing."
+[ -f "/mnt/home/$USERNAME/.config/quickshell/aurora/shell.qml" ] || die "Aurora Dotfiles Quickshell configuration missing."
+
+printf '\n%b============================================================%b\n' "$GREEN" "$RESET"
+printf '%b                CALYPSO LINUX READY%b\n' "$CYAN" "$RESET"
+printf '%s\n' '============================================================'
+printf 'User      : %s\n' "$USERNAME"
+printf 'Hostname  : %s\n' "$HOSTNAME"
+printf 'Timezone  : %s\n' "$TIMEZONE"
+printf 'Desktop   : Hyprland + Aurora Dotfiles\n'
+printf 'Boot      : systemd-boot (UEFI)\n'
+printf '%bInstallation complete.%b\n' "$GREEN" "$RESET"
+printf 'Reboot, remove the ISO, and SDDM will start Calypso Linux.\n'
+printf '============================================================\n'
+read -r -p 'Press Enter to reboot, or Ctrl+C to stay in the live session... ' _
+reboot
