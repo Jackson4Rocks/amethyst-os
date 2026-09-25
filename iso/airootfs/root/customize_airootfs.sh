@@ -26,13 +26,13 @@ install -d -m 0755 /usr/share/applications
 echo "==> Setting Amethyst OS identity..."
 
 cat > /usr/lib/os-release <<'EOF'
-NAME="Amethyst OS"
+NAME="Amethyst OS Linux"
 ID=amethyst
 ID_LIKE=arch
-PRETTY_NAME="Amethyst OS AURORA"
-VERSION="AURORA"
+PRETTY_NAME="Amethyst OS Linux"
+VERSION="0.1"
 VERSION_ID="0.1"
-VERSION_CODENAME="aurora"
+VERSION_CODENAME="AURORA"
 HOME_URL="https://github.com/Jackson4Rocks/amethyst-os"
 SUPPORT_URL="https://github.com/Jackson4Rocks/amethyst-os/issues"
 BUG_REPORT_URL="https://github.com/Jackson4Rocks/amethyst-os/issues"
@@ -259,7 +259,7 @@ fi
 cat > /home/amethyst/.profile <<'EOF'
 # Amethyst OS AURORA environment
 
-export AOS_NAME="Amethyst OS"
+export AOS_NAME="Amethyst OS Linux"
 export AOS_CODENAME="AURORA"
 
 # Prefer Wayland.
@@ -277,7 +277,7 @@ chmod 0644 /home/amethyst/.profile
 ###############################################################################
 
 cat > /home/amethyst/.zshenv <<'EOF'
-export AOS_NAME="Amethyst OS"
+export AOS_NAME="Amethyst OS Linux"
 export AOS_CODENAME="AURORA"
 EOF
 
@@ -308,7 +308,7 @@ chmod 0700 /home/amethyst/.config 2>/dev/null || true
 
 echo
 echo "============================================================"
-echo "             AMETHYST OS AURORA READY"
+echo "             AMETHYST OS LINUX READY — AURORA"
 echo "============================================================"
 
 echo "User : $(id -un amethyst)"
