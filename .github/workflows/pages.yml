@@ -1,4 +1,4 @@
-name: Deploy Amethyst OS website
+name: Deploy Calypso Linux website
 
 on:
   push:
