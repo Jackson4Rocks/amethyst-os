@@ -172,5 +172,5 @@ hl.bind(main_mod .. " + PRINT", exec("sh -lc 'grim - | wl-copy'"), {
 hl.on("hyprland.start", function()
   hl.exec_cmd("dbus-update-activation-environment --systemd --all")
   hl.exec_cmd("sh -lc 'command -v hyprpaper >/dev/null 2>&1 && (hyprpaper >/dev/null 2>&1 &)'")
-  hl.exec_cmd("sh -lc 'command -v dms >/dev/null 2>&1 && dms run || true'")
+  hl.exec_cmd("sh -lc 'command -v qs >/dev/null 2>&1 && qs -c amethyst >/dev/null 2>&1 &'")
 end)
