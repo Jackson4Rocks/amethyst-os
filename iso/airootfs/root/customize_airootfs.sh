@@ -1,222 +1,134 @@
 #!/bin/bash
-
 set -euo pipefail
 
 ###############################################################################
-# AMETHYST OS AURORA
+# CALYPSO LINUX
 # Live environment customization
+# Aurora Dotfiles are the bundled desktop configuration.
 ###############################################################################
 
-echo "==> Configuring Amethyst OS AURORA live environment..."
-
-###############################################################################
-# BASIC DIRECTORIES
-###############################################################################
+echo "==> Configuring Calypso Linux live environment..."
 
 install -d -m 0755 /etc/sudoers.d
 install -d -m 0755 /etc/sddm.conf.d
-install -d -m 0755 /usr/share/backgrounds/amethyst
+install -d -m 0755 /usr/share/backgrounds/calypso
 install -d -m 0755 /usr/local/bin
 install -d -m 0755 /usr/share/applications
+install -d -m 0755 /usr/share/icons/hicolor/scalable/apps
 
 ###############################################################################
-# AMETHYST OS IDENTITY
+# OS IDENTITY
 ###############################################################################
 
-echo "==> Setting Amethyst OS identity..."
-
-cat > /usr/lib/os-release <<'EOF'
-NAME="Amethyst OS Linux"
-ID=amethyst
+cat > /usr/lib/os-release <<'EOF_OS'
+NAME="Calypso Linux"
+ID=calypso
 ID_LIKE=arch
-PRETTY_NAME="Amethyst OS Linux"
+PRETTY_NAME="Calypso Linux"
 VERSION="0.1"
 VERSION_ID="0.1"
-VERSION_CODENAME="AURORA"
 HOME_URL="https://github.com/Jackson4Rocks/amethyst-os"
 SUPPORT_URL="https://github.com/Jackson4Rocks/amethyst-os/issues"
 BUG_REPORT_URL="https://github.com/Jackson4Rocks/amethyst-os/issues"
-EOF
+EOF_OS
 
 rm -f /etc/os-release
 ln -s ../usr/lib/os-release /etc/os-release
 
 ###############################################################################
-# AMETHYST LIVE USER
+# CALYPSO LIVE USER
 ###############################################################################
 
-echo "==> Creating/configuring amethyst user..."
+echo "==> Creating the Calypso live user..."
 
-if ! id -u amethyst >/dev/null 2>&1; then
-    useradd \
-        --create-home \
-        --shell /usr/bin/zsh \
-        --groups wheel \
-        amethyst
+if ! id -u calypso >/dev/null 2>&1; then
+    useradd --create-home --shell /usr/bin/zsh --groups wheel calypso
 fi
 
-# Always enforce the desired shell and group membership.
-usermod --shell /usr/bin/zsh amethyst
-usermod --append --groups wheel amethyst
+usermod --shell /usr/bin/zsh calypso
+usermod --append --groups wheel calypso
+install -d -m 0755 -o calypso -g calypso /home/calypso
 
-# Make sure the home directory exists.
-install -d -m 0755 -o amethyst -g amethyst /home/amethyst
-
-###############################################################################
-# PASSWORDLESS SUDO FOR LIVE SESSION
-###############################################################################
-
-echo "==> Configuring sudo..."
-
-cat > /etc/sudoers.d/amethyst <<'EOF'
-amethyst ALL=(ALL) NOPASSWD: ALL
-EOF
-
-chmod 0440 /etc/sudoers.d/amethyst
+cat > /etc/sudoers.d/calypso <<'EOF_SUDO'
+calypso ALL=(ALL) NOPASSWD: ALL
+EOF_SUDO
+chmod 0440 /etc/sudoers.d/calypso
 
 ###############################################################################
-# COPY /etc/skel INTO LIVE USER'S HOME
+# BUNDLE AURORA DOTFILES
 ###############################################################################
 
-echo "==> Installing Amethyst user configuration..."
+echo "==> Installing Aurora Dotfiles..."
 
-if [ -d /etc/skel ]; then
-    cp -a /etc/skel/. /home/amethyst/
-fi
+cp -a /etc/skel/. /home/calypso/
+install -d -m 0755 /home/calypso/.config/systemd/user/default.target.wants
 
-chown -R amethyst:amethyst /home/amethyst
+if [ -f /etc/skel/.config/systemd/user/calypso-live-welcome.service ]; then
+    install -m 0644 \
+        /etc/skel/.config/systemd/user/calypso-live-welcome.service \
+        /home/calypso/.config/systemd/user/calypso-live-welcome.service
 
-
-# Enable AOS live welcome service for the live user
-install -d -m 0755 /home/amethyst/.config/systemd/user
-
-if [ -f /etc/skel/.config/systemd/user/aos-live-welcome.service ]; then
-    cp -f \
-        /etc/skel/.config/systemd/user/aos-live-welcome.service \
-        /home/amethyst/.config/systemd/user/aos-live-welcome.service
-
-    chown amethyst:amethyst \
-        /home/amethyst/.config/systemd/user/aos-live-welcome.service
-fi
-
-mkdir -p /home/amethyst/.config/systemd/user/default.target.wants
-
-ln -sf \
-    ../aos-live-welcome.service \
-    /home/amethyst/.config/systemd/user/default.target.wants/aos-live-welcome.service
-
-chown -R amethyst:amethyst /home/amethyst/.config/systemd
-
-
-###############################################################################
-# ZSH
-###############################################################################
-
-echo "==> Configuring Zsh..."
-
-if [ -f /etc/skel/.zshrc ]; then
-    cp -f /etc/skel/.zshrc /home/amethyst/.zshrc
-    chown amethyst:amethyst /home/amethyst/.zshrc
+    ln -sf \
+        ../calypso-live-welcome.service \
+        /home/calypso/.config/systemd/user/default.target.wants/calypso-live-welcome.service
 fi
 
 ###############################################################################
-# FASTFETCH
+# CALYPSO WALLPAPER
 ###############################################################################
 
-echo "==> Configuring Fastfetch..."
+echo "==> Creating Calypso emerald wallpaper..."
 
-if [ -d /etc/skel/.config/fastfetch ]; then
-    install -d -m 0755 /home/amethyst/.config
-    cp -a /etc/skel/.config/fastfetch /home/amethyst/.config/
-    chown -R amethyst:amethyst /home/amethyst/.config/fastfetch
-fi
+if command -v magick >/dev/null 2>&1; then
+    magick -size 1920x1080 \
+        gradient:'#020806-#063d2a' \
+        -fill 'rgba(16,185,129,0.16)' -draw 'circle 1420,250 1820,250' \
+        -fill 'rgba(52,211,153,0.12)' -draw 'circle 430,830 780,830' \
+        -fill '#020806' -draw 'rectangle 0,0 1920,1080' \
+        -compose screen -composite \
+        /usr/share/backgrounds/calypso/CALYPSO-16x9.png 2>/dev/null || true
 
-###############################################################################
-# HYPRLAND
-###############################################################################
-
-echo "==> Configuring Hyprland..."
-
-if [ -d /etc/skel/.config/hypr ]; then
-    install -d -m 0755 /home/amethyst/.config
-    cp -a /etc/skel/.config/hypr /home/amethyst/.config/
-    chown -R amethyst:amethyst /home/amethyst/.config/hypr
-fi
-
-###############################################################################
-# HYPRPAPER
-###############################################################################
-
-echo "==> Configuring Hyprpaper..."
-
-if [ -f /etc/skel/.config/hypr/hyprpaper.conf ]; then
-    chmod 0644 /home/amethyst/.config/hypr/hyprpaper.conf
-fi
-
-###############################################################################
-# AURORA WALLPAPER
-###############################################################################
-
-echo "==> Checking AURORA wallpaper..."
-
-if [ -f /usr/share/backgrounds/amethyst/AURORA-16x9.png ]; then
-    chmod 0644 /usr/share/backgrounds/amethyst/AURORA-16x9.png
+    if [ ! -s /usr/share/backgrounds/calypso/CALYPSO-16x9.png ]; then
+        magick -size 1920x1080 gradient:'#020806-#064e3b' \
+            /usr/share/backgrounds/calypso/CALYPSO-16x9.png
+    fi
 else
-    echo "WARNING: AURORA-16x9.png was not found."
+    echo "WARNING: ImageMagick is missing; no generated Calypso wallpaper."
+fi
+
+if [ -f /usr/share/backgrounds/calypso/CALYPSO-16x9.png ]; then
+    chmod 0644 /usr/share/backgrounds/calypso/CALYPSO-16x9.png
 fi
 
 ###############################################################################
 # SDDM
 ###############################################################################
 
-echo "==> Configuring SDDM..."
-
-cat > /etc/sddm.conf.d/amethyst.conf <<'EOF'
+cat > /etc/sddm.conf.d/calypso.conf <<'EOF_SDDM'
 [General]
 DisplayServer=wayland
 
 [Autologin]
-User=amethyst
+User=calypso
 Session=hyprland.desktop
 Relogin=false
-EOF
-
-chmod 0644 /etc/sddm.conf.d/amethyst.conf
+EOF_SDDM
+chmod 0644 /etc/sddm.conf.d/calypso.conf
 
 ###############################################################################
-# NETWORKMANAGER
+# NETWORK / SERVICES
 ###############################################################################
-
-echo "==> Enabling NetworkManager..."
 
 systemctl enable NetworkManager.service 2>/dev/null || true
-
-###############################################################################
-# SDDM SERVICE
-###############################################################################
-
-echo "==> Enabling SDDM..."
-
 systemctl enable sddm.service 2>/dev/null || true
-
-###############################################################################
-# POWER PROFILES
-###############################################################################
-
-if command -v systemctl >/dev/null 2>&1; then
-    systemctl enable power-profiles-daemon.service 2>/dev/null || true
-fi
+systemctl enable power-profiles-daemon.service 2>/dev/null || true
 
 ###############################################################################
 # POLKIT
 ###############################################################################
 
-echo "==> Preparing Polkit..."
-
 if [ -x /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 ]; then
-    install -d -m 0755 /etc/xdg/autostart
-
-    cat > /etc/xdg/autostart/polkit-gnome-authentication-agent-1.desktop <<'EOF'
+    cat > /etc/xdg/autostart/polkit-gnome-authentication-agent-1.desktop <<'EOF_POLKIT'
 [Desktop Entry]
 Name=Polkit Authentication Agent
 Comment=Authentication Agent
@@ -225,117 +137,70 @@ Terminal=false
 Type=Application
 NoDisplay=true
 X-GNOME-Autostart-Phase=Initialization
-EOF
-
-    chmod 0644 /etc/xdg/autostart/polkit-gnome-authentication-agent-1.desktop
+EOF_POLKIT
 fi
 
 ###############################################################################
-# AOS INSTALLER
+# INSTALLER / DESKTOP ENTRY
 ###############################################################################
 
-echo "==> Checking AOS installer..."
-
-if [ -f /usr/local/bin/aos-installer ]; then
-    chmod 0755 /usr/local/bin/aos-installer
-fi
-
-if [ -f /usr/local/bin/aos-live-welcome ]; then
-    chmod 0755 /usr/local/bin/aos-live-welcome
-fi
+chmod 0755 /usr/local/bin/calypso-installer 2>/dev/null || true
+chmod 0755 /usr/local/bin/aos-live-welcome 2>/dev/null || true
+chmod 0644 /usr/share/applications/calypso-installer.desktop 2>/dev/null || true
 
 ###############################################################################
-# DESKTOP ENTRY
+# USER ENVIRONMENT
 ###############################################################################
 
-if [ -f /usr/share/applications/amethyst-installer.desktop ]; then
-    chmod 0644 /usr/share/applications/amethyst-installer.desktop
-fi
-
-###############################################################################
-# LIVE USER ENVIRONMENT
-###############################################################################
-
-cat > /home/amethyst/.profile <<'EOF'
-# Amethyst OS AURORA environment
-
-export AOS_NAME="Amethyst OS Linux"
-export AOS_CODENAME="AURORA"
-
-# Prefer Wayland.
+cat > /home/calypso/.profile <<'EOF_PROFILE'
+export CALYPSO_NAME="Calypso Linux"
+export CALYPSO_DOTFILES="Aurora Dotfiles"
 export QT_QPA_PLATFORM=wayland
 export GDK_BACKEND=wayland,x11
 export SDL_VIDEODRIVER=wayland
 export MOZ_ENABLE_WAYLAND=1
-EOF
+EOF_PROFILE
 
-chown amethyst:amethyst /home/amethyst/.profile
-chmod 0644 /home/amethyst/.profile
-
-###############################################################################
-# ZSH ENVIRONMENT
-###############################################################################
-
-cat > /home/amethyst/.zshenv <<'EOF'
-export AOS_NAME="Amethyst OS Linux"
-export AOS_CODENAME="AURORA"
-EOF
-
-chown amethyst:amethyst /home/amethyst/.zshenv
-chmod 0644 /home/amethyst/.zshenv
+cat > /home/calypso/.zshenv <<'EOF_ZSHENV'
+export CALYPSO_NAME="Calypso Linux"
+export CALYPSO_DOTFILES="Aurora Dotfiles"
+EOF_ZSHENV
 
 ###############################################################################
-# REMOVE LEFTOVER CALAMARES CONFIGURATION
+# CANONICAL LOGO
 ###############################################################################
 
-if [ -d /etc/calamares ]; then
-    echo "==> Removing leftover Calamares configuration..."
-    rm -rf /etc/calamares
+if [ -f /etc/skel/.local/share/calypso/calypso-mark.svg ]; then
+    install -m 0644 \
+        /etc/skel/.local/share/calypso/calypso-mark.svg \
+        /usr/share/icons/hicolor/scalable/apps/calypso-linux.svg
 fi
 
 ###############################################################################
-# PERMISSIONS
+# REMOVE LEGACY CALAMARES
 ###############################################################################
 
-chown -R amethyst:amethyst /home/amethyst
-
-chmod 0755 /home/amethyst
-chmod 0700 /home/amethyst/.config 2>/dev/null || true
+rm -rf /etc/calamares
 
 ###############################################################################
-# FINAL CHECKS
+# PERMISSIONS + CHECKS
 ###############################################################################
+
+chown -R calypso:calypso /home/calypso
+chmod 0755 /home/calypso
+chmod 0700 /home/calypso/.config 2>/dev/null || true
 
 echo
 echo "============================================================"
-echo "             AMETHYST OS LINUX READY — AURORA"
+echo "                 CALYPSO LINUX READY"
+echo "                 AURORA DOTFILES"
 echo "============================================================"
-
-echo "User : $(id -un amethyst)"
-echo "Shell: $(getent passwd amethyst | cut -d: -f7)"
-
-if command -v fastfetch >/dev/null 2>&1; then
-    echo "Fastfetch: installed"
-fi
-
-if command -v zsh >/dev/null 2>&1; then
-    echo "Zsh      : installed"
-fi
-
-if command -v hyprland >/dev/null 2>&1; then
-    echo "Hyprland : installed"
-fi
-
-if [ -f /usr/share/backgrounds/amethyst/AURORA-16x9.png ]; then
-    echo "Wallpaper: installed"
-fi
-
+printf 'User       : %s\n' "$(id -un calypso)"
+printf 'Shell      : %s\n' "$(getent passwd calypso | cut -d: -f7)"
+printf 'Hyprland   : %s\n' "$(command -v hyprland >/dev/null 2>&1 && echo installed || echo missing)"
+printf 'Quickshell : %s\n' "$(command -v qs >/dev/null 2>&1 && echo installed || echo missing)"
+printf 'Fastfetch  : %s\n' "$(command -v fastfetch >/dev/null 2>&1 && echo installed || echo missing)"
+printf 'Wallpaper  : %s\n' "$(test -f /usr/share/backgrounds/calypso/CALYPSO-16x9.png && echo installed || echo missing)"
 echo "============================================================"
-
-###############################################################################
-# IMPORTANT:
-# Do NOT manually unmount /etc/resolv.conf here.
-# Archiso handles the build/chroot mounts itself.
-###############################################################################
 
 exit 0
