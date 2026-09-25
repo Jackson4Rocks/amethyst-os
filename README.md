@@ -1,6 +1,6 @@
 # 💚 Calypso Linux
 
-> **Calypso Linux** is an Arch-based Linux project focused on a polished Hyprland desktop, a cohesive visual identity, and a simple user experience.
+> **Calypso Linux** is an Arch-based Linux project targeting GNOME, KDE Plasma, Niri, and Hyprland, with the Aurora Dotfiles currently focused on Hyprland.
 
 <p align="center">
   <strong>Beauty meets performance.</strong><br>
@@ -15,8 +15,11 @@ Calypso Linux is the Linux distro project behind the **Aurora Dotfiles** desktop
 
 The project is being built around:
 
-- 🪟 **Hyprland** — Wayland compositor
-- ✨ **Quickshell** — desktop shell / UI
+- 🪟 **Hyprland** — current Aurora Dotfiles desktop profile
+- 🐧 **GNOME** — installation target
+- 🧊 **KDE Plasma** — installation target
+- 🌀 **Niri** — installation target; Aurora profile later
+- ✨ **Quickshell** — desktop shell for the Hyprland profile
 - 🐚 **Zsh** — interactive shell
 - 🖥️ **Kitty** — terminal
 - ⚡ **Fastfetch** — system information
@@ -40,6 +43,9 @@ Release ISOs and mirrors will be linked here as they are published.
 Calypso Linux
 └── Aurora Dotfiles
     ├── Arch Linux base
+    ├── GNOME
+    ├── KDE Plasma
+    ├── Niri
     ├── Hyprland
     ├── Quickshell
     ├── Zsh
@@ -51,7 +57,7 @@ Calypso Linux
 
 The repository now includes the reference Calypso Linux desktop configuration under dotfiles/.
 
-The default stack stays intentionally compact: **Hyprland + Quickshell + Kitty + Zsh + Fastfetch + Hyprpaper + Matugen + Fuzzel + Yazi**.
+The current Aurora desktop stack is intentionally compact: **Hyprland + Quickshell + Kitty + Zsh + Fastfetch + Hyprpaper + Matugen + Fuzzel + Yazi**. GNOME, KDE Plasma, and Niri are available as installer targets; their Aurora profiles will be added separately.
 
 Wallpaper changes can be applied with calypso-wallpaper, which generates the palette and changes the live wallpaper through Hyprpaper IPC.
 
@@ -73,7 +79,7 @@ Calypso Linux is an **active personal project** and is still evolving. Expect ch
 
 I made this project for fun and general curiosity. You're welcome to contribute, share ideas, test builds, or send feedback.
 
-You can reach the project through the [Telegram group](https://t.me/AmethystOSHYPR).
+You can reach the project through the [Telegram group](https://t.me/CalypsoOSHYPR).
 
 ---
 
