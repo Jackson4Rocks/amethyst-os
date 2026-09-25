@@ -107,10 +107,15 @@
     }
     .brand{display:flex;align-items:center;gap:16px}
     .brand-mark{
-      width:58px;height:58px;display:grid;place-items:center;
+      width:50px;height:50px;display:grid;place-items:center;overflow:hidden;
+      border-radius:14px;
       filter:drop-shadow(0 0 18px rgba(46,255,185,.28));
     }
-    .brand-mark img{width:100%;height:100%;object-fit:contain;mix-blend-mode:screen;display:block}
+    .brand-mark img{
+      width:136%;height:136%;max-width:none;object-fit:contain;display:block;
+      transform:translate(0,0);
+      mix-blend-mode:screen;
+    }
     .wordmark{
       line-height:.92;
       text-transform:uppercase;
@@ -520,6 +525,80 @@
       .download-card{padding:28px 22px}
     }
 
+    /* RESPONSIVE STABILITY */
+    @media (max-width:1200px){
+      .page{
+        width:min(var(--max),calc(100% - 24px));
+        margin:12px auto 14px;
+        border-radius:18px;
+      }
+      .nav{height:72px}
+      .brand{gap:11px}
+      .brand-mark{width:44px;height:44px;border-radius:12px}
+      .wordmark-main{font-size:18px}
+      .wordmark-sub{margin-top:7px;font-size:8px}
+      .nav-links{gap:20px}
+      .nav-links a{font-size:11px}
+      .hero{
+        min-height:580px;
+        grid-template-columns:48% 52%;
+      }
+      .hero-copy{padding:58px 0 22px 18px}
+      h1{
+        font-size:clamp(60px,7vw,86px);
+        margin:18px 0 22px;
+      }
+      .lede{font-size:14px;line-height:1.55;max-width:500px}
+      .actions{margin-top:22px}
+      .btn{min-height:46px;padding:0 18px}
+      .hero-stats{margin-top:34px;gap:22px}
+      .hero-art{width:58%}
+      .hero-orbit{width:min(380px,56vw);right:7%}
+      .hero-glow{width:380px;height:380px;right:calc(7% - 8px)}
+      .hero-mark{width:min(340px,48vw);right:9%}
+      .hero-art-label{right:13%;bottom:24px}
+      .feature-strip{width:calc(100% - 48px);min-height:108px}
+      .feature{padding:16px 17px}
+      .feature-title{font-size:11px}
+      .feature-copy{font-size:9px}
+      .section{padding-top:76px}
+    }
+
+    @media (max-width:820px){
+      .wrap{padding-inline:18px}
+      .nav{padding-inline:14px}
+      .nav-links a:not(.github-pill){display:none}
+      .hero{
+        min-height:auto;
+        display:flex;
+        flex-direction:column;
+      }
+      .hero-art{
+        order:1;
+        position:relative;
+        inset:auto;
+        width:100%;
+        height:420px;
+        min-height:420px;
+      }
+      .hero-copy{
+        order:2;
+        padding:48px 20px 42px;
+      }
+      .hero-copy:before{inset:0}
+      h1{font-size:clamp(58px,15vw,78px)}
+      .hero-mark{width:min(330px,78vw);right:50%;transform:translate(50%,-50%)}
+      .hero-orbit{right:50%;transform:translate(50%,-50%);width:min(370px,82vw)}
+      .hero-glow{right:50%;transform:translate(50%,-50%)}
+      .hero-art-label{right:20px}
+      .feature-strip{
+        width:calc(100% - 24px);
+        grid-template-columns:repeat(2,1fr);
+      }
+      .feature:last-child{grid-column:1/-1}
+      .cards,.showcase,.community-grid{grid-template-columns:1fr}
+    }
+
     @media(prefers-reduced-motion:no-preference){
       .hero-art{animation:heroFloat 9s ease-in-out infinite alternate}
       .hero-mark{animation:heroMarkFloat 7s ease-in-out infinite alternate}
@@ -559,9 +638,8 @@
           <div class="hero-glow"></div>
           <div class="hero-mark">
             <img
-              src="./assets/calypso-mark.png?v=4"
+              src="./assets/calypso-mark.svg?v=5"
               alt=""
-              onerror="this.onerror=null;this.src='./assets/calypso-mark.svg?v=4'"
             >
           </div>
           <div class="hero-art-label">CALYPSO LINUX · A NEW HORIZON</div>
@@ -647,7 +725,7 @@
             <div class="kicker">THE VISUAL SYSTEM</div>
             <h3>Emerald glass.<br>Black space.</h3>
             <p>Glowing edges, translucent surfaces, crystalline geometry, and restrained motion carry the same identity through the desktop and the web.</p>
-            <div class="mini-logo"><img src="./assets/calypso-mark.png?v=4" alt=""></div>
+            <div class="mini-logo"><img src="./assets/calypso-mark.svg?v=5" alt=""></div>
           </article>
 
           <article class="showcase-card">
