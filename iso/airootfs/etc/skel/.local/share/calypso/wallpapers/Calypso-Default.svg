@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#020604"/>
+      <stop offset="0.5" stop-color="#071b12"/>
+      <stop offset="1" stop-color="#010301"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="72%" cy="42%" r="48%">
+      <stop offset="0" stop-color="#10b981" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#10b981" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="emerald" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ecfdf5"/>
+      <stop offset="0.26" stop-color="#a7f3d0"/>
+      <stop offset="0.6" stop-color="#10b981"/>
+      <stop offset="1" stop-color="#047857"/>
+    </linearGradient>
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <pattern id="grid" width="72" height="72" patternUnits="userSpaceOnUse">
+      <path d="M72 0H0V72" fill="none" stroke="#a7f3d0" stroke-opacity="0.045"/>
+    </pattern>
+  </defs>
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <rect width="1920" height="1080" fill="url(#grid)"/>
+  <rect width="1920" height="1080" fill="url(#glow)"/>
+  <g opacity="0.11" transform="translate(1510 120)">
+    <circle cx="0" cy="0" r="360" fill="none" stroke="#34d399" stroke-width="2"/>
+    <circle cx="0" cy="0" r="290" fill="none" stroke="#34d399" stroke-width="1"/>
+    <path d="M-420 80L340 -280M-300 290L410 -110M-120 -390L250 350" stroke="#6ee7b7" stroke-width="2"/>
+  </g>
+  <g transform="translate(1290 540)" filter="url(#softGlow)">
+    <path d="M320 -245L190 -300L-20 -300L-185 -190L-250 0L-185 190L-20 300L190 300L320 245L215 140L80 166L-15 166L-90 92L-112 0L-90 -92L-15 -166L80 -166L215 -140Z" fill="url(#emerald)"/>
+    <path d="M320 -245L190 -300L80 -166L215 -140Z" fill="#ecfdf5" fill-opacity="0.58"/>
+    <path d="M-20 -300L-185 -190L-90 -92L-15 -166L80 -166Z" fill="#34d399" fill-opacity="0.45"/>
+    <path d="M-185 -190L-250 0L-90 -92L-112 0L-90 92Z" fill="#059669" fill-opacity="0.62"/>
+    <path d="M-250 0L-185 190L-90 92L-112 0Z" fill="#047857" fill-opacity="0.7"/>
+    <path d="M-185 190L-20 300L80 166L-15 166L-90 92Z" fill="#10b981" fill-opacity="0.55"/>
+    <path d="M-20 300L190 300L320 245L215 140L80 166Z" fill="#6ee7b7" fill-opacity="0.46"/>
+  </g>
+  <g transform="translate(150 720)">
+    <text x="0" y="0" font-family="Inter,Segoe UI,sans-serif" font-size="24" letter-spacing="9" fill="#a7f3d0" opacity="0.85">CALYPSO LINUX</text>
+    <text x="0" y="74" font-family="Georgia,serif" font-size="72" letter-spacing="2" fill="#f0fdf4">Aurora for every desktop.</text>
+    <text x="0" y="126" font-family="Inter,Segoe UI,sans-serif" font-size="22" letter-spacing="3" fill="#6ee7b7" opacity="0.82">KDE Plasma  •  Hyprland  •  Arch-based  •  Open source</text>
+  </g>
+  <path d="M150 934H1770" stroke="#10b981" stroke-opacity="0.28"/>
+  <text x="150" y="985" font-family="Inter,Segoe UI,sans-serif" font-size="16" letter-spacing="5" fill="#a7f3d0" opacity="0.55">A CALYPSO LINUX PROJECT  /  LEON SONY</text>
+</svg>
