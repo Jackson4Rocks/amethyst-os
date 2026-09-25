@@ -81,17 +81,12 @@ echo "==> Creating Calypso emerald wallpaper..."
 
 if command -v magick >/dev/null 2>&1; then
     magick -size 1920x1080 \
-        gradient:'#020806-#063d2a' \
-        -fill 'rgba(16,185,129,0.16)' -draw 'circle 1420,250 1820,250' \
-        -fill 'rgba(52,211,153,0.12)' -draw 'circle 430,830 780,830' \
-        -fill '#020806' -draw 'rectangle 0,0 1920,1080' \
-        -compose screen -composite \
-        /usr/share/backgrounds/calypso/CALYPSO-16x9.png 2>/dev/null || true
-
-    if [ ! -s /usr/share/backgrounds/calypso/CALYPSO-16x9.png ]; then
-        magick -size 1920x1080 gradient:'#020806-#064e3b' \
-            /usr/share/backgrounds/calypso/CALYPSO-16x9.png
-    fi
+        gradient:'#020806-#064e3b' \
+        -fill 'rgba(16,185,129,0.18)' \
+        -draw 'circle 1540,250 1810,250' \
+        -fill 'rgba(52,211,153,0.12)' \
+        -draw 'circle 360,850 620,850' \
+        /usr/share/backgrounds/calypso/CALYPSO-16x9.png
 else
     echo "WARNING: ImageMagick is missing; no generated Calypso wallpaper."
 fi
