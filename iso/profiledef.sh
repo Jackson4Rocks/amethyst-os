@@ -4,7 +4,7 @@
 iso_name="calypso-linux"
 iso_label="CALYPSO_$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y%m)"
 iso_publisher="Calypso Linux"
-iso_application="Calypso Linux — Aurora Dotfiles Live"
+iso_application="Calypso Linux — Plasma Live + Aurora Dotfiles"
 iso_version="$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)"
 install_dir="arch"
 buildmodes=('iso')
@@ -23,4 +23,5 @@ file_permissions=(
   ["/usr/local/bin/calypso-installer"]="0:0:755"
   ["/usr/local/bin/Installation_guide"]="0:0:755"
   ["/usr/local/bin/livecd-sound"]="0:0:755"
+  ["/usr/local/bin/calypso-live-welcome"]="0:0:755"
 )
