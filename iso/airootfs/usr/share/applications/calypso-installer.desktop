@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Install Calypso Linux
 GenericName=Calypso Linux Installer
-Comment=Install Calypso Linux with KDE Plasma or Aurora Hyprland
+Comment=Install Calypso Linux with KDE Plasma or Hyprland
 Exec=calypso-installer
 Icon=calypso-linux
 Terminal=true
