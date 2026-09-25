@@ -1,10 +1,10 @@
-# Amethyst OS AURORA Dotfiles
+# Calypso Linux — Aurora Dotfiles
 
-The reference desktop configuration for Amethyst OS. The canonical brand mark is `assets/amethyst-mark.svg`; reuse it everywhere instead of creating alternate logos.
+The reference desktop configuration for Calypso Linux. The canonical brand mark is `assets/calypso-mark.svg`; reuse it everywhere instead of creating alternate logos.
 
 ## Design
 
-AURORA is intentionally built as a small, custom desktop stack:
+Aurora Dotfiles are intentionally built as a small, custom desktop stack:
 
 - Hyprland — compositor
 - **Quickshell — desktop shell**
@@ -16,13 +16,13 @@ AURORA is intentionally built as a small, custom desktop stack:
 - Fuzzel — lightweight app launcher
 - Yazi — terminal file manager
 
-Quickshell configs live in `~/.config/quickshell/<name>`; AURORA uses the named `amethyst` config and starts it with `qs -c amethyst`. citeturn912860search2turn362347search1
+Quickshell configs live in `~/.config/quickshell/<name>`; Aurora Dotfiles uses the named `aurora` config and starts it with `qs -c aurora`. citeturn912860search2turn362347search1
 
 ## Shell design
 
 The default shell is a floating, centered top panel with:
 
-- AURORA branding
+- Calypso + Aurora Dotfiles branding
 - live Hyprland workspace pills
 - active-window title
 - clock
@@ -52,7 +52,7 @@ Arrow-key focus, move, and resize bindings are also provided.
 
 Use:
 
-    aos-wallpaper ~/Pictures/wallpapers/my-wallpaper.png
+    calypso-wallpaper ~/Pictures/wallpapers/my-wallpaper.png
 
 Matugen generates the Quickshell theme, Kitty colors, and Fuzzel colors from the wallpaper. Quickshell watches its config files for changes, so the shell can update when the generated `Theme.qml` changes. citeturn362347search1
 
@@ -61,10 +61,10 @@ Matugen generates the Quickshell theme, Kitty colors, and Fuzzel colors from the
     cd dotfiles
     bash scripts/install.sh
 
-For the Amethyst OS ISO, place the same files into `/etc/skel` so new users receive the AURORA defaults.
+For the Calypso Linux ISO, place the same files into `/etc/skel` so new users receive the Aurora Dotfiles defaults.
 
 ## Notes
 
 The Hyprland configuration targets the Lua-based configuration system used by current Hyprland releases. citeturn133000search3turn133000search5
 
-Quickshell is intentionally treated as the framework for the Amethyst shell rather than relying on another full desktop shell. Its current documentation describes it as a toolkit for building bars, widgets, notifications, lock screens, and other desktop components. citeturn764349search0
+Quickshell is intentionally treated as the framework for the Calypso shell rather than relying on another full desktop shell. Its current documentation describes it as a toolkit for building bars, widgets, notifications, lock screens, and other desktop components. citeturn764349search0
