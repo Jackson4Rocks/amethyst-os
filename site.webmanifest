@@ -7,10 +7,10 @@
   "theme_color": "#00d98b",
   "icons": [
     {
-      "src": "./assets/calypso-mark.png?v=3",
-      "sizes": "512x512",
+      "src": "./assets/calypso-tab.png?v=1",
+      "sizes": "96x96",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }
