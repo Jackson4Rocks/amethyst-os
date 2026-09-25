@@ -4,7 +4,7 @@
 
 <p align="center">
   <strong>Beauty meets performance.</strong><br>
-  Hyprland · DankMaterialShell · Zsh · Fastfetch
+  Hyprland · Quickshell · Zsh · Fastfetch
 </p>
 
 ---
@@ -16,7 +16,7 @@ Amethyst OS is the Linux distro project behind the **AURORA** desktop concept.
 The project is being built around:
 
 - 🪟 **Hyprland** — Wayland compositor
-- ✨ **DankMaterialShell** — desktop shell / UI
+- ✨ **Quickshell** — desktop shell / UI
 - 🐚 **Zsh** — interactive shell
 - 🖥️ **Kitty** — terminal
 - ⚡ **Fastfetch** — system information
@@ -63,7 +63,7 @@ The website includes four visual directions:
 
 The repository now includes the reference Amethyst desktop configuration under dotfiles/.
 
-The default stack stays intentionally compact: **Hyprland + DankMaterialShell + Kitty + Zsh + Fastfetch + Hyprpaper + Matugen + Fuzzel + Yazi**.
+The default stack stays intentionally compact: **Hyprland + Quickshell + Kitty + Zsh + Fastfetch + Hyprpaper + Matugen + Fuzzel + Yazi**.
 
 Wallpaper changes can be applied with aos-wallpaper, which generates the palette and changes the live wallpaper through Hyprpaper IPC.
 
