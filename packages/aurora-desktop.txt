@@ -1,0 +1,17 @@
+# AURORA desktop package set
+
+hyprland
+hyprpaper
+quickshell
+kitty
+zsh
+fastfetch
+fuzzel
+yazi
+jq
+matugen
+brightnessctl
+playerctl
+grim
+slurp
+wl-clipboard
