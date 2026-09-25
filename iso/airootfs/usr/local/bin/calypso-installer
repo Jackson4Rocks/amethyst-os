@@ -144,6 +144,8 @@ mount "$EFI" /mnt/boot
 
 install -d -m 0755 /mnt/usr/local/bin
 install -m 0755 /usr/local/bin/calypso-install-wallpapers /mnt/usr/local/bin/calypso-install-wallpapers
+install -d -m 0755 /mnt/etc/systemd/system
+install -m 0644 /etc/systemd/system/calypso-wallpapers.service /mnt/etc/systemd/system/calypso-wallpapers.service
 
 BASE=(base base-devel linux linux-firmware sudo zsh git curl networkmanager systemd-resolvconf sddm kitty fastfetch pipewire pipewire-pulse wireplumber xdg-desktop-portal xdg-desktop-portal-gtk xorg-xwayland mesa polkit brightnessctl playerctl grim slurp wl-clipboard power-profiles-daemon noto-fonts)
 printf '\nInstalling Calypso Linux + %s...\n' "$DESKTOP_NAME"
@@ -244,6 +246,7 @@ if [ "$DESKTOP" = kde ]; then
     /usr/local/bin/calypso-install-wallpapers /usr/share/backgrounds/calypso/stock
     install -d -m 0755 "/home/$USERNAME/Pictures/Wallpapers/Calypso"
     cp -a /usr/share/backgrounds/calypso/stock/. "/home/$USERNAME/Pictures/Wallpapers/Calypso/" 2>/dev/null || true
+    systemctl enable calypso-wallpapers.service
 fi
 
 if [ "$DESKTOP" = hyprland ]; then
