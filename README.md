@@ -1,6 +1,6 @@
-# 💜 Amethyst OS Linux
+# 💚 Calypso Linux
 
-> **AURORA** — Amethyst OS Linux is an Arch-based Linux project focused on a polished Hyprland desktop, a cohesive visual identity, and a simple user experience.
+> **Aurora Dotfiles** — Calypso Linux is an Arch-based Linux project focused on a polished Hyprland desktop, a cohesive visual identity, and a simple user experience.
 
 <p align="center">
   <strong>Beauty meets performance.</strong><br>
@@ -9,9 +9,9 @@
 
 ---
 
-## 🌌 AURORA
+## 🌌 Aurora Dotfiles
 
-Amethyst OS is the Linux distro project behind the **AURORA** desktop concept.
+Calypso Linux is the Linux distro project behind the **Aurora Dotfiles** desktop concept.
 
 The project is being built around:
 
@@ -24,7 +24,7 @@ The project is being built around:
 
 ## 🌐 Website
 
-The repository contains the static GitHub Pages site for Amethyst OS and the canonical AURORA brand assets.
+The repository contains the static GitHub Pages site for Calypso Linux and the canonical Calypso Linux brand assets and Aurora Dotfiles.
 
 Once Pages is enabled, the project site will be available from GitHub's Pages URL for this repository.
 
@@ -37,23 +37,23 @@ Release ISOs and mirrors will be linked here as they are published.
 ## 🧩 Project
 
 ```text
-Amethyst OS
-└── AURORA
+Calypso Linux
+└── Aurora Dotfiles
     ├── Arch Linux base
     ├── Hyprland
     ├── Quickshell
     ├── Zsh
     ├── Fastfetch
-    └── Custom AURORA artwork
+    └── Custom Aurora Dotfiles artwork
 ```
 
-## 🎛️ AURORA Dotfiles
+## 🎛️ Aurora Dotfiles Dotfiles
 
 The repository now includes the reference Amethyst desktop configuration under dotfiles/.
 
 The default stack stays intentionally compact: **Hyprland + Quickshell + Kitty + Zsh + Fastfetch + Hyprpaper + Matugen + Fuzzel + Yazi**.
 
-Wallpaper changes can be applied with aos-wallpaper, which generates the palette and changes the live wallpaper through Hyprpaper IPC.
+Wallpaper changes can be applied with calypso-wallpaper, which generates the palette and changes the live wallpaper through Hyprpaper IPC.
 
 See dotfiles/README.md for the keybinds, layout, and installation flow.
 
@@ -65,7 +65,7 @@ Please include useful logs and the relevant system / build details when reportin
 
 ## ⚠️ Status
 
-Amethyst OS is an **active personal project** and is still evolving. Expect changes to the installer, desktop configuration, artwork, and release process as AURORA develops.
+Calypso Linux is an **active personal project** and is still evolving. Expect changes to the installer, desktop configuration, artwork, and release process as Aurora Dotfiles develops.
 
 ## 👤 Maintainer
 
@@ -73,10 +73,10 @@ Amethyst OS is an **active personal project** and is still evolving. Expect chan
 
 I made this project for fun and general curiosity. You're welcome to contribute, share ideas, test builds, or send feedback.
 
-You can reach me through the [Amethyst OS Telegram group](https://t.me/AmethystOSHYPR).
+You can reach me through the [Calypso Linux Telegram group](https://t.me/AmethystOSHYPR).
 
 ---
 
 <p align="center">
-  <sub>AMETHYST OS · AURORA · ARCH LINUX</sub>
+  <sub>CALYPSO LINUX · Aurora Dotfiles · ARCH LINUX</sub>
 </p>
