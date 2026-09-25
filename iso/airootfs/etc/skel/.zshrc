@@ -8,5 +8,5 @@ alias ll="ls -lah"
 alias la="ls -A"
 alias cls="clear"
 
-export AOS_NAME="Amethyst OS"
+export AOS_NAME="Amethyst OS Linux"
 export AOS_CODENAME="AURORA"
