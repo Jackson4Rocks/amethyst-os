@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Calypso Linux mark</title>
+  <desc id="desc">A faceted emerald crystal C inside a luminous circular halo.</desc>
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="68%">
+      <stop offset="0" stop-color="#063b29"/>
+      <stop offset=".55" stop-color="#02150e"/>
+      <stop offset="1" stop-color="#000"/>
+    </radialGradient>
+    <linearGradient id="crystal" x1="15%" y1="15%" x2="85%" y2="85%">
+      <stop offset="0" stop-color="#d9fff0"/>
+      <stop offset=".18" stop-color="#55ffc0"/>
+      <stop offset=".5" stop-color="#10e89a"/>
+      <stop offset=".78" stop-color="#079568"/>
+      <stop offset="1" stop-color="#003d2a"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9effd8"/>
+      <stop offset=".5" stop-color="#18f4a2"/>
+      <stop offset="1" stop-color="#087b56"/>
+    </linearGradient>
+    <filter id="glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="12" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="28"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="256" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="196" fill="none" stroke="#18e99c" stroke-opacity=".22"/>
+  <circle cx="256" cy="256" r="158" fill="none" stroke="#18e99c" stroke-opacity=".08"/>
+  <circle cx="256" cy="256" r="120" fill="#10e89a" opacity=".09" filter="url(#soft)"/>
+  <g filter="url(#glow)">
+    <path d="M354 126 L300 96 L224 99 L153 137 L119 201 L126 286 L173 357 L245 394 L316 383 L365 340 L337 304 L297 334 L251 348 L204 329 L174 289 L168 229 L194 181 L238 158 L285 159 L319 184 L352 154 Z" fill="url(#crystal)" stroke="url(#edge)" stroke-width="5" stroke-linejoin="round"/>
+    <path d="M224 99 L238 158 L194 181 L153 137 Z" fill="#a5ffe0" fill-opacity=".5"/>
+    <path d="M238 158 L285 159 L319 184 L270 207 L194 181 Z" fill="#1df2a4" fill-opacity=".65"/>
+    <path d="M194 181 L270 207 L232 249 L168 229 Z" fill="#66ffc8" fill-opacity=".42"/>
+    <path d="M168 229 L232 249 L201 302 L174 289 Z" fill="#0b9f70" fill-opacity=".7"/>
+    <path d="M232 249 L297 220 L337 236 L297 276 L201 302 Z" fill="#08bd80" fill-opacity=".52"/>
+    <path d="M297 220 L365 255 L337 304 L297 276 Z" fill="#62ffd0" fill-opacity=".34"/>
+    <path d="M201 302 L297 276 L337 304 L297 334 L251 348 L204 329 Z" fill="#05a972" fill-opacity=".65"/>
+    <path d="M251 348 L245 394 L316 383 L297 334 Z" fill="#8bffda" fill-opacity=".28"/>
+    <path d="M285 159 L319 184 L352 154 L354 126 Z" fill="#c6ffe9" fill-opacity=".28"/>
+  </g>
+  <g fill="#c7ffe9" filter="url(#glow)">
+    <path d="M256 48 l4 13 13 4-13 4-4 13-4-13-13-4 13-4z"/>
+    <path d="M256 430 l3 10 10 3-10 3-3 10-3-10-10-3 10-3z"/>
+  </g>
+</svg>
