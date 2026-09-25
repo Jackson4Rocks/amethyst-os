@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Install Amethyst OS
+Comment=Install Amethyst OS AURORA to your computer
+Exec=pkexec calamares
+Icon=system-software-install
+Terminal=false
+Type=Application
+Categories=System;

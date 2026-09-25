@@ -1,0 +1,4 @@
+#!/bin/sh
+
+sleep 3
+exec kitty -- zsh -lc "/usr/local/bin/aos-installer; exec zsh"

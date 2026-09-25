@@ -1,0 +1,16 @@
+work/
+work-build/
+out/
+.tmp/
+.build-*
+calamares-local-repo/
+iso-build*/
+*.qcow2
+*.fd
+*.iso
+iso/airootfs/etc/passwd
+iso/airootfs/etc/shadow
+iso/airootfs/etc/resolv.conf
+iso/airootfs/etc/passwd
+iso/airootfs/etc/shadow
+iso/airootfs/etc/resolv.conf

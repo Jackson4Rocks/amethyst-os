@@ -1,0 +1,11 @@
+[Unit]
+Description=Amethyst OS AURORA Live Welcome
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/aos-live-welcome
+Restart=no
+
+[Install]
+WantedBy=default.target
