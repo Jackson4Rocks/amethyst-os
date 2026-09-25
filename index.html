@@ -7,9 +7,9 @@
   <meta name="description" content="Calypso Linux — an Arch-based Linux desktop built around Hyprland and Aurora Dotfiles.">
   <link rel="canonical" href="https://jackson4rocks.github.io/calypso-linux/">
   <meta name="google-site-verification" content="We36Y7aFzCz1YLPHX3e1_N9cVgiQCA7kGBMNkEAoVyQ">
-  <link rel="icon" type="image/svg+xml" href="./assets/calypso-mark.svg">
-  <link rel="shortcut icon" type="image/svg+xml" href="./assets/calypso-mark.svg">
-  <link rel="apple-touch-icon" href="./assets/calypso-mark.svg">
+  <link rel="icon" type="image/svg+xml" href="./assets/calypso-mark.png">
+  <link rel="shortcut icon" type="image/svg+xml" href="./assets/calypso-mark.png">
+  <link rel="apple-touch-icon" href="./assets/calypso-mark.png">
   <meta property="og:image" content="https://jackson4rocks.github.io/calypso-linux/assets/calypso-mark.svg">
   <link rel="manifest" href="site.webmanifest">
   <meta property="og:type" content="website">
@@ -66,7 +66,11 @@
       border:1px solid var(--line-hi);background:#000;box-shadow:0 0 28px rgba(27,255,164,.2);
       transition:transform .35s ease,box-shadow .35s ease;
     }
-    .brand-mark img{width:100%;height:100%;display:block}
+    .brand-mark img{
+      width:100%;height:100%;display:block;object-fit:contain;
+      mix-blend-mode:screen;
+      filter:brightness(1.12) saturate(1.12) drop-shadow(0 0 12px rgba(47,255,168,.25));
+    }
     .brand:hover .brand-mark{transform:rotate(-7deg) scale(1.06);box-shadow:0 0 42px rgba(27,255,164,.45)}
     .brand-name{font-size:14px;letter-spacing:.28em;font-weight:800}
     .brand-sub{display:block;color:#68857a;font-size:8px;letter-spacing:.24em;margin-top:1px}
@@ -135,9 +139,9 @@
         radial-gradient(circle at 18% 53%,rgba(47,255,168,.55) 0 1px,transparent 2px);
     }
     .hero-visual:after{
-      content:"";position:absolute;width:420px;height:420px;border-radius:50%;
-      background:radial-gradient(circle,rgba(255,128,224,.14),rgba(29,255,165,.10) 38%,transparent 70%);
-      filter:blur(18px);z-index:1;
+      content:"";position:absolute;width:500px;height:500px;border-radius:50%;
+      background:radial-gradient(circle,rgba(29,255,165,.18),rgba(29,255,165,.07) 34%,transparent 72%);
+      filter:blur(22px);z-index:1;
     }
     .sky,.mountains,.water{position:absolute;inset:0;pointer-events:none}
     .sky{
@@ -168,14 +172,16 @@
     .orbit:before,.orbit:after{content:"";position:absolute;left:50%;width:2px;height:28px;background:#adffda;transform:translateX(-50%);box-shadow:0 0 16px #2fffa8}
     .orbit:before{top:-14px}.orbit:after{bottom:-14px}
     .logo-wrap{
-      width:min(360px,64%);aspect-ratio:1;position:relative;z-index:3;
+      width:min(430px,76%);aspect-ratio:1;position:relative;z-index:3;
       display:grid;place-items:center;
       transition:transform .18s ease-out;will-change:transform;
-      filter:drop-shadow(0 22px 48px rgba(0,0,0,.55)) drop-shadow(0 0 34px rgba(255,143,229,.22));
+      filter:drop-shadow(0 24px 50px rgba(0,0,0,.58))
+             drop-shadow(0 0 38px rgba(29,255,165,.28));
     }
     .logo-wrap img{
       width:100%;height:100%;display:block;object-fit:contain;
-      opacity:1;visibility:visible;mix-blend-mode:normal;
+      opacity:1;visibility:visible;mix-blend-mode:screen;
+      filter:brightness(1.18) saturate(1.16) contrast(1.04);
     }
     .visual-label{position:absolute;bottom:58px;color:#628077;font-size:8px;letter-spacing:.3em;z-index:3}
 
@@ -214,8 +220,16 @@
     }
     .showcase-card h3{font-family:Georgia,"Times New Roman",serif;font-size:34px;font-weight:400;margin:12px 0}
     .showcase-card p{color:#789189;font-size:13px;max-width:520px}
-    .mini-logo{position:absolute;width:230px;height:230px;right:-25px;bottom:-45px;opacity:.9;filter:drop-shadow(0 0 38px rgba(27,255,164,.25))}
-    .mini-logo img{width:100%;height:100%;border-radius:50%}
+    .mini-logo{
+      position:absolute;width:240px;height:240px;right:-20px;bottom:-42px;opacity:.84;
+      filter:drop-shadow(0 0 38px rgba(27,255,164,.26));
+      pointer-events:none;
+    }
+    .mini-logo img{
+      width:100%;height:100%;display:block;object-fit:contain;
+      mix-blend-mode:screen;
+      filter:brightness(1.08) saturate(1.12);
+    }
     .terminal{
       position:absolute;left:30px;right:30px;bottom:28px;height:130px;border:1px solid rgba(91,255,181,.15);
       border-radius:16px;background:rgba(0,0,0,.68);padding:17px;font:11px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;color:#6dffbb;
@@ -266,7 +280,7 @@
 <body>
   <header class="nav wrap">
     <a class="brand" href="#top" aria-label="Calypso Linux home">
-      <span class="brand-mark"><img src="./assets/calypso-mark.svg" alt=""></span>
+      <span class="brand-mark"><img src="./assets/calypso-mark.png" alt=""></span>
       <span><span class="brand-name">CALYPSO</span><span class="brand-sub">LINUX · AURORA DOTFILES</span></span>
     </a>
     <nav class="nav-links">
@@ -303,7 +317,7 @@
           <div class="mountains"></div>
           <div class="water"></div>
           <div class="orbit"></div>
-          <div class="logo-wrap" id="hero-logo"><img src="./assets/calypso-mark.svg" alt="Calypso Linux"></div>
+          <div class="logo-wrap" id="hero-logo"><img src="./assets/calypso-mark.png" alt="Calypso Linux"></div>
           <div class="visual-label">A NEW HORIZON FOR YOUR DESKTOP</div>
         </div>
       </div>
@@ -334,7 +348,7 @@
           <p class="kicker">THE VISUAL SYSTEM</p>
           <h3>Emerald glass.<br>Black space.</h3>
           <p>Glowing edges, translucent surfaces, crystalline geometry, and restrained motion carry the same identity through the desktop and the web.</p>
-          <div class="mini-logo"><img src="./assets/calypso-mark.svg" alt=""></div>
+          <div class="mini-logo"><img src="./assets/calypso-mark.png" alt=""></div>
         </article>
         <article class="showcase-card">
           <p class="kicker">THE STACK</p>
