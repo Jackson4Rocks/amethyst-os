@@ -149,17 +149,17 @@ hl.bind(main_mod .. " + P", exec("hyprctl dispatch pseudo"), { description = "To
 hl.bind(main_mod .. " + TAB", exec("hyprctl dispatch cyclenext"), { description = "Cycle windows" })
 hl.bind(main_mod .. " + SHIFT + TAB", exec("hyprctl dispatch cyclenext prev"), { description = "Cycle windows backwards" })
 
-hl.bind("", "XF86AudioRaiseVolume", exec("wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+"))
-hl.bind("", "XF86AudioLowerVolume", exec("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"))
-hl.bind("", "XF86AudioMute", exec("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"))
-hl.bind("", "XF86MonBrightnessUp", exec("brightnessctl set 5%+"))
-hl.bind("", "XF86MonBrightnessDown", exec("brightnessctl set 5%-"))
+hl.bind("XF86AudioRaiseVolume", exec("wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+"), { repeating = true })
+hl.bind("XF86AudioLowerVolume", exec("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { repeating = true })
+hl.bind("XF86AudioMute", exec("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { locked = true })
+hl.bind("XF86MonBrightnessUp", exec("brightnessctl set 5%+"), { repeating = true })
+hl.bind("XF86MonBrightnessDown", exec("brightnessctl set 5%-"), { repeating = true })
 
-hl.bind("", "XF86AudioPlay", exec("playerctl play-pause"))
-hl.bind("", "XF86AudioNext", exec("playerctl next"))
-hl.bind("", "XF86AudioPrev", exec("playerctl previous"))
+hl.bind("XF86AudioPlay", exec("playerctl play-pause"), { locked = true })
+hl.bind("XF86AudioNext", exec("playerctl next"), { locked = true })
+hl.bind("XF86AudioPrev", exec("playerctl previous"), { locked = true })
 
-hl.bind("", "PRINT", exec("sh -lc 'grim -g \"$(slurp)\" - | wl-copy'"), {
+hl.bind("PRINT", exec("sh -lc 'grim -g \"$(slurp)\" - | wl-copy'"), {
   description = "Screenshot region to clipboard",
 })
 hl.bind(main_mod .. " + PRINT", exec("sh -lc 'grim - | wl-copy'"), {
