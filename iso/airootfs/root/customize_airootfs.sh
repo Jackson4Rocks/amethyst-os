@@ -184,7 +184,7 @@ echo "============================================================"
 printf 'User       : %s\n' "$(id -un calypso)"
 printf 'Shell      : %s\n' "$(getent passwd calypso | cut -d: -f7)"
 printf 'KDE Plasma : %s\n' "$(command -v plasmashell >/dev/null 2>&1 && echo installed || echo missing)"
-printf 'KDE Plasma : %s\n' "$(command -v plasmashell >/dev/null 2>&1 && echo installed || echo missing)"
+
 printf 'Hyprland   : %s\n' "$(command -v hyprland >/dev/null 2>&1 && echo installed || echo missing)"
 printf 'Quickshell : %s\n' "$(command -v qs >/dev/null 2>&1 && echo installed || echo missing)"
 printf 'Fastfetch  : %s\n' "$(command -v fastfetch >/dev/null 2>&1 && echo installed || echo missing)"
