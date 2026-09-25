@@ -16,3 +16,5 @@ images:
   productIcon: "calypso-mark.svg"
   productLogo: "calypso-mark.svg"
   productWelcome: "calypso-mark.svg"
+slideshow: "show.qml"
+slideshowAPI: 2
