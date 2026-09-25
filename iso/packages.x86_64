@@ -1,7 +1,6 @@
 alsa-utils
 amd-ucode
 arch-install-scripts
-archinstall
 b43-fwcutter
 base
 bcachefs-tools
@@ -158,6 +157,7 @@ hyprpaper
 git
 noto-fonts
 fastfetch
+imagemagick
 
 quickshell
 matugen
