@@ -33,8 +33,8 @@ printf '%s\n' '                    AURORA DOTFILES'
 printf '%s\n' '                    GUIDED INSTALLER'
 printf '%s\n' '============================================================'
 printf '\n'
-printf 'Calypso Linux is an Arch-based system built around Hyprland.\n'
-printf 'Aurora Dotfiles provide the desktop configuration and shell.\n\n'
+printf 'Calypso Linux is an Arch-based system with multiple desktop targets.\n'
+printf 'Aurora Dotfiles currently provide the Hyprland desktop profile.\n\n'
 printf '%bWARNING:%b Whole-disk installation only.\n' "$RED" "$RESET"
 printf '%bWARNING:%b The selected disk will be completely erased.\n' "$RED" "$RESET"
 printf 'This first installer does not provide dual-boot partitioning.\n\n'
@@ -82,6 +82,60 @@ read -r -p 'Timezone [Asia/Kolkata]: ' TIMEZONE
 if [ -z "$TIMEZONE" ]; then TIMEZONE=Asia/Kolkata; fi
 [ -f "/usr/share/zoneinfo/$TIMEZONE" ] || die "Unknown timezone."
 
+printf '\n'
+printf '%bDESKTOP PROFILE%b\n' "$CYAN" "$RESET"
+printf 'Choose the desktop for the installed system.\n'
+printf 'Aurora Dotfiles are currently configured for Hyprland only.\n\n'
+printf '  1) Hyprland      — Aurora Dotfiles\n'
+printf '  2) GNOME         — stock GNOME desktop\n'
+printf '  3) KDE Plasma    — stock Plasma desktop\n'
+printf '  4) Niri          — stock Niri desktop (Aurora later)\n\n'
+
+while true; do
+    read -r -p 'Select [1-4]: ' DESKTOP_CHOICE
+    case "$DESKTOP_CHOICE" in
+        1)
+            DESKTOP_ID="hyprland"
+            DESKTOP_NAME="Hyprland"
+            DESKTOP_SESSION="hyprland.desktop"
+            DESKTOP_PACKAGES=(hyprland quickshell hyprpaper matugen fuzzel yazi jq xdg-desktop-portal-hyprland)
+            break
+            ;;
+        2)
+            DESKTOP_ID="gnome"
+            DESKTOP_NAME="GNOME"
+            DESKTOP_SESSION="gnome.desktop"
+            DESKTOP_PACKAGES=(gnome xdg-desktop-portal-gnome)
+            break
+            ;;
+        3)
+            DESKTOP_ID="kde"
+            DESKTOP_NAME="KDE Plasma"
+            DESKTOP_SESSION="plasma.desktop"
+            DESKTOP_PACKAGES=(plasma-meta konsole dolphin xdg-desktop-portal-kde)
+            break
+            ;;
+        4)
+            DESKTOP_ID="niri"
+            DESKTOP_NAME="Niri"
+            DESKTOP_SESSION="niri.desktop"
+            DESKTOP_PACKAGES=(niri fuzzel mako waybar xdg-desktop-portal-gnome xdg-desktop-portal-gtk alacritty swaybg swayidle swaylock xwayland-satellite)
+            break
+            ;;
+        *)
+            printf '%bPlease choose 1, 2, 3, or 4.%b\n' "$RED" "$RESET"
+            ;;
+    esac
+done
+
+printf '\nSelected desktop: %b%s%b\n' "$GREEN" "$DESKTOP_NAME" "$RESET"
+if [ "$DESKTOP_ID" = "hyprland" ]; then
+    printf 'Aurora Dotfiles: %benabled%b\n' "$GREEN" "$RESET"
+else
+    printf 'Aurora Dotfiles: Hyprland profile not applied to this desktop yet.\n'
+fi
+printf '\n'
+
 case "$DISK" in
     *[0-9]) PART_PREFIX="$DISK"p ;;
     *) PART_PREFIX="$DISK" ;;
@@ -119,15 +173,16 @@ mount "$ROOT_PART" /mnt
 mkdir -p /mnt/boot
 mount "$EFI_PART" /mnt/boot
 
-printf '\nInstalling the Calypso Linux base system...\n'
+printf '\nInstalling the Calypso Linux base system + %s...\n' "$DESKTOP_NAME"
 pacstrap -K /mnt \
     base base-devel linux linux-firmware sudo zsh git \
     networkmanager systemd-resolvconf sddm \
-    hyprland quickshell hyprpaper kitty fastfetch matugen fuzzel yazi jq \
+    kitty fastfetch \
     pipewire pipewire-pulse wireplumber \
-    xdg-desktop-portal xdg-desktop-portal-hyprland xorg-xwayland mesa \
+    xdg-desktop-portal xdg-desktop-portal-gtk xorg-xwayland mesa \
     polkit polkit-gnome brightnessctl playerctl grim slurp wl-clipboard \
-    power-profiles-daemon noto-fonts
+    power-profiles-daemon noto-fonts \
+    "${DESKTOP_PACKAGES[@]}"
 
 CPU_VENDOR="$(lscpu | awk -F: '/Vendor ID/{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2; exit}')"
 case "$CPU_VENDOR" in
@@ -209,9 +264,9 @@ ID_LIKE=arch
 PRETTY_NAME="Calypso Linux"
 VERSION="0.1"
 VERSION_ID="0.1"
-HOME_URL="https://github.com/Jackson4Rocks/amethyst-os"
-SUPPORT_URL="https://github.com/Jackson4Rocks/amethyst-os/issues"
-BUG_REPORT_URL="https://github.com/Jackson4Rocks/amethyst-os/issues"
+HOME_URL="https://github.com/Jackson4Rocks/calypso-linux"
+SUPPORT_URL="https://github.com/Jackson4Rocks/calypso-linux/issues"
+BUG_REPORT_URL="https://github.com/Jackson4Rocks/calypso-linux/issues"
 EOF_OS
 rm -f /etc/os-release
 ln -s ../usr/lib/os-release /etc/os-release
@@ -231,7 +286,7 @@ DisplayServer=wayland
 
 [Autologin]
 User=$USERNAME
-Session=hyprland.desktop
+Session=$DESKTOP_SESSION
 Relogin=false
 EOF_SDDM
 
@@ -247,8 +302,20 @@ NoDisplay=true
 X-GNOME-Autostart-Phase=Initialization
 EOF_POLKIT
 
-# Copy the complete Aurora Dotfiles skeleton supplied by the ISO.
-cp -a /etc/skel/. "/home/$USERNAME/"
+# Copy common Calypso user defaults.
+cp -a /etc/skel/.zshrc "/home/$USERNAME/.zshrc"
+cp -a /etc/skel/.config/fastfetch "/home/$USERNAME/.config/"
+cp -a /etc/skel/.config/kitty "/home/$USERNAME/.config/"
+cp -a /etc/skel/.local/share/calypso "/home/$USERNAME/.local/share/"
+
+# Aurora Dotfiles are currently a Hyprland profile only.
+if [ "$DESKTOP_ID" = "hyprland" ]; then
+    cp -a /etc/skel/.config/hypr "/home/$USERNAME/.config/"
+    cp -a /etc/skel/.config/quickshell "/home/$USERNAME/.config/"
+    cp -a /etc/skel/.config/matugen "/home/$USERNAME/.config/"
+    cp -a /etc/skel/.config/fuzzel "/home/$USERNAME/.config/"
+    cp -a /etc/skel/.local/bin/calypso-wallpaper "/home/$USERNAME/.local/bin/"
+fi
 
 # Remove live-only welcome startup from the installed user.
 rm -f "/home/$USERNAME/.config/systemd/user/aos-live-welcome.service"
@@ -257,9 +324,10 @@ rm -f "/home/$USERNAME/.config/systemd/user/default.target.wants/aos-live-welcom
 rm -f "/home/$USERNAME/.config/systemd/user/default.target.wants/calypso-live-welcome.service"
 rmdir "/home/$USERNAME/.config/systemd/user/default.target.wants" 2>/dev/null || true
 
-cat > "/home/$USERNAME/.profile" <<'EOF_PROFILE'
+cat > "/home/$USERNAME/.profile" <<EOF_PROFILE
 export CALYPSO_NAME="Calypso Linux"
 export CALYPSO_DOTFILES="Aurora Dotfiles"
+export CALYPSO_DESKTOP="$DESKTOP_ID"
 export QT_QPA_PLATFORM=wayland
 export GDK_BACKEND=wayland,x11
 export SDL_VIDEODRIVER=wayland
@@ -293,8 +361,11 @@ printf '\nRunning installation checks...\n'
 [ -f /mnt/etc/fstab ] || die "fstab missing."
 [ -f /mnt/boot/loader/entries/calypso.conf ] || die "systemd-boot entry missing."
 [ -f /mnt/etc/sddm.conf.d/calypso.conf ] || die "SDDM config missing."
-[ -f "/mnt/home/$USERNAME/.config/hypr/hyprland.lua" ] || die "Hyprland configuration missing."
-[ -f "/mnt/home/$USERNAME/.config/quickshell/aurora/shell.qml" ] || die "Aurora Dotfiles Quickshell configuration missing."
+
+if [ "$DESKTOP_ID" = "hyprland" ]; then
+    [ -f "/mnt/home/$USERNAME/.config/hypr/hyprland.lua" ] || die "Hyprland configuration missing."
+    [ -f "/mnt/home/$USERNAME/.config/quickshell/aurora/shell.qml" ] || die "Aurora Dotfiles Quickshell configuration missing."
+fi
 
 printf '\n%b============================================================%b\n' "$GREEN" "$RESET"
 printf '%b                CALYPSO LINUX READY%b\n' "$CYAN" "$RESET"
@@ -302,7 +373,12 @@ printf '%s\n' '============================================================'
 printf 'User      : %s\n' "$USERNAME"
 printf 'Hostname  : %s\n' "$HOSTNAME"
 printf 'Timezone  : %s\n' "$TIMEZONE"
-printf 'Desktop   : Hyprland + Aurora Dotfiles\n'
+printf 'Desktop   : %s\n' "$DESKTOP_NAME"
+if [ "$DESKTOP_ID" = "hyprland" ]; then
+    printf 'Dotfiles  : Aurora Dotfiles (Hyprland profile)\n'
+else
+    printf 'Dotfiles  : base Calypso defaults only (profile coming later)\n'
+fi
 printf 'Boot      : systemd-boot (UEFI)\n'
 printf '%bInstallation complete.%b\n' "$GREEN" "$RESET"
 printf 'Reboot, remove the ISO, and SDDM will start Calypso Linux.\n'
