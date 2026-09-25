@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034
 
 iso_name="calypso-linux"
-iso_label="ARCH_$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y%m)"
+iso_label="CALYPSO_$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y%m)"
 iso_publisher="Calypso Linux"
 iso_application="Calypso Linux — Aurora Dotfiles Live"
 iso_version="$(date --date="@${SOURCE_DATE_EPOCH:-$(date +%s)}" +%Y.%m.%d)"
