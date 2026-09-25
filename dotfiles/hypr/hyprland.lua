@@ -32,7 +32,6 @@ hl.config({
   },
 
   dwindle = {
-    pseudotile = true,
     preserve_split = true,
     smart_split = false,
     smart_resizing = true,
@@ -54,7 +53,6 @@ hl.config({
   misc = {
     disable_hyprland_logo = true,
     disable_splash_rendering = true,
-    vfr = true,
     focus_on_activate = true,
     enable_swallow = false,
     initial_workspace_tracking = 1,
@@ -106,7 +104,7 @@ hl.bind(main_mod .. " + RETURN", exec(terminal), { description = "Open terminal"
 hl.bind(main_mod .. " + E", exec(file_manager), { description = "Open file manager" })
 hl.bind(main_mod .. " + D", exec(launcher), { description = "Open application launcher" })
 hl.bind(main_mod .. " + Q", hl.dsp.window.kill(), { description = "Close focused window" })
-hl.bind(main_mod .. " + SHIFT + Q", hl.dsp.window.force_kill(), { description = "Force close focused window" })
+hl.bind(main_mod .. " + SHIFT + Q", hl.dsp.window.kill(), { description = "Kill focused window" })
 
 hl.bind(main_mod .. " + SHIFT + M", exec("loginctl terminate-user \"$USER\""), { description = "Log out" })
 hl.bind(main_mod .. " + SHIFT + R", exec("hyprctl reload"), { description = "Reload Hyprland" })
@@ -146,8 +144,8 @@ hl.bind(main_mod .. " + SHIFT + S", exec("hyprctl dispatch movetoworkspace speci
   description = "Send window to scratchpad",
 })
 
-hl.bind(main_mod .. " + F", hl.dsp.window.toggle_fullscreen(), { description = "Toggle fullscreen" })
-hl.bind(main_mod .. " + SHIFT + SPACE", hl.dsp.window.toggle_float(), { description = "Toggle floating" })
+hl.bind(main_mod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }), { description = "Toggle fullscreen" })
+hl.bind(main_mod .. " + SHIFT + SPACE", hl.dsp.window.float({ action = "toggle" }), { description = "Toggle floating" })
 hl.bind(main_mod .. " + P", exec("hyprctl dispatch pseudo"), { description = "Toggle pseudotile" })
 hl.bind(main_mod .. " + TAB", exec("hyprctl dispatch cyclenext"), { description = "Cycle windows" })
 hl.bind(main_mod .. " + SHIFT + TAB", exec("hyprctl dispatch cyclenext prev"), { description = "Cycle windows backwards" })
