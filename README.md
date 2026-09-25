@@ -1,29 +1,22 @@
 # 💚 Calypso Linux
 
-> **Calypso Linux** is an Arch-based Linux project targeting GNOME, KDE Plasma, Niri, and Hyprland, with the Aurora Dotfiles currently focused on Hyprland.
+> **Calypso Linux** is an Arch-based Linux project centered on KDE Plasma, with Hyprland available as an alternative desktop profile.
 
 <p align="center">
   <strong>Beauty meets performance.</strong><br>
-  Hyprland · Quickshell · Zsh · Fastfetch
+  KDE Plasma · Hyprland · Zsh · Fastfetch
 </p>
 
 ---
 
-## 🌌 Aurora Dotfiles
+## 🖥️ Desktop profiles
 
-Calypso Linux is the Linux distro project behind the **Aurora Dotfiles** desktop concept.
+Calypso currently focuses on two desktop profiles:
 
-The project is being built around:
+- 🧊 **KDE Plasma** — the main Calypso desktop, with Calypso branding and wallpapers
+- 🪟 **Hyprland** — an alternative Wayland desktop profile with optional project configuration
 
-- 🪟 **Hyprland** — current Aurora Dotfiles desktop profile
-- 🐧 **GNOME** — installation target
-- 🧊 **KDE Plasma** — installation target
-- 🌀 **Niri** — installation target; Aurora profile later
-- ✨ **Quickshell** — desktop shell for the Hyprland profile
-- 🐚 **Zsh** — interactive shell
-- 🖥️ **Kitty** — terminal
-- ⚡ **Fastfetch** — system information
-- 🛠️ **Calypso Installer** — native guided installation flow
+Other desktop targets may change as the installer evolves.
 
 ## 📦 Releases
 
@@ -35,27 +28,20 @@ Release ISOs and mirrors will be linked here as they are published.
 
 ```text
 Calypso Linux
-└── Aurora Dotfiles
-    ├── Arch Linux base
-    ├── GNOME
-    ├── KDE Plasma
-    ├── Niri
-    ├── Hyprland
-    ├── Quickshell
-    ├── Zsh
-    ├── Fastfetch
-    └── Custom Aurora Dotfiles artwork
+├── Arch Linux base
+├── KDE Plasma
+├── Hyprland
+├── Zsh
+├── Fastfetch
+├── Calypso Installer
+└── Calypso artwork + wallpapers
 ```
 
-## 🎛️ Aurora Dotfiles
+## 🎛️ Optional desktop configuration
 
-The repository now includes the reference Calypso Linux desktop configuration under dotfiles/.
+The repository contains additional Hyprland configuration under `dotfiles/`. It is optional and may change independently of the base Calypso desktop.
 
-The current Aurora desktop stack is intentionally compact: **Hyprland + Quickshell + Kitty + Zsh + Fastfetch + Hyprpaper + Matugen + Fuzzel + Yazi**. GNOME, KDE Plasma, and Niri are available as installer targets; their Aurora profiles will be added separately.
-
-Wallpaper changes can be applied with calypso-wallpaper, which generates the palette and changes the live wallpaper through Hyprpaper IPC.
-
-See dotfiles/README.md for the keybinds, layout, and installation flow.
+See `dotfiles/README.md` for the current configuration details.
 
 ## 🤝 Contributing
 
@@ -65,7 +51,7 @@ Please include useful logs and the relevant system / build details when reportin
 
 ## ⚠️ Status
 
-Calypso Linux is an **active personal project** and is still evolving. Expect changes to the installer, desktop configuration, artwork, and release process as Aurora Dotfiles develops.
+Calypso Linux is an **active personal project** and is still evolving. Expect changes to the installer, desktop configuration, artwork, and release process.
 
 ## 👤 Maintainer
 
@@ -78,5 +64,5 @@ You can reach the project through the [Telegram group](https://t.me/CalypsoLinux
 ---
 
 <p align="center">
-  <sub>CALYPSO LINUX · Aurora Dotfiles · ARCH LINUX</sub>
+  <sub>CALYPSO LINUX · KDE PLASMA · HYPRLAND · ARCH LINUX</sub>
 </p>
