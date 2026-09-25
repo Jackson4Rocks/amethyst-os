@@ -1,8 +1,8 @@
 # AURORA desktop package set
 
-dms-shell-hyprland
 hyprland
 hyprpaper
+quickshell
 kitty
 zsh
 fastfetch
