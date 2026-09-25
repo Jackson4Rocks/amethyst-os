@@ -122,16 +122,17 @@ xfsprogs
 xl2tpd
 zsh
 
-# KDE Plasma live desktop
+# KDE Plasma live desktop + Calamares GUI installer
 plasma-meta
 konsole
 dolphin
 ark
 sddm
+calamares
 xdg-desktop-portal-kde
 xdg-desktop-portal-gtk
 
-# Hyprland + Aurora Dotfiles
+# Hyprland + optional Calypso Hyprland configuration
 hyprland
 quickshell
 hyprpaper

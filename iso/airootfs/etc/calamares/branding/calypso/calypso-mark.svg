@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Calypso Linux logo</title>
+  <desc id="desc">A faceted geometric C monogram in emerald green for Calypso Linux.</desc>
+  <defs>
+    <linearGradient id="calypso" x1="88" y1="72" x2="430" y2="438" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ecfdf5"/>
+      <stop offset="0.24" stop-color="#a7f3d0"/>
+      <stop offset="0.58" stop-color="#10b981"/>
+      <stop offset="1" stop-color="#047857"/>
+    </linearGradient>
+    <linearGradient id="facet" x1="256" y1="92" x2="256" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="0.45" stop-color="#a7f3d0" stop-opacity="0.82"/>
+      <stop offset="1" stop-color="#059669" stop-opacity="0.78"/>
+    </linearGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <g filter="url(#glow)">
+    <path d="M430 112 L352 78 L222 78 L120 148 L78 256 L120 364 L222 434 L352 434 L430 400 L364 334 L286 350 L226 350 L180 304 L164 256 L180 208 L226 162 L286 162 L364 178 Z" fill="url(#calypso)"/>
+    <path d="M430 112 L352 78 L222 78 L286 162 L364 178 Z" fill="url(#facet)" fill-opacity="0.72"/>
+    <path d="M222 78 L120 148 L180 208 L226 162 L286 162 Z" fill="#34d399" fill-opacity="0.55"/>
+    <path d="M120 148 L78 256 L180 208 L164 256 L180 304 Z" fill="#059669" fill-opacity="0.7"/>
+    <path d="M78 256 L120 364 L180 304 L164 256 Z" fill="#047857" fill-opacity="0.72"/>
+    <path d="M120 364 L222 434 L286 350 L226 350 L180 304 Z" fill="#10b981" fill-opacity="0.6"/>
+    <path d="M222 434 L352 434 L430 400 L364 334 L286 350 Z" fill="#6ee7b7" fill-opacity="0.5"/>
+    <path d="M180 208 L226 162 L286 162 L240 222 L196 256 L240 290 L286 350 L226 350 L180 304 L164 256 Z" fill="#ecfdf5" fill-opacity="0.18"/>
+  </g>
+  <circle cx="256" cy="256" r="188" fill="none" stroke="#34d399" stroke-opacity="0.18" stroke-width="3"/>
+  <path d="M256 62 L256 92 M256 420 L256 450" stroke="#a7f3d0" stroke-opacity="0.58" stroke-width="3"/>
+  <path d="M247 62 L256 48 L265 62 L256 76 Z" fill="#d1fae5" fill-opacity="0.9"/>
+  <path d="M247 450 L256 436 L265 450 L256 464 Z" fill="#6ee7b7" fill-opacity="0.85"/>
+</svg>

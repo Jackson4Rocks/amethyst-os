@@ -1,0 +1,18 @@
+---
+componentName: calypso
+
+strings:
+  productName: "Calypso Linux"
+  shortProductName: "Calypso"
+  version: "0.2"
+  shortVersion: "0.2"
+  versionedName: "Calypso Linux 0.2"
+  shortVersionedName: "Calypso"
+  bootloaderEntryName: "Calypso Linux"
+  productUrl: "https://github.com/Jackson4Rocks/calypso-linux"
+  supportUrl: "https://github.com/Jackson4Rocks/calypso-linux/issues"
+
+images:
+  productIcon: "calypso-mark.svg"
+  productLogo: "calypso-mark.svg"
+  productWelcome: "calypso-mark.svg"

@@ -1,10 +1,10 @@
 [Desktop Entry]
 Name=Install Calypso Linux
 GenericName=Calypso Linux Installer
-Comment=Install Calypso Linux with KDE Plasma or Hyprland
-Exec=calypso-installer
+Comment=Install Calypso Linux using Calamares
+Exec=calypso-calamares
 Icon=calypso-linux
-Terminal=true
+Terminal=false
 Type=Application
 Categories=System;Settings;
-Keywords=Calypso;Linux;Install;Plasma;Hyprland;
+Keywords=Calypso;Linux;Install;Calamares;Plasma;Hyprland;
