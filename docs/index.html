@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#05130d">
-<meta name="description" content="Calypso Linux documentation — a fast, lean Arch-based distribution centered on KDE Plasma, with an optional Hyprland path and a clean graphical installation flow.">
+<meta name="description" content="The Calypso Linux wiki — project overview, design philosophy, desktop notes, installation reference, Hyprland configuration, architecture, and maintainer information.">
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="author" content="Leon Sony">
 <link rel="canonical" href="https://jackson4rocks.github.io/calypso-linux/docs/">
@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-<title>Calypso Linux — Documentation</title>
+<title>Calypso Linux — Wiki</title>
 <style>
 :root{--bg:#030705;--panel:#07160f;--panel2:#0a2016;--mint:#9bffe0;--green:#25d89a;--white:#f7fff9;--muted:#8fa89d;--dim:#5d7569;--line:rgba(137,255,215,.16);--line2:rgba(137,255,215,.34);--max:1380px}
 *{box-sizing:border-box}
@@ -22,7 +22,6 @@ html{scroll-behavior:smooth}
 body{margin:0;color:var(--white);font-family:"DM Sans",system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(1050px 760px at 86% 0,rgba(44,255,183,.11),transparent 61%),radial-gradient(850px 600px at 0 48%,rgba(29,178,124,.07),transparent 62%),linear-gradient(180deg,#030705,#06110c 48%,#020604);line-height:1.65;overflow-x:hidden}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(180deg,black,transparent 95%)}
 a{color:inherit;text-decoration:none}
-button{font:inherit}
 .shell{width:min(var(--max),calc(100% - 24px));margin:12px auto;border:1px solid var(--line);border-radius:30px;overflow:hidden;background:linear-gradient(180deg,rgba(4,13,9,.96),rgba(1,4,2,.98));box-shadow:0 35px 120px rgba(0,0,0,.5)}
 .top{min-height:80px;padding:0 25px;display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);background:rgba(4,12,8,.78);backdrop-filter:blur(18px);position:sticky;top:0;z-index:20}
 .brand{display:flex;align-items:center;gap:12px}
@@ -41,10 +40,10 @@ button{font:inherit}
 .sidebar a:hover,.sidebar a.active{background:rgba(155,255,224,.06);color:#effff7}
 .content{padding:62px 68px 100px;max-width:1120px}
 .kicker{color:var(--mint);font-size:9px;font-weight:800;letter-spacing:.26em;text-transform:uppercase}
-.hero{padding-bottom:25px}
+.hero{padding-bottom:28px}
 .hero h1{margin:15px 0 18px;font-family:"Playfair Display",Georgia,serif;font-size:clamp(62px,8vw,104px);font-weight:500;line-height:.88;letter-spacing:-.065em}
 .hero h1 span{color:var(--mint)}
-.hero p{max-width:780px;color:#a4b8ae;font-size:14px;line-height:1.8;margin:0}
+.hero p{max-width:800px;color:#a4b8ae;font-size:14px;line-height:1.85;margin:0}
 .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:45px;padding:0 16px;border-radius:999px;border:1px solid var(--line);background:rgba(7,25,17,.58);color:#eafff5;font-size:10px;font-weight:800;transition:.2s ease}
 .btn:hover{transform:translateY(-2px);border-color:var(--line2);background:rgba(10,39,26,.78);box-shadow:0 14px 35px rgba(0,0,0,.2)}
@@ -59,6 +58,15 @@ button{font:inherit}
 .section h2{margin:9px 0 0;font-family:"Playfair Display",Georgia,serif;font-size:clamp(38px,5vw,65px);font-weight:500;line-height:.94;letter-spacing:-.05em}
 .intro{max-width:760px;color:#82978d;font-size:12px;line-height:1.8}
 .section-head .intro{margin:0 0 3px auto;max-width:510px}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
+.card{padding:24px;border:1px solid var(--line);border-radius:20px;background:radial-gradient(circle at 100% 0,rgba(100,255,210,.06),transparent 30%),linear-gradient(155deg,rgba(8,29,20,.76),rgba(0,5,3,.92))}
+.card h3{margin:16px 0 9px;font-family:"Playfair Display",Georgia,serif;font-size:31px;font-weight:500;line-height:1}
+.card p{margin:0;color:#71867c;font-size:11px;line-height:1.78}
+.choice-note{margin-bottom:14px;padding:12px 14px;border:1px solid var(--line);border-radius:13px;color:#71867c;background:rgba(155,255,224,.025);font-size:10px}
+.fact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.fact{padding:20px;border:1px solid var(--line);border-radius:17px;background:rgba(4,16,11,.72)}
+.fact strong{display:block;color:#effff7;font-size:12px}
+.fact span{display:block;margin-top:6px;color:#70867b;font-size:10px;line-height:1.65}
 .steps{display:grid;gap:11px}
 .step{display:grid;grid-template-columns:46px 1fr;gap:15px;padding:16px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(145deg,rgba(7,24,16,.75),rgba(1,6,4,.93))}
 .num{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;border:1px solid var(--line2);color:var(--mint);font-size:10px;font-weight:800}
@@ -66,23 +74,27 @@ button{font:inherit}
 .step p{margin:0;color:#70867b;font-size:11px;line-height:1.7}
 .callout{margin-top:17px;padding:16px 18px;border:1px solid var(--line2);border-radius:16px;background:rgba(155,255,224,.04);color:#879b91;font-size:11px}
 .callout b{color:#dffff1}
-.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
-.card{padding:24px;border:1px solid var(--line);border-radius:20px;background:radial-gradient(circle at 100% 0,rgba(100,255,210,.06),transparent 30%),linear-gradient(155deg,rgba(8,29,20,.76),rgba(0,5,3,.92))}
-.card h3{margin:16px 0 9px;font-family:"Playfair Display",Georgia,serif;font-size:31px;font-weight:500;line-height:1}
-.card p{margin:0;color:#71867c;font-size:11px;line-height:1.75}
-.choice-note{margin-bottom:14px;padding:12px 14px;border:1px solid var(--line);border-radius:13px;color:#71867c;background:rgba(155,255,224,.025);font-size:10px}
-.code{margin-top:18px;border:1px solid var(--line);border-radius:16px;padding:17px;overflow:auto;background:#020705;color:#c9ffee;font:11px/1.75 ui-monospace,SFMono-Regular,Menlo,monospace}
-.g{color:var(--mint)}
+.note-list{display:grid;gap:10px;margin-top:18px}
+.note{padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:rgba(4,16,11,.62)}
+.note strong{display:block;color:#eafff5;font-size:11px}
+.note p{margin:4px 0 0;color:#72877c;font-size:10px;line-height:1.7}
 .table{margin-top:18px;border:1px solid var(--line);border-radius:16px;overflow:auto}
 .table table{width:100%;border-collapse:collapse;min-width:640px}
 .table th,.table td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:left;font-size:10px}
 .table th{background:rgba(155,255,224,.04);color:#d7ffed}
 .table td{color:#769087}
 .table tr:last-child td{border-bottom:0}
+.profile{display:grid;grid-template-columns:160px 1fr;gap:24px;padding:25px;border:1px solid var(--line2);border-radius:22px;background:radial-gradient(circle at 100% 0,rgba(95,255,205,.1),transparent 34%),linear-gradient(145deg,rgba(7,29,20,.78),rgba(1,6,4,.95))}
+.profile-mark{width:128px;height:128px;display:grid;place-items:center;border:1px solid var(--line);border-radius:20px;background:rgba(155,255,224,.035)}
+.profile-mark img{width:92px;height:92px}
+.profile h3{margin:0 0 7px;font-family:"Playfair Display",Georgia,serif;font-size:33px;font-weight:500;line-height:1}
+.profile p{margin:0;color:#7b9085;font-size:11px;line-height:1.8}
+.profile-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
+.pill{padding:7px 10px;border:1px solid var(--line);border-radius:999px;color:#b9d1c6;font-size:9px;background:rgba(155,255,224,.025)}
 footer{padding:20px 25px 29px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:#50665c;font-size:9px}
 footer strong{color:#7fe8c3}
-@media(max-width:980px){.layout{grid-template-columns:1fr}.sidebar{border-right:0;border-bottom:1px solid var(--line);padding:16px 14px}.sidebar-inner{position:static}.sidebar h2{padding-inline:7px}.sidebar nav{display:flex;gap:4px;overflow:auto}.sidebar a{white-space:nowrap}.content{padding:48px 30px 75px}.section-head{display:block}.section-head .intro{margin-top:16px;max-width:760px}.hero-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:640px){.shell{width:calc(100% - 10px);margin:5px auto;border-radius:20px}.top{min-height:70px;padding-inline:14px}.top-links a:first-child{display:none}.brand img{width:39px;height:39px}.wordmark-main{font-size:16px}.wordmark-sub{font-size:6px}.content{padding-inline:18px}.hero h1{font-size:clamp(58px,17vw,82px)}.hero p{font-size:13px}.hero-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.section{padding-top:60px}footer{padding-inline:18px}}
+@media(max-width:980px){.layout{grid-template-columns:1fr}.sidebar{border-right:0;border-bottom:1px solid var(--line);padding:16px 14px}.sidebar-inner{position:static}.sidebar h2{padding-inline:7px}.sidebar nav{display:flex;gap:4px;overflow:auto}.sidebar a{white-space:nowrap}.content{padding:48px 30px 75px}.section-head{display:block}.section-head .intro{margin-top:16px;max-width:760px}.hero-grid{grid-template-columns:1fr 1fr}.profile{grid-template-columns:120px 1fr}.profile-mark{width:120px;height:120px}}
+@media(max-width:640px){.shell{width:calc(100% - 10px);margin:5px auto;border-radius:20px}.top{min-height:70px;padding-inline:14px}.top-links a:first-child{display:none}.brand img{width:39px;height:39px}.wordmark-main{font-size:16px}.wordmark-sub{font-size:6px}.content{padding-inline:18px}.hero h1{font-size:clamp(58px,17vw,82px)}.hero p{font-size:13px}.hero-grid,.fact-grid,.cards{grid-template-columns:1fr}.section{padding-top:60px}.profile{grid-template-columns:1fr}.profile-mark{width:100px;height:100px}.profile-mark img{width:72px;height:72px}footer{padding-inline:18px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.top-links a{transition:none}}
 </style>
 </head>
@@ -91,7 +103,7 @@ footer strong{color:#7fe8c3}
 <header class="top">
 <a class="brand" href="../" aria-label="Calypso Linux home">
 <img src="../assets/calypso-mark.svg?v=9" alt="Calypso Linux logo">
-<span><span class="wordmark-main">CALYPSO</span><span class="wordmark-sub">DOCUMENTATION</span></span>
+<span><span class="wordmark-main">CALYPSO</span><span class="wordmark-sub">WIKI</span></span>
 </a>
 <div class="top-links">
 <a href="../">Website</a>
@@ -102,113 +114,143 @@ footer strong{color:#7fe8c3}
 <div class="layout">
 <aside class="sidebar">
 <div class="sidebar-inner">
-<h2>Contents</h2>
+<h2>Wiki</h2>
 <nav>
 <a href="#overview" class="active">Overview</a>
+<a href="#philosophy">Philosophy</a>
 <a href="#install">Installation</a>
 <a href="#desktop">Desktop</a>
 <a href="#hyprland">Hyprland</a>
-<a href="#build">Build</a>
-<a href="#structure">Structure</a>
+<a href="#project">Project</a>
+<a href="#about">About Leon</a>
 </nav>
 </div>
 </aside>
 
 <main class="content">
 <section class="hero" id="overview">
-<div class="kicker">CALYPSO LINUX · DOCUMENTATION</div>
-<h1>Fast. Lean.<br><span>Yours.</span></h1>
-<p>Calypso Linux is an Arch-based distribution focused on a clean desktop experience, sensible defaults, and a system that stays quick and purposeful. KDE Plasma is at the center, while users who prefer a more tiling, keyboard-driven workflow can choose the optional Hyprland path.</p>
+<div class="kicker">CALYPSO LINUX · PROJECT WIKI</div>
+<h1>Know the<br><span>system.</span></h1>
+<p>This is the reference side of Calypso Linux: what the project is, why it is built the way it is, what the desktop layers do, where configuration lives, and who is behind it. It is meant to grow with the project rather than repeat the landing page.</p>
 <div class="hero-actions">
-<a class="btn primary" href="#install">Installation</a>
-<a class="btn" href="#desktop">Desktop</a>
-<a class="btn" href="#build">Build the ISO</a>
+<a class="btn primary" href="#philosophy">Explore the wiki</a>
+<a class="btn" href="#about">Meet the maintainer</a>
 </div>
 <div class="hero-grid">
-<article class="hero-card"><small>BASE</small><strong>Arch Linux</strong><p>Upstream foundation with the flexibility that comes with the Arch ecosystem.</p></article>
-<article class="hero-card"><small>PHILOSOPHY</small><strong>Fast + lean</strong><p>A focused software set without unnecessary extras competing for your system.</p></article>
-<article class="hero-card"><small>DESKTOP</small><strong>Your choice</strong><p>KDE Plasma is the main surface, with an optional Hyprland path for a different workflow.</p></article>
+<article class="hero-card"><small>BASE</small><strong>Arch Linux</strong><p>Calypso builds on Arch while shaping its own desktop, artwork, and project structure.</p></article>
+<article class="hero-card"><small>FOCUS</small><strong>Fast + lean</strong><p>A focused system philosophy: keep the useful parts, avoid unnecessary clutter.</p></article>
+<article class="hero-card"><small>WORKFLOW</small><strong>Your choice</strong><p>KDE Plasma is central, with Hyprland available for people who prefer a different window-management style.</p></article>
+</div>
+</section>
+
+<section class="section" id="philosophy">
+<div class="section-head">
+<div><div class="kicker">01 · PHILOSOPHY</div><h2>Less noise.<br>More intent.</h2></div>
+<p class="intro">Calypso is not meant to win by piling on software. The idea is a focused Arch-based system with a coherent visual identity, useful defaults, and room for the user to make it their own.</p>
+</div>
+<div class="fact-grid">
+<div class="fact"><strong>Fast + lean</strong><span>Keep the system focused on the essentials instead of treating extra software as a feature.</span></div>
+<div class="fact"><strong>Choice without clutter</strong><span>Desktop choices should remain choices. Optional paths should not overpower the main experience.</span></div>
+<div class="fact"><strong>One visual language</strong><span>Branding, wallpapers, icons, documentation, and the website use the same emerald-and-obsidian direction.</span></div>
+<div class="fact"><strong>Open development</strong><span>The public repository contains the project layers, making the distro understandable and inspectable.</span></div>
 </div>
 </section>
 
 <section class="section" id="install">
 <div class="section-head">
-<div><div class="kicker">01 · INSTALLATION</div><h2>From live image to desktop.</h2></div>
-<p class="intro">The live ISO provides a graphical installation flow designed to keep setup straightforward. The current system targets UEFI installations, GPT partitioning, ext4 by default, SDDM, and systemd-boot.</p>
+<div><div class="kicker">02 · INSTALLATION</div><h2>Getting onto a machine.</h2></div>
+<p class="intro">The live image is designed around a graphical installation flow. This section documents the current installation model rather than turning the wiki into a collection of command-heavy tutorials.</p>
 </div>
 <div class="steps">
-<article class="step"><div class="num">01</div><div><h3>Boot the live image.</h3><p>Start Calypso in UEFI mode and connect to the network when required.</p></div></article>
-<article class="step"><div class="num">02</div><div><h3>Open the graphical installer.</h3><p>Launch the installer from the live desktop and follow the guided setup.</p></div></article>
-<article class="step"><div class="num">03</div><div><h3>Configure storage and your account.</h3><p>Choose the target disk, filesystem options, locale, keyboard layout, hostname, and user account.</p></div></article>
-<article class="step"><div class="num">04</div><div><h3>Install and reboot.</h3><p>The installer copies the system, configures services and the boot path, then hands control to the installed desktop.</p></div></article>
+<article class="step"><div class="num">01</div><div><h3>Boot the live environment.</h3><p>Start the Calypso ISO in UEFI mode and reach the live desktop.</p></div></article>
+<article class="step"><div class="num">02</div><div><h3>Choose the installation path.</h3><p>The graphical installer provides the normal route from the live system to an installed Calypso desktop.</p></div></article>
+<article class="step"><div class="num">03</div><div><h3>Set storage and account details.</h3><p>The current project is designed around GPT, ext4 by default, user creation, locale and keyboard selection, and a standard system installation.</p></div></article>
+<article class="step"><div class="num">04</div><div><h3>Boot the installed system.</h3><p>The installed environment uses SDDM and systemd-boot on the current UEFI-oriented setup.</p></div></article>
 </div>
-<div class="callout"><b>Back up first.</b> Disk operations can erase data depending on the partitioning choice. Review the final storage summary carefully before continuing.</div>
+<div class="callout"><b>Important:</b> always back up data before changing disk layouts. Installation choices can permanently affect the selected storage device.</div>
 </section>
 
 <section class="section" id="desktop">
 <div class="section-head">
-<div><div class="kicker">02 · DESKTOP</div><h2>Shape the experience around you.</h2></div>
-<p class="intro">Calypso does not need to force a desktop identity onto you. KDE Plasma provides the main desktop experience, while the project also supports an optional Hyprland path for people who want a different style of interaction.</p>
+<div><div class="kicker">03 · DESKTOP</div><h2>A place to start,<br>not a box.</h2></div>
+<p class="intro">Calypso keeps the desktop layer flexible. KDE Plasma forms the main environment, while users who prefer tiling and keyboard-driven interaction can take the optional Hyprland route.</p>
 </div>
-<div class="choice-note">The choice is yours. The desktop experience is designed to remain cohesive either way.</div>
+<div class="choice-note">The important part is the choice itself: Calypso's identity does not depend on forcing every user into the same workflow.</div>
 <div class="cards">
-<article class="card"><div class="kicker">DESKTOP EXPERIENCE</div><h3>KDE Plasma</h3><p>A full-featured desktop with broad configuration options, familiar workflows, graphical applications, and the core Calypso presentation.</p></article>
-<article class="card"><div class="kicker">OPTIONAL PATH</div><h3>Hyprland</h3><p>Available for users who prefer tiling, keyboard-driven interaction, and deeper compositor-level customization. The configuration remains separate from the core desktop.</p></article>
+<article class="card"><div class="kicker">MAIN DESKTOP</div><h3>KDE Plasma</h3><p>The broad, configurable desktop layer used for the primary Calypso experience, including panels, settings, applications, accessibility, and normal graphical workflows.</p></article>
+<article class="card"><div class="kicker">OPTIONAL WINDOW MANAGEMENT</div><h3>Hyprland</h3><p>An optional path for users who enjoy tiling, keyboard-driven interaction, and deeper compositor-level control. It remains separate so it does not define the whole distribution.</p></article>
 </div>
 </section>
 
 <section class="section" id="hyprland">
 <div class="section-head">
-<div><div class="kicker">03 · OPTIONAL HYPRLAND</div><h2>A separate power-user path.</h2></div>
-<p class="intro">The optional configuration lives under <strong>dotfiles/</strong>, allowing it to evolve independently while keeping the main desktop clean and easy to understand.</p>
+<div><div class="kicker">04 · OPTIONAL HYPRLAND</div><h2>What lives<br>in dotfiles.</h2></div>
+<p class="intro">The Hyprland side of the project is maintained separately under <strong>dotfiles/</strong>. It can evolve faster than the core desktop without changing what Calypso is at its center.</p>
 </div>
 <div class="cards">
-<article class="card"><div class="kicker">CORE</div><h3>Hyprland</h3><p>Compositor settings, window rules, keybindings, workspaces, focus behavior, and other window-management details.</p></article>
-<article class="card"><div class="kicker">SHELL</div><h3>Quickshell</h3><p>The optional profile uses Quickshell as its shell layer for panels, controls, and surrounding desktop UI.</p></article>
-<article class="card"><div class="kicker">THEMING</div><h3>Matugen</h3><p>Wallpaper-derived colors can feed the optional shell and supporting applications for a more cohesive look.</p></article>
-<article class="card"><div class="kicker">TOOLS</div><h3>Supporting utilities</h3><p>The profile may also use Kitty, Fastfetch, Fuzzel, Yazi, Hyprpaper, and Zsh as part of the optional workflow.</p></article>
+<article class="card"><div class="kicker">COMPOSITOR</div><h3>Hyprland</h3><p>Window rules, keybindings, workspaces, focus behavior, monitor configuration, and compositor preferences.</p></article>
+<article class="card"><div class="kicker">DESKTOP SHELL</div><h3>Quickshell</h3><p>The optional profile uses Quickshell for its surrounding shell layer, such as panels, controls, and desktop UI.</p></article>
+<article class="card"><div class="kicker">THEMING</div><h3>Matugen</h3><p>Wallpaper-derived color generation can feed the shell and supporting applications for a unified look.</p></article>
+<article class="card"><div class="kicker">SUPPORTING TOOLS</div><h3>Utilities</h3><p>Depending on the configuration, the optional workflow can also include Kitty, Fastfetch, Fuzzel, Yazi, Hyprpaper, and Zsh.</p></article>
 </div>
-<pre class="code"><span class="g">cd dotfiles</span>
-<span class="g">bash scripts/install.sh</span>
-
-<span class="g">hyprctl reload</span></pre>
+<div class="note-list">
+<div class="note"><strong>Configuration boundary</strong><p>Hyprland configuration is kept separate from the KDE-centered base experience.</p></div>
+<div class="note"><strong>Why separate it?</strong><p>It lets the power-user layer evolve without making its preferences mandatory for everyone else.</p></div>
+</div>
 </section>
 
-<section class="section" id="build">
+<section class="section" id="project">
 <div class="section-head">
-<div><div class="kicker">04 · ISO BUILD</div><h2>Build from the profile.</h2></div>
-<p class="intro">Calypso is assembled with <strong>mkarchiso</strong> using the <strong>iso/</strong> profile. Keeping working files outside the profile makes repeated builds easier to manage.</p>
-</div>
-<pre class="code"><span class="g">cd ~/calypso-linux</span>
-
-<span class="g">git pull --ff-only origin main</span>
-
-<span class="g">sudo rm -rf ~/calypso-build ~/calypso-out</span>
-<span class="g">mkdir -p ~/calypso-build ~/calypso-out</span>
-
-<span class="g">sudo mkarchiso -v -r \
-  -w ~/calypso-build \
-  -o ~/calypso-out \
-  ./iso</span></pre>
-<div class="callout"><b>Build note:</b> keep the work directory out of <strong>/tmp</strong> when the system uses a small tmpfs. The build can consume several gigabytes of temporary space.</div>
-</section>
-
-<section class="section" id="structure">
-<div class="section-head">
-<div><div class="kicker">05 · PROJECT STRUCTURE</div><h2>Where the pieces live.</h2></div>
-<p class="intro">The repository keeps the ISO, optional desktop configuration, website, artwork, and documentation in clear layers so each part can evolve without becoming tangled.</p>
+<div><div class="kicker">05 · PROJECT</div><h2>How Calypso is<br>organized.</h2></div>
+<p class="intro">The repository is split into recognizable layers. The wiki documents what those layers mean so contributors and curious users do not have to reverse-engineer the whole project.</p>
 </div>
 <div class="table">
 <table>
-<thead><tr><th>Path</th><th>Purpose</th></tr></thead>
+<thead><tr><th>Path</th><th>What it contains</th><th>Role</th></tr></thead>
 <tbody>
-<tr><td>iso/</td><td>Archiso profile, package list, boot entries, system defaults, skeleton, artwork, and live environment.</td></tr>
-<tr><td>dotfiles/</td><td>Optional Hyprland configuration and supporting user configuration.</td></tr>
-<tr><td>assets/</td><td>Calypso website artwork, logos, and visual assets.</td></tr>
-<tr><td>docs/</td><td>This project documentation and its supporting page.</td></tr>
-<tr><td>index.html</td><td>Main Calypso Linux landing page.</td></tr>
+<tr><td>iso/</td><td>Archiso profile, packages, boot entries, system defaults, artwork, and live-environment files.</td><td>Distribution image</td></tr>
+<tr><td>dotfiles/</td><td>Optional Hyprland configuration and supporting user configuration.</td><td>Optional desktop layer</td></tr>
+<tr><td>assets/</td><td>Website artwork, logos, and supporting visual resources.</td><td>Project identity</td></tr>
+<tr><td>docs/</td><td>This wiki and its published documentation page.</td><td>Reference</td></tr>
+<tr><td>index.html</td><td>Main Calypso Linux website.</td><td>Public landing page</td></tr>
 </tbody>
 </table>
+</div>
+<div class="callout"><b>Build documentation:</b> the project is still evolving, so detailed ISO-build tutorials are intentionally not part of this wiki yet.</div>
+</section>
+
+<section class="section" id="about">
+<div class="section-head">
+<div><div class="kicker">06 · ABOUT THE PROJECT</div><h2>Made by a<br>young Linux nerd.</h2></div>
+<p class="intro">Calypso started as a personal Linux project and grew into an experiment in distro design, desktop configuration, branding, and learning how all the pieces of a Linux distribution fit together.</p>
+</div>
+<div class="profile">
+<div class="profile-mark"><img src="../assets/calypso-mark.svg?v=9" alt="Calypso Linux logo"></div>
+<div>
+<h3>Leon Sony</h3>
+<p>Calypso's maintainer and creator. Leon is 15 and builds the project as a hands-on way to learn Linux development, system configuration, web design, packaging, and the realities of maintaining a distro in public.</p>
+<div class="profile-meta">
+<span class="pill">15 years old</span>
+<span class="pill">Linux enthusiast</span>
+<span class="pill">Calypso maintainer</span>
+<span class="pill">Independent project</span>
+</div>
+</div>
+</div>
+<div class="note-list">
+<div class="note"><strong>Why make a distro?</strong><p>Because building the whole thing is a different kind of learning: desktop design, boot systems, packaging, configuration, documentation, and user experience all meet in one project.</p></div>
+<div class="note"><strong>What is Calypso trying to become?</strong><p>A polished, fast, understandable Linux distribution with a strong identity — without making the user give up the freedom that attracted them to Linux in the first place.</p></div>
+</div>
+</section>
+
+<section class="section">
+<div class="section-head">
+<div><div class="kicker">07 · STATUS</div><h2>Still becoming.</h2></div>
+<p class="intro">Calypso is an active personal project. Expect the ISO, artwork, desktop configuration, documentation, and release process to change as development continues.</p>
+</div>
+<div class="fact-grid">
+<div class="fact"><strong>Current focus</strong><span>Desktop polish, system defaults, branding, installation experience, and making the public project easier to understand.</span></div>
+<div class="fact"><strong>Releases</strong><span>Public ISO downloads are not available yet; the website's Downloads area is intentionally marked as coming soon.</span></div>
 </div>
 </section>
 </main>
@@ -216,7 +258,7 @@ footer strong{color:#7fe8c3}
 
 <footer>
 <span>© Calypso Linux · <strong>Fast + lean</strong></span>
-<span>KDE Plasma · Optional Hyprland · Open source</span>
+<span>Arch-based · Open source · Independent project</span>
 <span>Maintained by Leon Sony</span>
 </footer>
 </div>
