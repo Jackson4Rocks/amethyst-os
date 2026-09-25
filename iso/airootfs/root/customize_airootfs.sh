@@ -189,6 +189,7 @@ printf 'Hyprland   : %s\n' "$(command -v hyprland >/dev/null 2>&1 && echo instal
 printf 'Quickshell : %s\n' "$(command -v qs >/dev/null 2>&1 && echo installed || echo missing)"
 printf 'Fastfetch  : %s\n' "$(command -v fastfetch >/dev/null 2>&1 && echo installed || echo missing)"
 printf 'Wallpaper  : %s\n' "$(test -f /usr/share/backgrounds/calypso/Calypso-Default.svg && echo installed || echo missing)"
+printf 'Plasma Wayland : %s\n' "$(test -f /usr/share/wayland-sessions/plasma.desktop && echo installed || echo missing)"
 echo "============================================================"
 
 exit 0
