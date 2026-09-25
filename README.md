@@ -70,7 +70,11 @@ Amethyst OS is an **active personal project** and is still evolving. Expect chan
 ## 👤 Maintainer
 
 **Leon Sony**
-I made this project for fun and general curiosity. You're welcome to contribute to the project, Contact me through Telegram
+
+I made this project for fun and general curiosity. You're welcome to contribute, share ideas, test builds, or send feedback.
+
+You can reach me through the [Amethyst OS Telegram group](https://t.me/AmethystOSHYPR).
+
 ---
 
 <p align="center">
