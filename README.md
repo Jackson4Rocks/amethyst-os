@@ -1,6 +1,6 @@
-# 💜 Amethyst OS
+# 💜 Amethyst OS Linux
 
-> **AURORA** — an Arch-based Linux project focused on a polished Hyprland desktop, a cohesive visual identity, and a simple user experience.
+> **AURORA** — Amethyst OS Linux is an Arch-based Linux project focused on a polished Hyprland desktop, a cohesive visual identity, and a simple user experience.
 
 <p align="center">
   <strong>Beauty meets performance.</strong><br>
