@@ -32,7 +32,7 @@ command -v repo-add >/dev/null 2>&1 || {
 echo "==> Building custom Calamares package..."
 (
   cd "${CALAMARES_DIR}"
-  rm -f -- calamares-*.pkg.tar.*
+  rm -f -- calamares-*.pkg.tar.* calamares-${pkgver}.tar.gz
   makepkg --syncdeps --noconfirm --cleanbuild --clean
 )
 
