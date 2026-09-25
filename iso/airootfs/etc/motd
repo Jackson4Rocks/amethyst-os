@@ -5,8 +5,8 @@
 
 Welcome to Calypso Linux.
 
-The live desktop includes Hyprland, Quickshell, Kitty, Zsh,
-Fastfetch, and the Aurora Dotfiles configuration.
+The live desktop uses Hyprland + Aurora Dotfiles.
+The installer can deploy GNOME, KDE Plasma, Niri, or Hyprland.
 
 To install Calypso Linux, launch \033[1;36mcalypso-installer\033[0m
 or use the \033[1;36mInstall Calypso Linux\033[0m desktop entry.
