@@ -79,7 +79,7 @@ Calypso Linux is an **active personal project** and is still evolving. Expect ch
 
 I made this project for fun and general curiosity. You're welcome to contribute, share ideas, test builds, or send feedback.
 
-You can reach the project through the [Telegram group](https://t.me/CalypsoOSHYPR).
+You can reach the project through the [Telegram group](https://t.me/CalypsoLinux).
 
 ---
 
