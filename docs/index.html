@@ -3,336 +3,65 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#010403">
-  <meta name="description" content="Calypso Linux documentation — installation, desktop profiles, Aurora Dotfiles, ISO building, and development notes.">
+  <meta name="theme-color" content="#05130d">
+  <meta name="description" content="Calypso Linux documentation — installation with Calamares, KDE Plasma, optional Hyprland window-manager configuration, ISO building, and development notes.">
   <meta name="robots" content="index,follow,max-image-preview:large">
-  <meta name="googlebot" content="index,follow">
   <meta name="author" content="Leon Sony">
-  <meta name="application-name" content="Calypso Linux">
   <link rel="canonical" href="https://jackson4rocks.github.io/calypso-linux/docs/">
-  <link rel="icon" type="image/png" sizes="512x512" href="../assets/calypso-mark.png?v=4">
-  <link rel="apple-touch-icon" sizes="512x512" href="../assets/calypso-mark.png?v=4">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Calypso Linux">
-  <meta property="og:title" content="Calypso Linux Docs">
-  <meta property="og:description" content="Installation, Aurora Dotfiles, desktop profiles, ISO building, and development documentation for Calypso Linux.">
-  <meta property="og:url" content="https://jackson4rocks.github.io/calypso-linux/docs/">
-  <meta property="og:image" content="https://jackson4rocks.github.io/calypso-linux/assets/calypso-mark.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Calypso Linux Docs">
-  <meta name="twitter:description" content="Installation, Aurora Dotfiles, desktop profiles, ISO building, and development documentation.">
-  <meta name="twitter:image" content="https://jackson4rocks.github.io/calypso-linux/assets/calypso-mark.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="../assets/calypso-mark.png?v=8">
+  <link rel="apple-touch-icon" sizes="512x512" href="../assets/calypso-mark.png?v=8">
   <link rel="manifest" href="../site.webmanifest">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
-  <title>Calypso Linux Docs</title>
-
+  <title>Calypso Linux — Documentation</title>
   <style>
-    :root{
-      --bg:#010403;
-      --panel:rgba(4,17,12,.74);
-      --panel-2:rgba(6,26,18,.7);
-      --line:rgba(53,255,192,.16);
-      --line-hi:rgba(53,255,192,.34);
-      --green:#35ffc0;
-      --green-2:#16df95;
-      --mint:#b9ffe5;
-      --text:#effff8;
-      --muted:#9bb0a8;
-      --dim:#617870;
-      --max:1440px;
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;color:var(--text);font-family:"DM Sans",system-ui,sans-serif;
-      background:
-        radial-gradient(circle at 83% 8%,rgba(0,255,168,.10),transparent 25%),
-        radial-gradient(circle at 12% 60%,rgba(0,190,122,.07),transparent 28%),
-        #000;
-      line-height:1.65;overflow-x:hidden;
-    }
-    body:before{
-      content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.035;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-    a{color:inherit;text-decoration:none}
-    code,kbd,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-    .shell{width:min(var(--max),calc(100% - 28px));margin:14px auto;border:1px solid rgba(53,255,192,.19);border-radius:22px;overflow:hidden;background:linear-gradient(180deg,rgba(2,10,7,.94),rgba(0,0,0,.98));box-shadow:0 35px 100px rgba(0,0,0,.55),inset 0 1px rgba(255,255,255,.025)}
-    .top{
-      height:82px;display:flex;align-items:center;justify-content:space-between;gap:25px;padding:0 28px;
-      border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20;
-      background:rgba(1,7,5,.76);backdrop-filter:blur(18px);
-    }
-    .brand{display:flex;align-items:center;gap:13px}
-    .brand img{width:45px;height:45px;object-fit:contain;filter:drop-shadow(0 0 18px rgba(53,255,192,.24))}
-    .brand-title{font-family:"Playfair Display",Georgia,serif;letter-spacing:.16em;text-transform:uppercase;font-size:16px}
-    .brand-sub{display:block;color:var(--green);font-size:8px;letter-spacing:.38em;margin-top:3px}
-    .top-links{display:flex;gap:12px}
-    .top-links a{padding:9px 13px;border:1px solid var(--line);border-radius:999px;color:#bfd0ca;font-size:11px;transition:.2s ease}
-    .top-links a:hover{color:#fff;border-color:var(--line-hi);transform:translateY(-1px)}
-    .progress{position:absolute;left:0;bottom:0;width:100%;height:2px;background:rgba(53,255,192,.06)}
-    .progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,#10cb88,var(--green));box-shadow:0 0 16px rgba(53,255,192,.75)}
-
-    .layout{display:grid;grid-template-columns:250px minmax(0,1fr);min-height:calc(100vh - 110px)}
-    .sidebar{border-right:1px solid var(--line);padding:32px 20px;position:sticky;top:82px;height:calc(100vh - 82px);overflow:auto;background:linear-gradient(180deg,rgba(2,12,8,.62),rgba(0,0,0,.12))}
-    .side-kicker{color:var(--green);font-size:8px;font-weight:800;letter-spacing:.28em;margin:0 0 14px;text-transform:uppercase}
-    .side-nav{display:grid;gap:5px}
-    .side-nav a{padding:9px 11px;border-radius:10px;color:#71877f;font-size:11px;transition:.2s ease}
-    .side-nav a:hover,.side-nav a.active{color:#eafff7;background:rgba(53,255,192,.06)}
-    .side-nav a.active{box-shadow:inset 2px 0 var(--green)}
-    .side-note{margin-top:28px;padding:14px;border:1px solid var(--line);border-radius:14px;background:rgba(53,255,192,.025);color:#698079;font-size:10px}
-
-    main{min-width:0}
-    .hero{position:relative;padding:74px 70px 56px;overflow:hidden;border-bottom:1px solid var(--line)}
-    .hero:before{content:"";position:absolute;width:480px;height:480px;right:-140px;top:-150px;border-radius:50%;background:radial-gradient(circle,rgba(31,255,168,.15),transparent 68%);filter:blur(20px);pointer-events:none}
-    .eyebrow{display:flex;align-items:center;gap:10px;color:var(--green);font-size:9px;font-weight:900;letter-spacing:.28em;text-transform:uppercase}
-    .pulse{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 16px var(--green)}
-    h1{font-family:"Playfair Display",Georgia,serif;font-size:clamp(54px,6vw,86px);font-weight:400;line-height:.94;letter-spacing:-.055em;margin:18px 0}
-    h1 span{color:var(--mint)}
-    .hero p{max-width:760px;color:#9db1aa;font-size:14px}
-    .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid var(--line);font-size:11px;font-weight:700;transition:.2s ease}
-    .pill:hover{transform:translateY(-2px);border-color:var(--line-hi)}
-    .pill.primary{border-color:transparent;background:linear-gradient(135deg,#40ffba,#18db91);color:#00120b;box-shadow:0 15px 40px rgba(24,219,145,.18)}
-
-    .content{padding:22px 70px 90px}
-    .section{padding:58px 0 0;scroll-margin-top:110px}
-    .kicker{color:var(--green);font-size:9px;font-weight:900;letter-spacing:.28em;text-transform:uppercase}
-    h2{font-family:"Playfair Display",Georgia,serif;font-weight:400;font-size:clamp(34px,4vw,54px);line-height:.98;letter-spacing:-.045em;margin:9px 0 16px}
-    h3{font-size:17px;margin:0 0 9px}
-    .section-intro{color:#82968f;font-size:12px;max-width:760px}
-
-    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:22px}
-    .card{border:1px solid var(--line);border-radius:18px;padding:22px;background:linear-gradient(155deg,rgba(8,29,20,.64),rgba(0,5,3,.88));box-shadow:inset 0 1px rgba(255,255,255,.02);transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease}
-    .card:hover{transform:translateY(-5px);border-color:var(--line-hi);box-shadow:0 25px 70px rgba(0,0,0,.28)}
-    .card p{margin:0;color:#758a83;font-size:12px}
-    .card-icon{color:var(--green);font-size:20px;margin-bottom:15px;text-shadow:0 0 18px rgba(53,255,192,.35)}
-
-    .steps{display:grid;gap:12px;margin-top:22px}
-    .step{display:grid;grid-template-columns:54px minmax(0,1fr);gap:16px;padding:17px;border:1px solid var(--line);border-radius:16px;background:rgba(4,15,10,.68)}
-    .num{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;border:1px solid var(--line-hi);color:var(--green);font-weight:800;background:rgba(53,255,192,.05)}
-    .step p{margin:0;color:#7e918b;font-size:12px}
-
-    pre{margin:12px 0 0;padding:16px 17px;border:1px solid var(--line);border-radius:14px;background:#020805;overflow:auto;color:#c7ffea;font-size:11px;line-height:1.65}
-    .cmd{color:var(--green)}
-    kbd{padding:3px 6px;border:1px solid var(--line);border-bottom-color:var(--line-hi);border-radius:6px;background:rgba(53,255,192,.04);color:#dfffee;font-size:10px}
-
-    .table-wrap{margin-top:20px;overflow:auto;border:1px solid var(--line);border-radius:16px}
-    table{width:100%;border-collapse:collapse;min-width:620px}
-    th,td{padding:13px 14px;border-bottom:1px solid var(--line);text-align:left;font-size:11px}
-    th{color:#caffeb;background:rgba(53,255,192,.035)}
-    td{color:#7e938b}
-    tr:last-child td{border-bottom:0}
-
-    .callout{margin-top:20px;padding:18px 20px;border:1px solid rgba(53,255,192,.24);border-radius:16px;background:linear-gradient(135deg,rgba(26,150,103,.08),rgba(0,0,0,.25));color:#8fa49b;font-size:12px}
-    .callout strong{color:#d8fff0}
-
-    footer{padding:24px 70px 34px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:#526861;font-size:9px}
-    footer strong{color:#76eac0}
-
-    .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
-    .reveal.visible{opacity:1;transform:none}
-    .delay-1{transition-delay:.06s}.delay-2{transition-delay:.12s}.delay-3{transition-delay:.18s}
-
-    @media(max-width:980px){
-      .layout{grid-template-columns:1fr}
-      .sidebar{position:relative;top:auto;height:auto;border-right:0;border-bottom:1px solid var(--line);padding:15px 18px}
-      .side-nav{display:flex;overflow:auto}
-      .side-nav a{white-space:nowrap}
-      .side-note{display:none}
-      .hero,.content{padding-left:35px;padding-right:35px}
-    }
-    @media(max-width:620px){
-      .shell{width:calc(100% - 12px);margin:6px auto;border-radius:15px}
-      .top{height:72px;padding:0 16px}
-      .brand img{width:40px;height:40px}
-      .brand-title{font-size:13px}
-      .top-links a:first-child{display:none}
-      .hero,.content{padding-left:20px;padding-right:20px}
-      .hero{padding-top:50px}
-      .grid{grid-template-columns:1fr}
-      h1{font-size:52px}
-      footer{padding-left:20px;padding-right:20px}
-    }
-    @media(prefers-reduced-motion:reduce){
-      html{scroll-behavior:auto}
-      .reveal{opacity:1;transform:none;transition:none}
-      .card,.pill{transition:none}
-    }
+    :root{--bg:#030806;--panel:rgba(6,22,15,.82);--line:rgba(137,255,215,.16);--line2:rgba(137,255,215,.34);--mint:#9bffe0;--green:#25d89a;--white:#f6fff9;--muted:#8ba198;--max:1360px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--white);font-family:system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(900px 700px at 85% 0,rgba(37,216,154,.1),transparent 60%),linear-gradient(180deg,#020504,#06110c 46%,#020504);line-height:1.6}
+    a{color:inherit;text-decoration:none}img{display:block}.shell{width:min(var(--max),calc(100% - 24px));margin:12px auto;border:1px solid var(--line);border-radius:26px;overflow:hidden;background:rgba(1,5,3,.94);box-shadow:0 40px 110px rgba(0,0,0,.48)}
+    .top{height:78px;padding:0 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:rgba(2,10,6,.78);backdrop-filter:blur(18px);position:sticky;top:0;z-index:10}.brand{display:flex;align-items:center;gap:12px}.brand img{width:42px;height:42px;padding:6px;border:1px solid var(--line2);border-radius:12px}.brand b{font-family:Georgia,serif;font-size:17px;letter-spacing:.12em}.brand span{display:block;color:var(--mint);font-size:7px;letter-spacing:.4em;text-transform:uppercase;margin-top:3px}.top-links{display:flex;gap:10px}.top-links a{padding:8px 12px;border:1px solid var(--line);border-radius:999px;color:#b7c9c0;font-size:10px}
+    .layout{display:grid;grid-template-columns:245px 1fr}.sidebar{padding:25px 16px;border-right:1px solid var(--line);background:rgba(2,11,7,.55)}.sidebar h2{margin:0 0 12px;color:var(--mint);font-size:9px;letter-spacing:.25em;text-transform:uppercase}.sidebar nav{display:grid;gap:4px}.sidebar a{padding:9px 11px;border-radius:9px;color:#70867b;font-size:11px}.sidebar a:hover,.sidebar a.active{background:rgba(155,255,224,.06);color:#effff7}
+    .content{padding:62px 65px 90px;max-width:1040px}.hero .kicker,.kicker{color:var(--mint);font-size:9px;font-weight:800;letter-spacing:.25em;text-transform:uppercase}.hero h1{margin:13px 0 15px;font:500 clamp(52px,7vw,84px)/.9 Georgia,serif;letter-spacing:-.06em}.hero p{max-width:760px;color:var(--muted);font-size:13px}.hero-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:22px}.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid var(--line);font-size:10px;font-weight:700}.btn.primary{background:linear-gradient(135deg,#9dffe0,#31dda1);color:#00140d;border-color:transparent}
+    .section{padding-top:65px;scroll-margin-top:95px}.section h2{margin:8px 0 12px;font:500 clamp(34px,5vw,57px)/.95 Georgia,serif;letter-spacing:-.045em}.intro{max-width:760px;color:#81958c;font-size:12px}
+    .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin-top:20px}.card{padding:22px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(150deg,rgba(7,27,18,.78),rgba(0,5,3,.9))}.card h3{margin:35px 0 8px;font:500 28px/1 Georgia,serif}.card p{margin:0;color:#70857a;font-size:11px}
+    .steps{display:grid;gap:11px;margin-top:20px}.step{display:grid;grid-template-columns:44px 1fr;gap:14px;padding:14px;border:1px solid var(--line);border-radius:15px;background:rgba(4,16,10,.72)}.num{width:40px;height:40px;display:grid;place-items:center;border-radius:11px;border:1px solid var(--line2);color:var(--mint);font-size:11px;font-weight:800}.step h3{margin:0 0 3px;font-size:13px}.step p{margin:0;color:#71867c;font-size:11px}
+    .code{margin-top:18px;border:1px solid var(--line);border-radius:15px;padding:15px;overflow:auto;background:#020705;color:#c9ffee;font:11px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace}.g{color:var(--mint)}.table{margin-top:18px;border:1px solid var(--line);border-radius:15px;overflow:auto}.table table{width:100%;border-collapse:collapse;min-width:640px}.table th,.table td{padding:12px 13px;border-bottom:1px solid var(--line);text-align:left;font-size:10px}.table th{background:rgba(155,255,224,.04);color:#d7ffed}.table td{color:#769087}.table tr:last-child td{border-bottom:0}.callout{margin-top:18px;padding:15px 17px;border:1px solid var(--line2);border-radius:15px;background:rgba(155,255,224,.04);color:#879b91;font-size:11px}.callout b{color:#dffff1}
+    footer{padding:19px 24px 27px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:#52685e;font-size:9px}footer strong{color:#79eac3}
+    @media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{border-right:0;border-bottom:1px solid var(--line)}.sidebar nav{display:flex;overflow:auto}.sidebar a{white-space:nowrap}.content{padding:45px 28px 70px}}@media(max-width:620px){.shell{width:calc(100% - 10px);margin:5px auto;border-radius:17px}.top{height:70px;padding-inline:14px}.top-links a:first-child{display:none}.content{padding-inline:18px}.cards{grid-template-columns:1fr}.hero h1{font-size:55px}}
   </style>
 </head>
-
 <body>
-  <div class="shell">
-    <header class="top">
-      <a class="brand" href="../" aria-label="Back to Calypso Linux">
-        <img src="../assets/calypso-mark.png?v=4" alt="Calypso Linux">
-        <span>
-          <span class="brand-title">Calypso Linux</span>
-          <span class="brand-sub">DOCUMENTATION</span>
-        </span>
-      </a>
-      <nav class="top-links" aria-label="Documentation links">
-        <a href="../">Website</a>
-        <a href="https://github.com/Jackson4Rocks/calypso-linux" target="_blank" rel="noreferrer">GitHub ↗</a>
-      </nav>
-      <div class="progress" aria-hidden="true"><span id="progress"></span></div>
-    </header>
+<div class="shell">
+<header class="top">
+<a class="brand" href="../"><img src="../assets/calypso-mark.svg?v=9" alt="Calypso Linux logo"><span><b>CALYPSO</b><span>DOCUMENTATION</span></span></a>
+<div class="top-links"><a href="../">Website</a><a href="https://github.com/Jackson4Rocks/calypso-linux" target="_blank" rel="noreferrer">GitHub ↗</a></div>
+</header>
+<div class="layout">
+<aside class="sidebar"><h2>Contents</h2><nav><a href="#overview" class="active">Overview</a><a href="#install">Install</a><a href="#desktop">Desktop</a><a href="#hyprland">Hyprland</a><a href="#build">Build</a><a href="#structure">Structure</a></nav></aside>
+<main class="content">
+<section class="hero" id="overview"><div class="kicker">CALYPSO LINUX · CURRENT DOCUMENTATION</div><h1>Build. Install.<br>Make it yours.</h1><p>Calypso Linux is an Arch-based distribution centered on KDE Plasma. Hyprland is included as an optional, recommended window manager for users who want a tiling, keyboard-driven workflow.</p><div class="hero-actions"><a class="btn primary" href="#install">Installation</a><a class="btn" href="#build">Build the ISO</a></div></section>
+<section class="section" id="install"><div class="kicker">01 · INSTALLATION</div><h2>Calamares, not a terminal maze.</h2><p class="intro">The live ISO uses Calamares for the graphical installation flow. The current setup provides GPT by default, ext4 as the default filesystem, SDDM for login, KDE Plasma as the main desktop, and systemd-boot on UEFI systems.</p><div class="steps">
+<article class="step"><div class="num">01</div><div><h3>Boot the ISO in UEFI mode.</h3><p>Start the live environment and connect to the network if required.</p></div></article>
+<article class="step"><div class="num">02</div><div><h3>Launch Calamares.</h3><p>Use the desktop installer entry or run <strong>calypso-calamares</strong> from a terminal.</p></div></article>
+<article class="step"><div class="num">03</div><div><h3>Choose disk and account settings.</h3><p>Calamares handles partitioning, filesystem selection, locale, keyboard, user creation, and hostname setup.</p></div></article>
+<article class="step"><div class="num">04</div><div><h3>Install and reboot.</h3><p>The installer configures SDDM, system services, initramfs, and systemd-boot before handing control to the installed system.</p></div></article>
+</div><div class="callout"><b>Back up first.</b> Disk operations can erase data depending on the partitioning choice you make in Calamares. Read the final summary carefully.</div></section>
+<section class="section" id="desktop"><div class="kicker">02 · DESKTOP</div><h2>KDE Plasma is home base.</h2><p class="intro">KDE Plasma is the main Calypso desktop and the primary experience represented by the live ISO. The project layers its own branding, wallpapers, installer, and defaults on top of Plasma.</p><div class="cards"><article class="card"><div class="kicker">MAIN DESKTOP</div><h3>KDE Plasma</h3><p>Full desktop environment, flexible settings, graphical applications, and the default Calypso presentation.</p></article><article class="card"><div class="kicker">OPTIONAL WINDOW MANAGER</div><h3>Hyprland</h3><p>Optional but recommended for a tiling and keyboard-driven workflow with deeper customization.</p></article></div></section>
+<section class="section" id="hyprland"><div class="kicker">03 · OPTIONAL HYPRLAND</div><h2>Keep the power-user path separate.</h2><p class="intro">The optional Hyprland configuration lives in <strong>dotfiles/</strong>. It is not required for KDE Plasma and can evolve without forcing the same stack onto the main desktop.</p><div class="cards"><article class="card"><div class="kicker">CONFIG</div><h3>Hyprland</h3><p>Window rules, keybindings, workspaces, focus behavior, and compositor configuration.</p></article><article class="card"><div class="kicker">SHELL</div><h3>Quickshell</h3><p>The current optional Hyprland profile uses Quickshell for its desktop shell layer.</p></article><article class="card"><div class="kicker">THEMING</div><h3>Matugen</h3><p>Wallpaper-derived colors can feed the optional shell and supporting applications.</p></article><article class="card"><div class="kicker">TOOLS</div><h3>Optional stack</h3><p>The configuration may also use Kitty, Fastfetch, Fuzzel, Yazi, Hyprpaper, and Zsh.</p></article></div><pre class="code"><span class="g">cd dotfiles</span>
+<span class="g">bash scripts/install.sh</span>
 
-    <div class="layout">
-      <aside class="sidebar">
-        <p class="side-kicker">DOCS</p>
-        <nav class="side-nav">
-          <a href="#overview" class="active">Overview</a>
-          <a href="#install">Installation</a>
-          <a href="#desktops">Desktop profiles</a>
-          <a href="#aurora">Aurora Dotfiles</a>
-          <a href="#build">Build an ISO</a>
-          <a href="#develop">Development</a>
-        </nav>
-        <div class="side-note">
-          <strong style="color:#dffff2">Current state</strong><br>
-          Aurora is Hyprland-first. GNOME, KDE Plasma, and Niri are installer targets with dedicated profiles still in development.
-        </div>
-      </aside>
+<span class="g">hyprctl reload</span></pre></section>
+<section class="section" id="build"><div class="kicker">04 · ISO BUILD</div><h2>Build from the profile.</h2><p class="intro">Calypso is assembled through <strong>mkarchiso</strong> using the <strong>iso/</strong> profile. Keep the working tree and output directory outside the profile so the build remains clean.</p><pre class="code"><span class="g">cd ~/calypso-linux</span>
 
-      <main>
-        <section class="hero reveal visible" id="overview">
-          <div class="eyebrow"><span class="pulse"></span> CALYPSO LINUX · AURORA DOTFILES</div>
-          <h1>Build your<br><span>own horizon.</span></h1>
-          <p>Calypso Linux is an Arch-based project built around a polished Wayland experience, a native guided installer, and the Aurora Dotfiles desktop concept.</p>
-          <div class="hero-actions">
-            <a class="pill primary" href="#install">Start installing →</a>
-            <a class="pill" href="#build">Build the ISO</a>
-          </div>
-        </section>
+<span class="g">git pull --ff-only origin main</span>
 
-        <div class="content">
-          <section class="section reveal" id="install">
-            <div class="kicker">01 · INSTALLATION</div>
-            <h2>Install Calypso Linux.</h2>
-            <p class="section-intro">The current native installer performs a guided UEFI whole-disk installation. It asks for the target disk, username, hostname, timezone, and desktop profile.</p>
+<span class="g">sudo rm -rf ~/calypso-build ~/calypso-out</span>
+<span class="g">mkdir -p ~/calypso-build ~/calypso-out</span>
 
-            <div class="steps">
-              <article class="step reveal delay-1"><div class="num">01</div><div><h3>Boot the Calypso ISO in UEFI mode.</h3><p>Connect to the network from the live environment before starting the installer.</p></div></article>
-              <article class="step reveal delay-2"><div class="num">02</div><div><h3>Launch the installer.</h3><p>Run <kbd>calypso-installer</kbd> or use the live desktop installer entry.</p></div></article>
-              <article class="step reveal delay-3"><div class="num">03</div><div><h3>Choose your desktop.</h3><p>Pick Hyprland, GNOME, KDE Plasma, or Niri. Aurora Dotfiles are currently applied only to the Hyprland profile.</p></div></article>
-              <article class="step reveal delay-1"><div class="num">04</div><div><h3>Confirm the disk wipe.</h3><p>The current installer is whole-disk only. It does not currently provide a dual-boot partitioning flow.</p></div></article>
-            </div>
-
-            <div class="callout"><strong>Important:</strong> the selected target disk is erased. Verify the disk carefully before confirming the <kbd>WIPE /dev/...</kbd> prompt.</div>
-          </section>
-
-          <section class="section reveal" id="desktops">
-            <div class="kicker">02 · DESKTOP PROFILES</div>
-            <h2>Four targets. One project.</h2>
-            <p class="section-intro">Calypso is being designed as a multi-desktop distribution. The installer already exposes all four targets while the Aurora profiles are developed separately.</p>
-
-            <div class="table-wrap">
-              <table>
-                <thead><tr><th>Desktop</th><th>Installer</th><th>Aurora profile</th><th>Current role</th></tr></thead>
-                <tbody>
-                  <tr><td>Hyprland</td><td>Yes</td><td>Current</td><td>Primary Aurora development target</td></tr>
-                  <tr><td>GNOME</td><td>Yes</td><td>Planned</td><td>Desktop target</td></tr>
-                  <tr><td>KDE Plasma</td><td>Yes</td><td>Planned</td><td>Desktop target</td></tr>
-                  <tr><td>Niri</td><td>Yes</td><td>Planned</td><td>Desktop target; Aurora later</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          <section class="section reveal" id="aurora">
-            <div class="kicker">03 · AURORA DOTFILES</div>
-            <h2>Hyprland, tuned by hand.</h2>
-            <p class="section-intro">Aurora currently contains the Hyprland desktop profile, with Quickshell as the shell layer and Matugen driving wallpaper-derived colors.</p>
-            <div class="grid">
-              <article class="card reveal delay-1"><div class="card-icon">◈</div><h3>Hyprland</h3><p>Lua-based Hyprland configuration, keybinds, workspace behavior, and window rules.</p></article>
-              <article class="card reveal delay-2"><div class="card-icon">◇</div><h3>Quickshell</h3><p>The Aurora shell lives in <code>~/.config/quickshell/aurora</code> and provides the desktop UI.</p></article>
-              <article class="card reveal delay-3"><div class="card-icon">⌁</div><h3>Dynamic theme</h3><p>Matugen generates the Quickshell, Kitty, and Fuzzel color layers from the wallpaper.</p></article>
-              <article class="card reveal delay-1"><div class="card-icon">✦</div><h3>Wallpaper workflow</h3><p><code>calypso-wallpaper</code> changes the wallpaper and refreshes the generated theme assets.</p></article>
-            </div>
-            <pre><span class="cmd">cd dotfiles</span>
-<span class="cmd">bash scripts/install.sh</span>
-
-# Reload the Hyprland session
-<span class="cmd">hyprctl reload</span></pre>
-          </section>
-
-          <section class="section reveal" id="build">
-            <div class="kicker">04 · BUILD THE ISO</div>
-            <h2>From repository to ISO.</h2>
-            <p class="section-intro">Calypso uses <code>mkarchiso</code> with the profile under <code>iso/</code>. Build artifacts are intentionally kept out of Git.</p>
-            <pre><span class="cmd">cd ~/calypso-linux</span>
-
-# Clean stale build state only when no mounts are active
-<span class="cmd">findmnt -R "$PWD/work-build"</span>
-
-# Build
-<span class="cmd">mkarchiso -v -r \
-  -w "$HOME/calypso-linux/work-build" \
-  -o "$HOME/calypso-linux/out" \
-  iso</span></pre>
-            <div class="callout"><strong>Tip:</strong> if the build complains about mounted work directories, clean the mounts first instead of deleting a mounted path.</div>
-          </section>
-
-          <section class="section reveal" id="develop">
-            <div class="kicker">05 · DEVELOPMENT</div>
-            <h2>Keep the project coherent.</h2>
-            <p class="section-intro">The repository separates the ISO profile, Aurora Dotfiles, branding assets, and website. Changes to one layer should keep the same Calypso identity.</p>
-            <div class="grid">
-              <article class="card reveal delay-1"><div class="card-icon">01</div><h3><code>iso/</code></h3><p>Live ISO profile, packages, boot configuration, installer, skeleton files, and system defaults.</p></article>
-              <article class="card reveal delay-2"><div class="card-icon">02</div><h3><code>dotfiles/</code></h3><p>Aurora Dotfiles and supporting user configuration for the current Hyprland target.</p></article>
-              <article class="card reveal delay-3"><div class="card-icon">03</div><h3><code>assets/</code></h3><p>Canonical Calypso visual assets. The original PNG mark is used as the primary visible logo.</p></article>
-              <article class="card reveal delay-1"><div class="card-icon">04</div><h3>Website</h3><p>Static GitHub Pages site with SEO metadata, sitemap support, documentation, and project navigation.</p></article>
-            </div>
-          </section>
-        </div>
-      </main>
-    </div>
-
-    <footer>
-      <span>© Calypso Linux · <strong>Aurora Dotfiles</strong></span>
-      <span>Maintained by Leon Sony · Open source project</span>
-    </footer>
-  </div>
-
-  <script>
-    (() => {
-      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const progress = document.getElementById("progress");
-      const links = [...document.querySelectorAll(".side-nav a")];
-      const sections = links.map(a => document.querySelector(a.getAttribute("href"))).filter(Boolean);
-
-      const updateProgress = () => {
-        const max = document.documentElement.scrollHeight - window.innerHeight;
-        progress.style.width = (max > 0 ? (window.scrollY / max) * 100 : 0) + "%";
-      };
-      window.addEventListener("scroll", updateProgress, {passive:true});
-      updateProgress();
-
-      if (!reduce && "IntersectionObserver" in window) {
-        const io = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) entry.target.classList.add("visible");
-          });
-        }, {rootMargin:"0px 0px -10% 0px", threshold:.08});
-        document.querySelectorAll(".reveal:not(.visible)").forEach(el => io.observe(el));
-      } else {
-        document.querySelectorAll(".reveal").forEach(el => el.classList.add("visible"));
-      }
-
-      if ("IntersectionObserver" in window) {
-        const navIo = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-            links.forEach(link => link.classList.toggle("active", link.getAttribute("href") === "#" + entry.target.id));
-          });
-        }, {rootMargin:"-28% 0px -60% 0px", threshold:0});
-        sections.forEach(section => navIo.observe(section));
-      }
-    })();
-  </script>
-</body>
-</html>
+<span class="g">sudo mkarchiso -v -r \
+  -w ~/calypso-build \
+  -o ~/calypso-out \
+  ./iso</span></pre><div class="callout"><b>Build note:</b> keep the work directory out of <strong>/tmp</strong> when the system uses a small tmpfs. The build can consume several gigabytes of temporary space.</div></section>
+<section class="section" id="structure"><div class="kicker">05 · PROJECT STRUCTURE</div><h2>Where everything lives.</h2><div class="table"><table><thead><tr><th>Path</th><th>Purpose</th></tr></thead><tbody><tr><td>iso/</td><td>Archiso profile, package list, boot entries, Calamares configuration, skeleton, artwork, and live environment.</td></tr><tr><td>dotfiles/</td><td>Optional Hyprland configuration and supporting user configuration.</td></tr><tr><td>assets/</td><td>Calypso website artwork and logos.</td></tr><tr><td>docs/</td><td>Project documentation published alongside the website.</td></tr><tr><td>index.html</td><td>Main Calypso Linux landing page.</td></tr></tbody></table></div></section>
+</main></div>
+<footer><span>© Calypso Linux · <strong>KDE Plasma + optional Hyprland</strong></span><span>Maintained by Leon Sony · Open source project</span></footer>
+</div>
+<script>(()=>{const links=[...document.querySelectorAll('.sidebar a')];const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);if('IntersectionObserver'in window){const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(!e.isIntersecting)return;links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))})},{rootMargin:'-25% 0px -65% 0px'});sections.forEach(s=>io.observe(s))}})();</script>
+</body></html>

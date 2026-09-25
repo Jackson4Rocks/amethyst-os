@@ -1,53 +1,82 @@
 # 💚 Calypso Linux
 
-> **Calypso Linux** is an Arch-based Linux project centered on KDE Plasma, with Hyprland available as an alternative desktop profile.
+> **Calypso Linux** is an Arch-based Linux distribution centered on **KDE Plasma**, with **Hyprland available as an optional, recommended window manager** for users who want a more keyboard-driven and highly customizable workflow.
 
 <p align="center">
-  <strong>Beauty meets performance.</strong><br>
-  KDE Plasma · Hyprland · Zsh · Fastfetch
+  <strong>Designed to feel intentional.</strong><br>
+  KDE Plasma · Hyprland · Calamares · Arch Linux
 </p>
 
 ---
 
-## 🖥️ Desktop profiles
+## 🖥️ Desktop
 
-Calypso currently focuses on two desktop profiles:
+### KDE Plasma — main desktop
 
-- 🧊 **KDE Plasma** — the main Calypso desktop, with Calypso branding and wallpapers
-- 🪟 **Hyprland** — an alternative Wayland desktop profile with optional project configuration
+KDE Plasma is the primary Calypso desktop. The live ISO is built around Plasma, SDDM, Calypso branding, wallpapers, and the project's graphical installation flow.
 
-Other desktop targets may change as the installer evolves.
+### Hyprland — optional, recommended window manager
 
-## 📦 Releases
+Hyprland is included as an optional window manager for users who prefer tiling, keyboard-driven interaction, and deeper customization.
 
-Release ISOs and mirrors will be linked here as they are published.
+The Hyprland configuration is maintained separately under `dotfiles/`. It is not required for the KDE Plasma experience.
 
-**SourceForge:** _release link coming soon_
+## 📦 Installer
 
-## 🧩 Project
+Calypso uses **Calamares** for graphical installation.
 
-```text
-Calypso Linux
-├── Arch Linux base
-├── KDE Plasma
-├── Hyprland
-├── Zsh
-├── Fastfetch
-├── Calypso Installer
-└── Calypso artwork + wallpapers
-```
+The current ISO provides:
 
-## 🎛️ Optional desktop configuration
+- UEFI/systemd-boot installation
+- GPT partitioning by default
+- ext4 as the default filesystem
+- graphical user and hostname setup
+- KDE Plasma as the main desktop
+- Hyprland as the optional window-manager path
+- Calypso branding and wallpapers
 
-The repository contains additional Hyprland configuration under `dotfiles/`. It is optional and may change independently of the base Calypso desktop.
+## 🧩 Project structure
 
-See `dotfiles/README.md` for the current configuration details.
+    Calypso Linux
+    ├── Arch Linux base
+    ├── KDE Plasma
+    ├── Hyprland (optional window manager)
+    ├── Calamares installer
+    ├── Calypso artwork + wallpapers
+    ├── ISO profile
+    ├── Optional Hyprland configuration
+    └── Website + documentation
+
+## 🎛️ Optional Hyprland configuration
+
+The repository contains an optional Hyprland configuration under `dotfiles/`.
+
+It is intentionally separate from the main KDE Plasma experience and can evolve without changing the core desktop.
+
+See `dotfiles/README.md` for configuration details and keybindings.
+
+## 🔧 Build the ISO
+
+From an Arch Linux build host with `archiso` installed:
+
+    cd ~/calypso-linux
+    git pull --ff-only origin main
+
+    sudo rm -rf ~/calypso-build ~/calypso-out
+    mkdir -p ~/calypso-build ~/calypso-out
+
+    sudo mkarchiso -v -r \
+      -w ~/calypso-build \
+      -o ~/calypso-out \
+      ./iso
+
+The resulting ISO is written to `~/calypso-out/`.
 
 ## 🤝 Contributing
 
-Issues, ideas, improvements, configuration tweaks, and documentation changes are welcome.
+Issues, ideas, improvements, configuration tweaks, artwork, and documentation changes are welcome.
 
-Please include useful logs and the relevant system / build details when reporting a problem.
+Useful bug reports should include the relevant logs, hardware details, and build context.
 
 ## ⚠️ Status
 
@@ -57,12 +86,12 @@ Calypso Linux is an **active personal project** and is still evolving. Expect ch
 
 **Leon Sony**
 
-I made this project for fun and general curiosity. You're welcome to contribute, share ideas, test builds, or send feedback.
+This project started as a personal Linux experiment and is being developed openly.
 
-You can reach the project through the [Telegram group](https://t.me/CalypsoLinux).
+You can also reach the project through the [Telegram group](https://t.me/CalypsoLinux).
 
 ---
 
 <p align="center">
-  <sub>CALYPSO LINUX · KDE PLASMA · HYPRLAND · ARCH LINUX</sub>
+  <sub>CALYPSO LINUX · KDE PLASMA · HYPRLAND · CALAMARES · ARCH LINUX</sub>
 </p>

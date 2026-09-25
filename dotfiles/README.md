@@ -1,80 +1,83 @@
-# Calypso Linux — Optional Hyprland configuration
+# Calypso Linux — Optional Hyprland Configuration
 
-This directory contains the current optional Hyprland configuration shipped with the project. It is not required for the main KDE Plasma installation and may change independently of the base Calypso desktop.
+This directory contains the **optional Hyprland configuration** maintained alongside Calypso Linux.
 
-## Design
+KDE Plasma remains the main Calypso desktop. **Hyprland is an optional, recommended window manager** for users who prefer a tiling, keyboard-driven workflow with deeper customization.
 
-The current Hyprland configuration uses a small desktop stack:
+The Hyprland configuration is deliberately separated from the main KDE experience so it can evolve independently.
 
-- Hyprland — compositor
-- **Quickshell — desktop shell**
-- Kitty — terminal
-- Fastfetch — terminal welcome
-- Zsh — interactive shell
-- Hyprpaper — wallpaper rendering
-- Matugen — wallpaper-derived colors
-- Fuzzel — lightweight app launcher
-- Yazi — terminal file manager
+## What's included
 
-Quickshell configs live in `~/.config/quickshell/<name>`; the current project configuration uses the `aurora` profile when those optional files are installed.
+The current configuration can include:
 
-## Shell design
+- **Hyprland** — compositor/window manager
+- **Quickshell** — desktop shell layer used by the optional configuration
+- **Kitty** — terminal
+- **Fastfetch** — terminal system summary
+- **Zsh** — interactive shell
+- **Hyprpaper** — wallpaper handling
+- **Matugen** — wallpaper-derived colors
+- **Fuzzel** — application launcher
+- **Yazi** — terminal file manager
 
-The default shell is a floating, centered top panel with:
+These components describe the optional Hyprland environment; they are **not the definition of the main KDE Plasma desktop**.
 
-- Calypso branding
-- live Hyprland workspace pills
-- active-window title
-- clock
-- wallpaper-derived colors
+## Configuration layout
 
-Quickshell provides native Hyprland workspace access and can create one panel per connected monitor.
+Hyprland configuration is stored under:
 
-## Keybinds
+    ~/.config/hypr/
 
-- SUPER + Enter — terminal
-- SUPER + D — application launcher
-- SUPER + E — file manager
-- SUPER + Q — close window
-- SUPER + F — fullscreen
-- SUPER + Shift + Space — toggle floating
-- SUPER + Tab — cycle windows
-- SUPER + 1..0 — workspaces
-- SUPER + Shift + 1..0 — move window to workspace
-- SUPER + Shift + W — wallpaper picker + recolor
-- SUPER + Shift + R — reload Hyprland
-- Print — region screenshot
-- SUPER + Print — full-screen screenshot
+The optional Quickshell configuration lives under:
 
-Arrow-key focus, move, and resize bindings are also provided.
+    ~/.config/quickshell/aurora/
 
-## Wallpaper-driven color
-
-Use:
-
-    calypso-wallpaper ~/Pictures/wallpapers/my-wallpaper.png
-
-Matugen generates the Quickshell theme, Kitty colors, and Fuzzel colors from the wallpaper. Quickshell watches its config files for changes, so the shell can update when the generated `Theme.qml` changes.
+The current profile also uses Matugen to generate wallpaper-derived theme values for the shell and supporting applications.
 
 ## Installation
+
+From the repository root:
 
     cd dotfiles
     bash scripts/install.sh
 
-For the Calypso Linux ISO, these files are available as an optional Hyprland configuration.
+Use this only when you want the optional Hyprland environment.
 
-## Notes
+## Useful keybindings
 
-The Hyprland configuration targets the Lua-based configuration system used by current Hyprland releases.
+| Key | Action |
+| --- | --- |
+| **SUPER + Enter** | Open terminal |
+| **SUPER + D** | Open launcher |
+| **SUPER + E** | Open file manager |
+| **SUPER + Q** | Close window |
+| **SUPER + F** | Toggle fullscreen |
+| **SUPER + Tab** | Cycle windows |
+| **SUPER + 1…0** | Switch workspace |
+| **SUPER + Shift + 1…0** | Move window to workspace |
+| **SUPER + Shift + R** | Reload Hyprland |
+| **Print** | Region screenshot |
+| **SUPER + Print** | Full-screen screenshot |
 
-Quickshell is intentionally treated as the framework for the Calypso shell rather than relying on another full desktop shell. Its current documentation describes it as a toolkit for building bars, widgets, notifications, lock screens, and other desktop components.
+## Wallpaper and colors
 
+The project uses:
 
-## Desktop profiles
+    calypso-wallpaper ~/Pictures/wallpapers/my-wallpaper.png
 
-| Desktop | Role |
+The intended workflow is:
+
+1. choose a wallpaper
+2. generate a palette with Matugen
+3. refresh the Hyprland/Quickshell visual layer
+
+## Relationship to the main desktop
+
+| Component | Role |
 | --- | --- |
 | KDE Plasma | Main Calypso desktop |
-| Hyprland | Optional alternative profile |
+| Hyprland | Optional, recommended window manager |
+| Quickshell | Optional Hyprland shell layer |
+| Calamares | Graphical system installer |
 
-The installer installs the selected desktop. The configuration in this directory is applied only to Hyprland and is not required for KDE Plasma.
+The optional Hyprland configuration is not required to use KDE Plasma.
