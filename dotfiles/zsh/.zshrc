@@ -2,7 +2,7 @@ if [[ -o interactive ]] && command -v fastfetch >/dev/null 2>&1; then
   fastfetch
 fi
 
-export AOS_NAME="Amethyst OS"
+export AOS_NAME="Amethyst OS Linux"
 export AOS_CODENAME="AURORA"
 
 alias ll="ls -lah"
