@@ -64,11 +64,11 @@
 
   <!-- top crystal wing -->
   <g stroke="#9dffe0" stroke-opacity=".60" stroke-width="1.25" stroke-linejoin="round">
-    <polygon points="288,105 337,125 391,155 353,177 318,175 273,175"/>
-    <polygon points="337,125 394,171 444,174 391,155"/>
-    <polygon points="394,171 444,174 390,205 353,177"/>
-    <polygon points="391,155 444,174 406,190 353,177"/>
-    <polygon points="288,105 273,175 318,175 337,125" fill="url(#crystal2)"/>
+    <polygon points="288,105 326,125 365,151 340,174 312,175 273,175"/>
+    <polygon points="326,125 366,169 411,174 365,151"/>
+    <polygon points="366,169 411,174 377,198 340,174"/>
+    <polygon points="365,151 411,174 380,189 340,174"/>
+    <polygon points="288,105 273,175 312,175 326,125" fill="url(#crystal2)"/>
   </g>
 
   <!-- left vertical facets -->
@@ -91,15 +91,15 @@
 
   <!-- lower crystal wing -->
   <g stroke="#9dffe0" stroke-opacity=".72" stroke-width="1.4" stroke-linejoin="round">
-    <polygon points="183,352 236,319 273,337 318,337 352,407 288,407 232,387"/>
-    <polygon points="288,407 352,407 404,375 442,373 391,340 337,370"/>
-    <polygon points="337,370 391,340 437,365 404,375"/>
-    <polygon points="318,337 337,370 352,407 273,337" fill="url(#crystal2)"/>
+    <polygon points="183,352 236,319 273,337 312,337 330,407 288,407 232,387"/>
+    <polygon points="288,407 330,407 390,375 417,373 388,341 337,370"/>
+    <polygon points="337,370 388,341 412,364 390,375"/>
+    <polygon points="312,337 337,370 330,407 273,337" fill="url(#crystal2)"/>
   </g>
 
   <g fill="none" stroke="#eafff8" stroke-opacity=".78" stroke-width="2" stroke-linecap="round">
-    <path d="M394 171 444 174"/>
-    <path d="M391 340 442 373"/>
+    <path d="M366 169 411 174"/>
+    <path d="M388 341 417 373"/>
     <path d="M153 205 212 220"/>
     <path d="M153 307 212 292"/>
   </g>
