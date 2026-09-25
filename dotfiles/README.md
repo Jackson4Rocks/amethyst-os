@@ -1,10 +1,10 @@
-# Calypso Linux — Aurora Dotfiles
+# Calypso Linux — Optional Hyprland configuration
 
-The reference desktop configuration for Calypso Linux. Aurora Dotfiles are currently developed for Hyprland first. The Calypso installer also supports GNOME, KDE Plasma, and Niri as desktop targets, but those profiles do not receive Aurora configuration yet.
+This directory contains the current optional Hyprland configuration shipped with the project. It is not required for the main KDE Plasma installation and may change independently of the base Calypso desktop.
 
 ## Design
 
-Aurora Dotfiles are intentionally built as a small, custom desktop stack:
+The current Hyprland configuration uses a small desktop stack:
 
 - Hyprland — compositor
 - **Quickshell — desktop shell**
@@ -16,13 +16,13 @@ Aurora Dotfiles are intentionally built as a small, custom desktop stack:
 - Fuzzel — lightweight app launcher
 - Yazi — terminal file manager
 
-Quickshell configs live in `~/.config/quickshell/<name>`; Aurora Dotfiles uses the named `aurora` config and starts it with `qs -c aurora`.
+Quickshell configs live in `~/.config/quickshell/<name>`; the current project configuration uses the `aurora` profile when those optional files are installed.
 
 ## Shell design
 
 The default shell is a floating, centered top panel with:
 
-- Calypso + Aurora Dotfiles branding
+- Calypso branding
 - live Hyprland workspace pills
 - active-window title
 - clock
@@ -61,7 +61,7 @@ Matugen generates the Quickshell theme, Kitty colors, and Fuzzel colors from the
     cd dotfiles
     bash scripts/install.sh
 
-For the Calypso Linux ISO, place the same files into `/etc/skel` so new users receive the Aurora Dotfiles defaults.
+For the Calypso Linux ISO, these files are available as an optional Hyprland configuration.
 
 ## Notes
 
@@ -70,13 +70,11 @@ The Hyprland configuration targets the Lua-based configuration system used by cu
 Quickshell is intentionally treated as the framework for the Calypso shell rather than relying on another full desktop shell. Its current documentation describes it as a toolkit for building bars, widgets, notifications, lock screens, and other desktop components.
 
 
-## Desktop targets
+## Desktop profiles
 
-| Desktop | Installer | Aurora profile |
-| --- | --- | --- |
-| GNOME | Yes | Planned |
-| KDE Plasma | Yes | Planned |
-| Niri | Yes | Planned |
-| Hyprland | Yes | Current |
+| Desktop | Role |
+| --- | --- |
+| KDE Plasma | Main Calypso desktop |
+| Hyprland | Optional alternative profile |
 
-The installer installs the selected desktop and applies the Aurora configuration only when Hyprland is selected.
+The installer installs the selected desktop. The configuration in this directory is applied only to Hyprland and is not required for KDE Plasma.
