@@ -48,17 +48,6 @@ Amethyst OS
     └── Custom AURORA artwork
 ```
 
-## 🖼️ AURORA visuals
-
-The website includes four visual directions:
-
-| Theme | Style |
-|---|---|
-| 💜 Amethyst | Violet / default |
-| ❄️ Polaris | Cyan / ice |
-| 🔥 Ember | Rose / warm |
-| 🌙 Nightfall | Indigo / deep |
-
 ## 🪪 Brand System
 
 **One logo. Everywhere.** The canonical Amethyst OS mark lives at `assets/amethyst-mark.svg`. Use this same mark for the website, desktop shell, Fastfetch, wallpapers, screenshots, and release artwork.
