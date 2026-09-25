@@ -29,6 +29,7 @@ depends=(
   'kwidgetsaddons'
   'kwindowsystem'
   'kpmcore'
+  'boost-libs'
   'libpwquality'
   'polkit'
   'polkit-qt6'
@@ -41,6 +42,7 @@ depends=(
 makedepends=(
   'cmake'
   'extra-cmake-modules'
+  'boost'
   'ninja'
   'qt6-tools'
 )
