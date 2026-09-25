@@ -25,7 +25,7 @@ The project is being built around:
 
 ## 🌐 Website
 
-The repository contains the static GitHub Pages site for Amethyst OS.
+The repository contains the static GitHub Pages site for Amethyst OS and the canonical AURORA brand assets.
 
 Once Pages is enabled, the project site will be available from GitHub's Pages URL for this repository.
 
@@ -42,7 +42,7 @@ Amethyst OS
 └── AURORA
     ├── Arch Linux base
     ├── Hyprland
-    ├── DankMaterialShell
+    ├── Quickshell
     ├── Zsh
     ├── Fastfetch
     └── Custom AURORA artwork
@@ -58,6 +58,10 @@ The website includes four visual directions:
 | ❄️ Polaris | Cyan / ice |
 | 🔥 Ember | Rose / warm |
 | 🌙 Nightfall | Indigo / deep |
+
+## 🪪 Brand System
+
+**One logo. Everywhere.** The canonical Amethyst OS mark lives at `assets/amethyst-mark.svg`. Use this same mark for the website, desktop shell, Fastfetch, wallpapers, screenshots, and release artwork.
 
 ## 🎛️ AURORA Dotfiles
 
