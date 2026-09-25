@@ -3,27 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#0a0612">
+  <meta name="theme-color" content="#04110c">
   <link rel="canonical" href="https://jackson4rocks.github.io/amethyst-os/">
   <meta name="google-site-verification" content="We36Y7aFzCz1YLPHX3e1_N9cVgiQCA7kGBMNkEAoVyQ" />
-  <link rel="icon" type="image/svg+xml" href="assets/amethyst-mark.svg">
-  <link rel="apple-touch-icon" href="assets/amethyst-mark.svg">
-  <meta name="description" content="Amethyst OS Linux AURORA — an Arch-based Linux project with Hyprland, Quickshell, dynamic theming, and a cohesive minimal desktop.">
-  <title>Amethyst OS Linux — AURORA</title>
+  <link rel="icon" type="image/svg+xml" href="assets/calypso-mark.svg">
+  <link rel="apple-touch-icon" href="assets/calypso-mark.svg">
+  <meta name="description" content="Calypso Linux — Aurora Dotfiles — an Arch-based Linux project with Hyprland, Quickshell, dynamic theming, and a cohesive minimal desktop.">
+  <title>Calypso Linux — AURORA DOTFILES</title>
   <style>
-    :root{--bg:#06040a;--panel:rgba(19,14,28,.72);--panel2:rgba(255,255,255,.035);--line:rgba(255,255,255,.09);--text:#f8f4fb;--muted:#a79caf;--soft:#7f738b;--accent:#b46cff;--accent2:#7c3aed;--glow:rgba(168,85,247,.34);--max:1220px}
+    :root{--bg:#020806;--panel:rgba(19,14,28,.72);--panel2:rgba(255,255,255,.035);--line:rgba(255,255,255,.09);--text:#ecfdf5;--muted:#8ca99c;--soft:#5f7a6e;--accent:#34d399;--accent2:#059669;--glow:rgba(16,185,129,.34);--max:1220px}
     *{box-sizing:border-box}html{scroll-behavior:smooth}
-    body{margin:0;background:radial-gradient(circle at 65% 8%,rgba(124,58,237,.18),transparent 28%),radial-gradient(circle at 10% 35%,rgba(168,85,247,.1),transparent 25%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6;overflow-x:hidden}
+    body{margin:0;background:radial-gradient(circle at 65% 8%,rgba(5,150,105,.18),transparent 28%),radial-gradient(circle at 10% 35%,rgba(16,185,129,.1),transparent 25%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6;overflow-x:hidden}
     a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
     .noise{position:fixed;inset:0;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");z-index:9}
-    .nav{height:82px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:10}.brand{display:flex;align-items:center;gap:12px}.brand-mark{display:grid;place-items:center;width:42px;height:42px;border:1px solid rgba(192,132,252,.45);border-radius:14px;background:linear-gradient(135deg,rgba(168,85,247,.24),rgba(124,58,237,.06));box-shadow:0 0 32px var(--glow);overflow:hidden}.brand-mark img{width:31px;height:31px;display:block}.brand strong{display:block;font-size:14px;letter-spacing:.14em}.brand small{display:block;font-size:10px;color:var(--muted);letter-spacing:.2em;margin-top:1px}.nav nav{display:flex;gap:24px;align-items:center}.nav nav a{font-size:13px;color:#b9b0c6;transition:.2s}.nav nav a:hover{color:#fff}.nav-github{padding:9px 13px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.025)}
-    .hero{min-height:760px;display:grid;grid-template-columns:1.02fr .98fr;gap:36px;align-items:center;padding:72px 0 58px}.eyebrow,.kicker{font-size:11px;font-weight:800;letter-spacing:.2em;color:#bc8cff}.eyebrow{display:flex;align-items:center;gap:8px}.dot{width:7px;height:7px;border-radius:999px;background:#c084fc;box-shadow:0 0 14px #c084fc}.hero h1{font-size:clamp(58px,8vw,108px);line-height:.92;letter-spacing:-.075em;margin:20px 0 26px;font-weight:900}.hero h1 span{color:#c084fc;text-shadow:0 0 42px rgba(168,85,247,.22)}.lede{font-size:18px;max-width:660px;color:#bbb1c4;line-height:1.7}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0}.btn{display:inline-flex;align-items:center;justify-content:center;gap:11px;padding:13px 17px;border-radius:14px;border:1px solid var(--line);font-size:13px;font-weight:800;transition:.2s}.btn.primary{background:linear-gradient(135deg,#a855f7,#7c3aed);box-shadow:0 14px 50px rgba(124,58,237,.26);border-color:transparent}.btn.primary:hover{transform:translateY(-2px);box-shadow:0 18px 60px rgba(124,58,237,.34)}.btn.ghost:hover{background:rgba(255,255,255,.045)}.hero-meta{display:flex;gap:34px;margin-top:38px;flex-wrap:wrap}.hero-meta span{display:block;color:#786d80;font-size:9px;letter-spacing:.18em}.hero-meta strong{font-size:13px;margin-top:3px;display:block}
-    .hero-art{position:relative;min-height:540px;border:1px solid var(--line);border-radius:32px;background:linear-gradient(145deg,rgba(168,85,247,.09),rgba(255,255,255,.015));overflow:hidden;display:grid;place-items:center;box-shadow:inset 0 1px rgba(255,255,255,.04),0 30px 100px rgba(0,0,0,.32)}.hero-art{perspective:1000px;--mx:50%;--my:50%;isolation:isolate}.hero-art::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(circle at var(--mx) var(--my),rgba(216,180,254,.18),transparent 30%);opacity:0;transition:opacity .35s ease}.hero-art:hover::after{opacity:1}.brand-mark,.brand-mark img{transition:transform .32s cubic-bezier(.2,.8,.2,1),filter .32s ease}.brand:hover .brand-mark{transform:translateY(-2px) rotate(-6deg) scale(1.04);box-shadow:0 0 42px rgba(168,85,247,.5)}.brand:hover .brand-mark img{transform:scale(1.08) rotate(6deg);filter:drop-shadow(0 0 12px rgba(216,180,254,.55))}.hero-logo{transition:transform .18s ease-out,filter .18s ease-out;transform-style:preserve-3d;will-change:transform}.hero-art:hover .hero-logo{filter:drop-shadow(0 24px 70px rgba(168,85,247,.58)) drop-shadow(0 0 22px rgba(216,180,254,.22))}.orb{position:absolute;border-radius:50%;filter:blur(10px);opacity:.48}.orb-a{width:290px;height:290px;background:radial-gradient(circle,#c084fc 0,rgba(168,85,247,.55) 35%,transparent 72%);top:40px;right:30px}.orb-b{width:260px;height:260px;background:radial-gradient(circle,#7c3aed 0,rgba(124,58,237,.45) 35%,transparent 72%);bottom:-20px;left:20px}.hero-logo{width:250px;height:250px;object-fit:contain;position:relative;z-index:2;filter:drop-shadow(0 18px 60px rgba(168,85,247,.42))}.hero-wordmark{position:absolute;bottom:52px;letter-spacing:.55em;font-size:12px;color:#d8ccdf}.hero-caption{position:absolute;bottom:28px;color:#786d80;font-size:8px;letter-spacing:.24em}
-    .ticker{display:flex;justify-content:center;align-items:center;gap:16px;color:#94899c;font-size:9px;font-weight:800;letter-spacing:.18em;flex-wrap:wrap;padding:20px 0 78px}.ticker span:first-child{color:#bfa9ce}.ticker i{width:4px;height:4px;background:#6b5f73;border-radius:50%}
-    .section{padding:76px 0}.section-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:26px}.section-head h2{font-size:clamp(34px,5vw,54px);letter-spacing:-.05em;margin:8px 0 0}.section-head>p{max-width:470px;color:#9b91a4;font-size:14px}
-    .feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.card{border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.015)),var(--panel);backdrop-filter:blur(18px);padding:24px;box-shadow:inset 0 1px rgba(255,255,255,.035),0 22px 70px rgba(0,0,0,.16);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}.card:hover{transform:translateY(-4px);border-color:rgba(192,132,252,.23);box-shadow:inset 0 1px rgba(255,255,255,.05),0 28px 90px rgba(0,0,0,.22)}.icon{font-size:24px;color:#d8b4fe}.feature h3{margin:20px 0 8px;font-size:16px}.feature p{margin:0;color:#968b9f;font-size:13px}
-    .download{padding:88px 0 110px}.download-card{border:1px solid rgba(192,132,252,.18);border-radius:28px;padding:34px;background:radial-gradient(circle at 75% 0,rgba(168,85,247,.18),transparent 38%),linear-gradient(135deg,rgba(168,85,247,.08),rgba(255,255,255,.018));display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center}.download-card h2{font-size:clamp(34px,5vw,54px);margin:8px 0;letter-spacing:-.05em}.download-card>div>p{max-width:640px;color:#a69baa}.download-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.tiny{grid-column:1/-1;margin:0;color:#786d80;font-size:10px}.tiny code{color:#b9a4ca}
-    footer{border-top:1px solid var(--line);padding:30px 0 42px;color:#71667b;font-size:11px;background:linear-gradient(180deg,rgba(255,255,255,.012),transparent)}.footer-in{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-in strong{color:#a99cad}.footer-meta{display:flex;flex-direction:column;align-items:flex-end;gap:4px}.footer-note{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#675c71}
+    .nav{height:82px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:10}.brand{display:flex;align-items:center;gap:12px}.brand-mark{display:grid;place-items:center;width:42px;height:42px;border:1px solid rgba(52,211,153,.45);border-radius:14px;background:linear-gradient(135deg,rgba(16,185,129,.24),rgba(5,150,105,.06));box-shadow:0 0 32px var(--glow);overflow:hidden}.brand-mark img{width:31px;height:31px;display:block}.brand strong{display:block;font-size:14px;letter-spacing:.14em}.brand small{display:block;font-size:10px;color:var(--muted);letter-spacing:.2em;margin-top:1px}.nav nav{display:flex;gap:24px;align-items:center}.nav nav a{font-size:13px;color:#9fc0b1;transition:.2s}.nav nav a:hover{color:#fff}.nav-github{padding:9px 13px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.025)}
+    .hero{min-height:760px;display:grid;grid-template-columns:1.02fr .98fr;gap:36px;align-items:center;padding:72px 0 58px}.eyebrow,.kicker{font-size:11px;font-weight:800;letter-spacing:.2em;color:#6ee7b7}.eyebrow{display:flex;align-items:center;gap:8px}.dot{width:7px;height:7px;border-radius:999px;background:#6ee7b7;box-shadow:0 0 14px #6ee7b7}.hero h1{font-size:clamp(58px,8vw,108px);line-height:.92;letter-spacing:-.075em;margin:20px 0 26px;font-weight:900}.hero h1 span{color:#6ee7b7;text-shadow:0 0 42px rgba(16,185,129,.22)}.lede{font-size:18px;max-width:660px;color:#b7cfc5;line-height:1.7}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0}.btn{display:inline-flex;align-items:center;justify-content:center;gap:11px;padding:13px 17px;border-radius:14px;border:1px solid var(--line);font-size:13px;font-weight:800;transition:.2s}.btn.primary{background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 14px 50px rgba(5,150,105,.26);border-color:transparent}.btn.primary:hover{transform:translateY(-2px);box-shadow:0 18px 60px rgba(5,150,105,.34)}.btn.ghost:hover{background:rgba(255,255,255,.045)}.hero-meta{display:flex;gap:34px;margin-top:38px;flex-wrap:wrap}.hero-meta span{display:block;color:#587466;font-size:9px;letter-spacing:.18em}.hero-meta strong{font-size:13px;margin-top:3px;display:block}
+    .hero-art{position:relative;min-height:540px;border:1px solid var(--line);border-radius:32px;background:linear-gradient(145deg,rgba(16,185,129,.09),rgba(255,255,255,.015));overflow:hidden;display:grid;place-items:center;box-shadow:inset 0 1px rgba(255,255,255,.04),0 30px 100px rgba(0,0,0,.32)}.hero-art{perspective:1000px;--mx:50%;--my:50%;isolation:isolate}.hero-art::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(circle at var(--mx) var(--my),rgba(167,243,208,.18),transparent 30%);opacity:0;transition:opacity .35s ease}.hero-art:hover::after{opacity:1}.brand-mark,.brand-mark img{transition:transform .32s cubic-bezier(.2,.8,.2,1),filter .32s ease}.brand:hover .brand-mark{transform:translateY(-2px) rotate(-6deg) scale(1.04);box-shadow:0 0 42px rgba(16,185,129,.5)}.brand:hover .brand-mark img{transform:scale(1.08) rotate(6deg);filter:drop-shadow(0 0 12px rgba(167,243,208,.55))}.hero-logo{transition:transform .18s ease-out,filter .18s ease-out;transform-style:preserve-3d;will-change:transform}.hero-art:hover .hero-logo{filter:drop-shadow(0 24px 70px rgba(16,185,129,.58)) drop-shadow(0 0 22px rgba(167,243,208,.22))}.orb{position:absolute;border-radius:50%;filter:blur(10px);opacity:.48}.orb-a{width:290px;height:290px;background:radial-gradient(circle,#6ee7b7 0,rgba(16,185,129,.55) 35%,transparent 72%);top:40px;right:30px}.orb-b{width:260px;height:260px;background:radial-gradient(circle,#059669 0,rgba(5,150,105,.45) 35%,transparent 72%);bottom:-20px;left:20px}.hero-logo{width:250px;height:250px;object-fit:contain;position:relative;z-index:2;filter:drop-shadow(0 18px 60px rgba(16,185,129,.42))}.hero-wordmark{position:absolute;bottom:52px;letter-spacing:.55em;font-size:12px;color:#c7f9dc}.hero-caption{position:absolute;bottom:28px;color:#587466;font-size:8px;letter-spacing:.24em}
+    .ticker{display:flex;justify-content:center;align-items:center;gap:16px;color:#789486;font-size:9px;font-weight:800;letter-spacing:.18em;flex-wrap:wrap;padding:20px 0 78px}.ticker span:first-child{color:#98c9b3}.ticker i{width:4px;height:4px;background:#6b5f73;border-radius:50%}
+    .section{padding:76px 0}.section-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:26px}.section-head h2{font-size:clamp(34px,5vw,54px);letter-spacing:-.05em;margin:8px 0 0}.section-head>p{max-width:470px;color:#86a99a;font-size:14px}
+    .feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.card{border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.015)),var(--panel);backdrop-filter:blur(18px);padding:24px;box-shadow:inset 0 1px rgba(255,255,255,.035),0 22px 70px rgba(0,0,0,.16);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}.card:hover{transform:translateY(-4px);border-color:rgba(52,211,153,.23);box-shadow:inset 0 1px rgba(255,255,255,.05),0 28px 90px rgba(0,0,0,.22)}.icon{font-size:24px;color:#a7f3d0}.feature h3{margin:20px 0 8px;font-size:16px}.feature p{margin:0;color:#7a9b8c;font-size:13px}
+    .download{padding:88px 0 110px}.download-card{border:1px solid rgba(52,211,153,.18);border-radius:28px;padding:34px;background:radial-gradient(circle at 75% 0,rgba(16,185,129,.18),transparent 38%),linear-gradient(135deg,rgba(16,185,129,.08),rgba(255,255,255,.018));display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center}.download-card h2{font-size:clamp(34px,5vw,54px);margin:8px 0;letter-spacing:-.05em}.download-card>div>p{max-width:640px;color:#88a99b}.download-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.tiny{grid-column:1/-1;margin:0;color:#587466;font-size:10px}.tiny code{color:#b9a4ca}
+    footer{border-top:1px solid var(--line);padding:30px 0 42px;color:#4e675c;font-size:11px;background:linear-gradient(180deg,rgba(255,255,255,.012),transparent)}.footer-in{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-in strong{color:#9cc1ac}.footer-meta{display:flex;flex-direction:column;align-items:flex-end;gap:4px}.footer-note{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#4a665a}
     @media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:46px}.hero-art{min-height:420px}.feature-grid{grid-template-columns:repeat(2,1fr)}.download-card{grid-template-columns:1fr}.download-actions{justify-content:flex-start}}
     @media(max-width:620px){.wrap{width:min(var(--max),calc(100% - 24px))}.nav nav a:not(.nav-github){display:none}.hero h1{font-size:56px}.section-head{display:block}.section-head>p{margin-top:14px}.feature-grid{grid-template-columns:1fr}.mock-desktop{grid-template-columns:48px 1fr}.mock-hero-card{padding:22px}.mock-orb{width:90px;height:90px}.mock-hero-card h3{font-size:38px}}
   </style>
@@ -31,9 +31,9 @@
 <body>
   <div class="noise"></div>
   <header class="nav wrap">
-    <a class="brand" href="#top" aria-label="Amethyst OS home">
-      <span class="brand-mark"><img src="assets/amethyst-mark.svg" alt="Amethyst OS"></span>
-      <span><strong>AMETHYST</strong><small>OS · AURORA</small></span>
+    <a class="brand" href="#top" aria-label="Calypso Linux home">
+      <span class="brand-mark"><img src="assets/calypso-mark.svg" alt="Calypso Linux"></span>
+      <span><strong>CALYPSO</strong><small>OS · AURORA DOTFILES</small></span>
     </a>
     <nav><a href="#features">Features</a><a href="#community">Community</a><a href="#download">Download</a><a class="nav-github" href="https://github.com/Jackson4Rocks/amethyst-os" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
   </header>
@@ -43,27 +43,27 @@
       <div class="hero-copy">
         <div class="eyebrow"><span class="dot"></span> ARCH-BASED · WAYLAND · HYPRLAND</div>
         <h1>Beauty meets<br><span>performance.</span></h1>
-        <p class="lede">Amethyst OS is a clean, fast Linux experience shaped around Hyprland, a custom Quickshell desktop, and a deliberately minimal AURORA aesthetic.</p>
-        <div class="hero-actions"><a class="btn primary" href="#download">Explore AURORA ↓</a><a class="btn ghost" href="https://github.com/Jackson4Rocks/amethyst-os" target="_blank" rel="noreferrer">View source ↗</a></div>
-        <div class="hero-meta"><div><span>CODENAME</span><strong>AURORA</strong></div><div><span>BASE</span><strong>ARCH LINUX</strong></div><div><span>ARCH</span><strong>x86_64</strong></div></div>
+        <p class="lede">Calypso Linux is a clean, fast Linux experience shaped around Hyprland, a custom Quickshell desktop, and a deliberately minimal Aurora Dotfiles aesthetic.</p>
+        <div class="hero-actions"><a class="btn primary" href="#download">Explore AURORA DOTFILES ↓</a><a class="btn ghost" href="https://github.com/Jackson4Rocks/amethyst-os" target="_blank" rel="noreferrer">View source ↗</a></div>
+        <div class="hero-meta"><div><span>DESKTOP</span><strong>AURORA DOTFILES</strong></div><div><span>BASE</span><strong>ARCH LINUX</strong></div><div><span>ARCH</span><strong>x86_64</strong></div></div>
       </div>
-      <div class="hero-art" aria-label="Amethyst AURORA visual">
+      <div class="hero-art" aria-label="Calypso AURORA DOTFILES visual">
         <div class="orb orb-a"></div><div class="orb orb-b"></div>
-        <img class="hero-logo" src="assets/amethyst-mark.svg" alt="Amethyst OS logo">
-        <div class="hero-wordmark">AURORA</div><div class="hero-caption">A DISTRO BUILT TO FEEL LIKE HOME</div>
+        <img class="hero-logo" src="assets/calypso-mark.svg" alt="Calypso Linux logo">
+        <div class="hero-wordmark">AURORA DOTFILES</div><div class="hero-caption">A DISTRO BUILT TO FEEL LIKE HOME</div>
       </div>
     </section>
 
-    <section class="ticker wrap"><span>ONE BRAND · ONE MARK</span><i></i><span>HYPRLAND</span><i></i><span>QUICKSHELL</span><i></i><span>ZSH</span><i></i><span>FASTFETCH</span><i></i><span>AURORA</span></section>
+    <section class="ticker wrap"><span>ONE BRAND · ONE MARK</span><i></i><span>HYPRLAND</span><i></i><span>QUICKSHELL</span><i></i><span>ZSH</span><i></i><span>FASTFETCH</span><i></i><span>AURORA DOTFILES</span></section>
 
 
     <section class="section wrap">
       <div class="section-head">
-        <div><p class="kicker">AURORA STACK</p><h2>Small stack. Clear purpose.</h2></div>
-        <p>Amethyst is designed around a focused set of Wayland-native tools instead of a pile of overlapping desktop layers.</p>
+        <div><p class="kicker">AURORA DOTFILES STACK</p><h2>Small stack. Clear purpose.</h2></div>
+        <p>Calypso is designed around a focused set of Wayland-native tools instead of a pile of overlapping desktop layers.</p>
       </div>
       <div class="feature-grid">
-        <article class="card feature"><span class="icon">⌘</span><h3>Quickshell</h3><p>A custom shell for the panel, workspaces, status surfaces, and the AURORA visual language.</p></article>
+        <article class="card feature"><span class="icon">⌘</span><h3>Quickshell</h3><p>A custom shell for the panel, workspaces, status surfaces, and the Aurora Dotfiles visual language.</p></article>
         <article class="card feature"><span class="icon">◈</span><h3>Dynamic themes</h3><p>Wallpaper-derived colors flow into the desktop, terminal, and launcher for one visual system.</p></article>
         <article class="card feature"><span class="icon">⌁</span><h3>Keyboard-first</h3><p>Simple Super-key bindings, quick launch, workspaces, media controls, and practical defaults.</p></article>
         <article class="card feature"><span class="icon">↗</span><h3>Open by design</h3><p>Configs, artwork, build files, and the desktop itself live together in the project repository.</p></article>
@@ -71,11 +71,11 @@
     </section>
 
     <section id="features" class="section wrap">
-      <div class="section-head"><div><p class="kicker">WHY AMETHYST</p><h2>Minimal on purpose.</h2></div><p>Everything is tuned to feel cohesive from the first boot: compositor, shell, terminal, installer, and artwork all share the same visual language.</p></div>
+      <div class="section-head"><div><p class="kicker">WHY CALYPSO</p><h2>Minimal on purpose.</h2></div><p>Everything is tuned to feel cohesive from the first boot: compositor, shell, terminal, installer, and artwork all share the same visual language.</p></div>
       <div class="feature-grid">
         <article class="card feature"><span class="icon">⌁</span><h3>Hyprland first</h3><p>Wayland-native and responsive, with a workflow designed around keyboard-friendly control.</p></article>
-        <article class="card feature"><span class="icon">✦</span><h3>AURORA UI</h3><p>Rounded surfaces, soft glow, glassy depth, and a purple-forward visual system.</p></article>
-        <article class="card feature"><span class="icon">⌘</span><h3>Ready to use</h3><p>Zsh, Fastfetch, Kitty, AURORA shell, networking, power management, and practical defaults.</p></article>
+        <article class="card feature"><span class="icon">✦</span><h3>Aurora Dotfiles UI</h3><p>Rounded surfaces, soft glow, glassy depth, and a emerald-forward visual system.</p></article>
+        <article class="card feature"><span class="icon">⌘</span><h3>Ready to use</h3><p>Zsh, Fastfetch, Kitty, Aurora Dotfiles shell, networking, power management, and practical defaults.</p></article>
         <article class="card feature"><span class="icon">↗</span><h3>Open & remixable</h3><p>Open configuration and a website that is intentionally easy to fork and customize.</p></article>
       </div>
     </section>
@@ -83,14 +83,14 @@
     <section id="community" class="section wrap">
       <div class="section-head">
         <div><p class="kicker">THE COMMUNITY</p><h2>Build it with us.</h2></div>
-        <p>Amethyst OS is a fun project built in public. Development, ideas, testing, feedback, and general Linux chaos all have a place.</p>
+        <p>Calypso Linux is a fun project built in public. Development, ideas, testing, feedback, and general Linux chaos all have a place.</p>
       </div>
       <div class="feature-grid">
         <article class="card feature">
           <span class="icon">◌</span>
           <h3>Telegram</h3>
-          <p>Join the Amethyst OS group and chat with the people following AURORA.</p>
-          <a class="btn ghost" style="margin-top:18px" href="https://t.me/AmethystOSHYPR" target="_blank" rel="noreferrer">Join the group ↗</a>
+          <p>Join the Calypso Linux group and chat with the people following Calypso Linux.</p>
+          <a class="btn ghost" style="margin-top:18px" href="https://t.me/CalypsoOSHYPR" target="_blank" rel="noreferrer">Join the group ↗</a>
         </article>
         <article class="card feature">
           <span class="icon">⌘</span>
@@ -101,11 +101,11 @@
         <article class="card feature">
           <span class="icon">◇</span>
           <h3>Try & test</h3>
-          <p>Boot an AURORA build, break something, fix it, and send back the useful bits.</p>
+          <p>Boot a Calypso Linux build, break something, fix it, and send back the useful bits.</p>
         </article>
         <article class="card feature">
           <span class="icon">✦</span>
-          <h3>Shape AURORA</h3>
+          <h3>Shape Calypso Linux</h3>
           <p>The desktop is intentionally open to ideas — from shell polish to artwork and tooling.</p>
         </article>
       </div>
@@ -113,14 +113,14 @@
 
     <section id="download" class="download wrap">
       <div class="download-card">
-        <div><p class="kicker">AMETHYST OS</p><h2>Build your own AURORA.</h2><p>Browse the source, follow development, join the community, and grab releases when they are published.</p></div>
-        <div class="download-actions"><a class="btn primary" href="https://github.com/Jackson4Rocks/amethyst-os" target="_blank" rel="noreferrer">Open GitHub ↗</a><a class="btn ghost" href="https://t.me/AmethystOSHYPR" target="_blank" rel="noreferrer">Telegram chat ↗</a></div>
-        <p class="tiny">ISO downloads will appear here when the first public AURORA release is ready.</p>
+        <div><p class="kicker">CALYPSO OS</p><h2>Explore Calypso Linux.</h2><p>Browse the source, follow development, join the community, and grab releases when they are published.</p></div>
+        <div class="download-actions"><a class="btn primary" href="https://github.com/Jackson4Rocks/amethyst-os" target="_blank" rel="noreferrer">Open GitHub ↗</a><a class="btn ghost" href="https://t.me/CalypsoOSHYPR" target="_blank" rel="noreferrer">Telegram chat ↗</a></div>
+        <p class="tiny">ISO downloads will appear here when the first public AURORA DOTFILES release is ready.</p>
       </div>
     </section>
   </main>
 
-  <footer><div class="footer-in wrap"><span>© Amethyst OS · <strong>AURORA</strong></span><span>Arch-based · Open source</span><span class="footer-meta"><span class="footer-note">Maintained by Leon Sony · An independent project</span><span class="footer-note">Website vibe-coded by AI</span></span></div></footer>
+  <footer><div class="footer-in wrap"><span>© Calypso Linux · <strong>AURORA DOTFILES</strong></span><span>Arch-based · Open source</span><span class="footer-meta"><span class="footer-note">Maintained by Leon Sony · An independent project</span><span class="footer-note">Website vibe-coded by AI</span></span></div></footer>
 
   <script>
     (() => {
