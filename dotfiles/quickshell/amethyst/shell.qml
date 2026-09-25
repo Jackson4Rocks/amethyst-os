@@ -145,7 +145,7 @@ ShellRoot {
                             spacing: 12
 
                             Text {
-                                Layout.preferredWidth: 160
+                                width: 160
                                 text: Hyprland.activeToplevel ? Hyprland.activeToplevel.title : "AURORA"
                                 color: theme.onSurfaceVariant
                                 font.pixelSize: 10
