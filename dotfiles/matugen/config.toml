@@ -1,17 +1,20 @@
-# Amethyst OS wallpaper-driven palette generation.
+# Amethyst OS AURORA dynamic theming
 
 [config]
 reload_apps = true
 caching = true
 
-[templates.hyprland]
-input_path = './templates/amethyst-colors.lua'
-output_path = '~/.config/amethyst/colors.lua'
-post_hook = 'hyprctl reload'
+[templates.shell]
+input_path = '~/.config/matugen/templates/amethyst-theme.qml'
+output_path = '~/.config/quickshell/amethyst/Theme.qml'
 
 [templates.kitty]
-input_path = './templates/kitty-colors.conf'
+input_path = '~/.config/matugen/templates/kitty-colors.conf'
 output_path = '~/.config/kitty/amethyst-colors.conf'
+
+[templates.fuzzel]
+input_path = '~/.config/matugen/templates/fuzzel-colors.ini'
+output_path = '~/.config/fuzzel/fuzzel.ini'
 
 [config.wallpaper]
 set = false
