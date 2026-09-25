@@ -59,6 +59,16 @@ The website includes four visual directions:
 | 🔥 Ember | Rose / warm |
 | 🌙 Nightfall | Indigo / deep |
 
+## 🎛️ AURORA Dotfiles
+
+The repository now includes the reference Amethyst desktop configuration under dotfiles/.
+
+The default stack stays intentionally compact: **Hyprland + DankMaterialShell + Kitty + Zsh + Fastfetch + Hyprpaper + Matugen + Fuzzel + Yazi**.
+
+Wallpaper changes can be applied with aos-wallpaper, which generates the palette and changes the live wallpaper through Hyprpaper IPC.
+
+See dotfiles/README.md for the keybinds, layout, and installation flow.
+
 ## 🤝 Contributing
 
 Issues, ideas, improvements, configuration tweaks, and documentation changes are welcome.
