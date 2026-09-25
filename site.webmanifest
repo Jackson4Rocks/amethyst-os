@@ -7,9 +7,9 @@
   "theme_color": "#00d98b",
   "icons": [
     {
-      "src": "./assets/calypso-mark.png",
-      "sizes": "512x512",
-      "type": "image/png",
+      "src": "./assets/calypso-mark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
       "purpose": "any"
     }
   ]
