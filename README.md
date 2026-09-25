@@ -1,6 +1,6 @@
 # 💚 Calypso Linux
 
-> **Aurora Dotfiles** — Calypso Linux is an Arch-based Linux project focused on a polished Hyprland desktop, a cohesive visual identity, and a simple user experience.
+> **Calypso Linux** — is an Arch-based Linux project focused on a polished Hyprland desktop, a cohesive visual identity, and a simple user experience.
 
 <p align="center">
   <strong>Beauty meets performance.</strong><br>
@@ -20,7 +20,7 @@ The project is being built around:
 - 🐚 **Zsh** — interactive shell
 - 🖥️ **Kitty** — terminal
 - ⚡ **Fastfetch** — system information
-- 🛠️ **AOS Installer** — Archinstall-based installation flow
+- 🛠️ **Calypso Installer** — native guided installation flow
 
 ## 🌐 Website
 
@@ -47,9 +47,9 @@ Calypso Linux
     └── Custom Aurora Dotfiles artwork
 ```
 
-## 🎛️ Aurora Dotfiles Dotfiles
+## 🎛️ Aurora Dotfiles
 
-The repository now includes the reference Amethyst desktop configuration under dotfiles/.
+The repository now includes the reference Calypso Linux desktop configuration under dotfiles/.
 
 The default stack stays intentionally compact: **Hyprland + Quickshell + Kitty + Zsh + Fastfetch + Hyprpaper + Matugen + Fuzzel + Yazi**.
 
@@ -73,7 +73,7 @@ Calypso Linux is an **active personal project** and is still evolving. Expect ch
 
 I made this project for fun and general curiosity. You're welcome to contribute, share ideas, test builds, or send feedback.
 
-You can reach me through the [Calypso Linux Telegram group](https://t.me/AmethystOSHYPR).
+You can reach the project through the [Telegram group](https://t.me/AmethystOSHYPR).
 
 ---
 
