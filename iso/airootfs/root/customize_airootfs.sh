@@ -4,7 +4,7 @@ set -euo pipefail
 ###############################################################################
 # CALYPSO LINUX
 # Live environment customization
-# Aurora Dotfiles are the bundled desktop configuration.
+# KDE Plasma is the default live desktop; Hyprland is the alternative profile.
 ###############################################################################
 
 echo "==> Configuring Calypso Linux live environment..."
@@ -58,7 +58,7 @@ chmod 0440 /etc/sudoers.d/calypso
 # BUNDLE AURORA DOTFILES
 ###############################################################################
 
-echo "==> Installing Aurora Dotfiles..."
+echo "==> Preparing Calypso desktop defaults..."
 
 cp -a /etc/skel/. /home/calypso/
 install -d -m 0755 /home/calypso/.config/systemd/user/default.target.wants
@@ -140,7 +140,7 @@ chmod 0644 /usr/share/applications/calypso-installer.desktop 2>/dev/null || true
 
 cat > /home/calypso/.profile <<'EOF_PROFILE'
 export CALYPSO_NAME="Calypso Linux"
-export CALYPSO_DOTFILES="Aurora Dotfiles"
+export CALYPSO_DESKTOP="KDE Plasma"
 export QT_QPA_PLATFORM=wayland
 export GDK_BACKEND=wayland,x11
 export SDL_VIDEODRIVER=wayland
@@ -149,7 +149,7 @@ EOF_PROFILE
 
 cat > /home/calypso/.zshenv <<'EOF_ZSHENV'
 export CALYPSO_NAME="Calypso Linux"
-export CALYPSO_DOTFILES="Aurora Dotfiles"
+export CALYPSO_DESKTOP="KDE Plasma"
 EOF_ZSHENV
 
 ###############################################################################
@@ -179,7 +179,7 @@ chmod 0700 /home/calypso/.config 2>/dev/null || true
 echo
 echo "============================================================"
 echo "                 CALYPSO LINUX READY"
-echo "            PLASMA + AURORA DOTFILES"
+echo "                 PLASMA + HYPRLAND"
 echo "============================================================"
 printf 'User       : %s\n' "$(id -un calypso)"
 printf 'Shell      : %s\n' "$(getent passwd calypso | cut -d: -f7)"
