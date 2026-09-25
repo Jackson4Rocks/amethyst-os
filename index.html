@@ -105,17 +105,8 @@
       position:relative;
       z-index:10;
     }
-    .brand{display:flex;align-items:center;gap:16px}
-    .brand-mark{
-      width:50px;height:50px;display:grid;place-items:center;overflow:hidden;
-      border-radius:14px;
-      filter:drop-shadow(0 0 18px rgba(46,255,185,.28));
-    }
-    .brand-mark img{
-      width:136%;height:136%;max-width:none;object-fit:contain;display:block;
-      transform:translate(0,0);
-      mix-blend-mode:screen;
-    }
+    .brand{display:flex;align-items:center;gap:0}
+    .brand-mark{display:none}
     .wordmark{
       display:flex;
       flex-direction:column;
@@ -627,7 +618,6 @@
   <div class="page">
     <header class="nav wrap">
       <a class="brand" href="#top" aria-label="Calypso Linux home">
-        <span class="brand-mark"><img src="./assets/calypso-mark.png?v=3" alt="Calypso Linux"></span>
         <span class="wordmark">
           <span class="wordmark-main">CALYPSO</span>
           <span class="wordmark-sub">LINUX</span>
