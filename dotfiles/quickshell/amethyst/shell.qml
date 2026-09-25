@@ -1,12 +1,13 @@
 import Quickshell
 import Quickshell.Hyprland
 import QtQuick
+import QtQuick.Layouts
 
 ShellRoot {
     Theme { id: theme }
 
     Variants {
-        model: Quickshell.screens
+        variants: Quickshell.screens
 
         PanelWindow {
             property var modelData
@@ -36,14 +37,14 @@ ShellRoot {
                 border.width: 1
                 border.color: theme.outline
 
-                Row {
+                RowLayout {
                     anchors.fill: parent
                     anchors.leftMargin: 14
                     anchors.rightMargin: 14
                     spacing: 14
 
                     Item {
-                        width: 112
+                        Layout.preferredWidth: 112
                         height: parent.height
 
                         Row {
@@ -97,7 +98,7 @@ ShellRoot {
 
                     Item {
                         Layout.fillWidth: true
-                        width: 1
+                        Layout.alignment: Qt.AlignVCenter
                         height: parent.height
 
                         Row {
@@ -135,7 +136,7 @@ ShellRoot {
                     }
 
                     Item {
-                        width: 280
+                        Layout.preferredWidth: 280
                         height: parent.height
 
                         Row {
@@ -144,7 +145,7 @@ ShellRoot {
                             spacing: 12
 
                             Text {
-                                width: 160
+                                Layout.preferredWidth: 160
                                 text: Hyprland.activeToplevel ? Hyprland.activeToplevel.title : "AURORA"
                                 color: theme.onSurfaceVariant
                                 font.pixelSize: 10
