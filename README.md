@@ -4,19 +4,19 @@
 
 <p align="center">
   <strong>Beauty meets performance.</strong><br>
-  KDE Plasma · Hyprland · Calamares · Arch Linux
+  KDE Plasma · Hyprland · Arch Linux
 </p>
 
 ---
 
-## 🖥️ Desktop profiles
+## ⚡ Desktop profiles + philosophy
 
 Calypso currently focuses on two desktop profiles:
 
 - 🧊 **KDE Plasma** — the main Calypso desktop, with Calypso branding and wallpapers
 - 🪟 **Hyprland** — an optional window-manager profile for users who prefer a tiling, keyboard-driven workflow
 
-Other desktop targets may change as the project evolves.
+Calypso is designed to stay fast and lean, with a focused software set and no unnecessary bloat getting in the way of the desktop.
 
 ## 📦 Releases
 
@@ -31,7 +31,6 @@ Calypso Linux
 ├── Arch Linux base
 ├── KDE Plasma
 ├── Hyprland
-├── Calamares installer
 └── Calypso artwork + wallpapers
 ```
 
@@ -49,7 +48,7 @@ Please include useful logs and the relevant system / build details when reportin
 
 ## ⚠️ Status
 
-Calypso Linux is an **active personal project** and is still evolving. Expect changes to the desktop configuration, artwork, installer, and release process.
+Calypso Linux is an **active personal project** and is still evolving. Expect changes to the desktop configuration, artwork, system defaults, and release process.
 
 ## 👤 Maintainer
 
@@ -62,5 +61,5 @@ You can reach the project through the [Telegram group](https://t.me/CalypsoLinux
 ---
 
 <p align="center">
-  <sub>CALYPSO LINUX · KDE PLASMA · HYPRLAND · ARCH LINUX</sub>
+  <sub>CALYPSO LINUX · KDE PLASMA · HYPRLAND · ARCH LINUX · FAST + LEAN</sub>
 </p>
