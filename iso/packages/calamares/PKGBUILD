@@ -1,0 +1,77 @@
+# Maintainer: Leon Sony
+# Calypso Linux custom Calamares package
+
+pkgname=calamares
+pkgver=3.4.2
+pkgrel=1
+pkgdesc="Distribution-independent system installer framework"
+arch=('x86_64')
+url="https://calamares.codeberg.page/"
+license=('GPL-3.0-or-later' 'BSD-2-Clause' 'LGPL-2.1-or-later')
+source=(
+  "calamares-${pkgver}.tar.gz::https://codeberg.org/Calamares/calamares/archive/v${pkgver}.tar.gz"
+)
+sha256sums=('733bbbb00dc9f84874bd5c22960952f317ea2537565431179fa2152b2fbfdccc')
+
+depends=(
+  'kcoreaddons'
+  'kconfig'
+  'kconfigwidgets'
+  'kcrash'
+  'kdbusaddons'
+  'kglobalaccel'
+  'ki18n'
+  'kiconthemes'
+  'kio'
+  'kservice'
+  'ktextwidgets'
+  'kxmlgui'
+  'kwidgetsaddons'
+  'kwindowsystem'
+  'kpmcore'
+  'libpwquality'
+  'polkit'
+  'polkit-qt6'
+  'python'
+  'qt6-base'
+  'qt6-declarative'
+  'qt6-svg'
+  'yaml-cpp'
+)
+makedepends=(
+  'cmake'
+  'extra-cmake-modules'
+  'ninja'
+  'qt6-tools'
+)
+
+build() {
+  local _src
+  _src="$(find "${srcdir}" -maxdepth 1 -type d -name 'calamares*' -print -quit)"
+  [[ -n "${_src}" ]] || { echo "Calamares source directory not found." >&2; return 1; }
+
+  cmake -S "${_src}" -B "${srcdir}/build" -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_SYSCONFDIR=/etc \
+    -DINSTALL_POLKIT=ON \
+    -DINSTALL_COMPLETION=OFF \
+    -DINSTALL_CONFIG=OFF \
+    -DWITH_QT6=ON \
+    -DWITH_QML=ON \
+    -DWITH_PYTHON=ON \
+    -DWITH_PYBIND11=ON \
+    -DBUILD_SCHEMA_TESTING=OFF \
+    -DBUILD_CRASH_REPORTING=OFF
+
+  cmake --build "${srcdir}/build"
+}
+
+package() {
+  DESTDIR="${pkgdir}" cmake --install "${srcdir}/build"
+
+  if [[ -f "${srcdir}"/calamares*/LICENSES/CC0-1.0.txt ]]; then
+    install -Dm644 "${srcdir}"/calamares*/LICENSES/CC0-1.0.txt \
+      "${pkgdir}/usr/share/licenses/${pkgname}/CC0-1.0.txt"
+  fi
+}
