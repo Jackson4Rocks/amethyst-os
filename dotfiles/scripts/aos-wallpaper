@@ -17,16 +17,17 @@ if [[ ! -f "$WALL" ]]; then
   exit 1
 fi
 
-mkdir -p "$HOME/.config/amethyst" "$HOME/.config/kitty"
+mkdir -p "$HOME/.config/quickshell/amethyst" "$HOME/.config/kitty" "$HOME/.config/fuzzel"
 
 if command -v matugen >/dev/null 2>&1; then
   matugen image "$WALL" -m dark
 fi
 
-if command -v hyprctl >/dev/null 2>&1; then
+if command -v hyprpaper >/dev/null 2>&1; then
+  hyprpaper preload "$WALL" >/dev/null 2>&1 || true
   while IFS= read -r monitor; do
     [[ -n "$monitor" ]] || continue
-    hyprctl hyprpaper wallpaper "$monitor,$WALL,cover" >/dev/null 2>&1 || true
+    hyprpaper wallpaper "$monitor,$WALL,cover" >/dev/null 2>&1 || true
   done < <(hyprctl monitors -j 2>/dev/null | jq -r '.[].name' 2>/dev/null || true)
 fi
 
