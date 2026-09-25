@@ -30,8 +30,11 @@ jobs:
           mkdir -p _site
           cp index.html _site/
           cp -R assets _site/assets
+          cp site.webmanifest _site/
           cp sitemap.xml _site/
           cp robots.txt _site/
+          cp -R docs _site/docs
+          touch _site/.nojekyll
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
