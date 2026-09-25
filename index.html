@@ -18,12 +18,10 @@
     .ticker{display:flex;justify-content:center;align-items:center;gap:16px;color:#94899c;font-size:9px;font-weight:800;letter-spacing:.18em;flex-wrap:wrap;padding:20px 0 78px}.ticker span:first-child{color:#bfa9ce}.ticker i{width:4px;height:4px;background:#6b5f73;border-radius:50%}
     .section{padding:76px 0}.section-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:26px}.section-head h2{font-size:clamp(34px,5vw,54px);letter-spacing:-.05em;margin:8px 0 0}.section-head>p{max-width:470px;color:#9b91a4;font-size:14px}
     .feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.card{border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.015)),var(--panel);backdrop-filter:blur(18px);padding:24px;box-shadow:inset 0 1px rgba(255,255,255,.035),0 22px 70px rgba(0,0,0,.16);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}.card:hover{transform:translateY(-4px);border-color:rgba(192,132,252,.23);box-shadow:inset 0 1px rgba(255,255,255,.05),0 28px 90px rgba(0,0,0,.22)}.icon{font-size:24px;color:#d8b4fe}.feature h3{margin:20px 0 8px;font-size:16px}.feature p{margin:0;color:#968b9f;font-size:13px}
-    .wall-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.wall-card{position:relative;aspect-ratio:16/9;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#0f0916}.wall-card svg{display:block;width:100%;height:100%;transition:transform .5s ease}.wall-card:hover svg{transform:scale(1.035)}.wall-label{position:absolute;left:18px;bottom:17px;z-index:2;display:flex;flex-direction:column;text-shadow:0 2px 16px rgba(0,0,0,.7)}.wall-label strong{font-size:17px;letter-spacing:.08em}.wall-label span{font-size:10px;color:#ded5e4;letter-spacing:.12em;text-transform:uppercase;opacity:.82}
-    .preview-wrap{margin-top:34px}.preview-heading{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:13px}.preview-heading span{font-size:11px;color:#786d80}.mock-desktop{border:1px solid var(--line);border-radius:26px;overflow:hidden;background:#0a0710;display:grid;grid-template-columns:68px 1fr;min-height:380px;box-shadow:0 26px 80px rgba(0,0,0,.34)}.mock-sidebar{padding:18px 0;display:flex;flex-direction:column;align-items:center;gap:13px;border-right:1px solid var(--line);background:rgba(255,255,255,.02)}.mock-dot{width:29px;height:29px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.025)}.mock-dot.active{background:linear-gradient(145deg,rgba(168,85,247,.36),rgba(124,58,237,.14));border-color:rgba(192,132,252,.34);box-shadow:0 0 24px rgba(168,85,247,.18)}.mock-main{padding:20px}.mock-top{display:flex;justify-content:space-between;color:#8f8399;font-size:11px}.mock-hero-card{margin-top:20px;min-height:210px;border:1px solid var(--line);border-radius:22px;background:radial-gradient(circle at 70% 35%,rgba(168,85,247,.22),transparent 32%),linear-gradient(135deg,rgba(168,85,247,.09),rgba(255,255,255,.015));padding:30px;display:flex;justify-content:space-between;align-items:center}.mock-hero-card small{font-size:9px;letter-spacing:.2em;color:#a491b6}.mock-hero-card h3{font-size:50px;letter-spacing:-.06em;margin:3px 0}.mock-hero-card p{margin:0;color:#9b8fa2}.mock-orb{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f2e8ff 0,#c084fc 16%,#7c3aed 48%,transparent 72%);filter:blur(1px);box-shadow:0 0 80px rgba(168,85,247,.32)}.mock-panels{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px}.mock-panels div{height:78px;border-radius:17px;border:1px solid var(--line);background:rgba(255,255,255,.018)}
     .download{padding:88px 0 110px}.download-card{border:1px solid rgba(192,132,252,.18);border-radius:28px;padding:34px;background:radial-gradient(circle at 75% 0,rgba(168,85,247,.18),transparent 38%),linear-gradient(135deg,rgba(168,85,247,.08),rgba(255,255,255,.018));display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center}.download-card h2{font-size:clamp(34px,5vw,54px);margin:8px 0;letter-spacing:-.05em}.download-card>div>p{max-width:640px;color:#a69baa}.download-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.tiny{grid-column:1/-1;margin:0;color:#786d80;font-size:10px}.tiny code{color:#b9a4ca}
     footer{border-top:1px solid var(--line);padding:30px 0 42px;color:#71667b;font-size:11px;background:linear-gradient(180deg,rgba(255,255,255,.012),transparent)}.footer-in{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-in strong{color:#a99cad}.footer-note{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#675c71}
     @media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:46px}.hero-art{min-height:420px}.feature-grid{grid-template-columns:repeat(2,1fr)}.download-card{grid-template-columns:1fr}.download-actions{justify-content:flex-start}}
-    @media(max-width:620px){.wrap{width:min(var(--max),calc(100% - 24px))}.nav nav a:not(.nav-github){display:none}.hero h1{font-size:56px}.section-head,.preview-heading{display:block}.section-head>p,.preview-heading span{margin-top:14px}.feature-grid,.wall-grid{grid-template-columns:1fr}.mock-desktop{grid-template-columns:48px 1fr}.mock-hero-card{padding:22px}.mock-orb{width:90px;height:90px}.mock-hero-card h3{font-size:38px}}
+    @media(max-width:620px){.wrap{width:min(var(--max),calc(100% - 24px))}.nav nav a:not(.nav-github){display:none}.hero h1{font-size:56px}.section-head{display:block}.section-head>p{margin-top:14px}.feature-grid{grid-template-columns:1fr}.mock-desktop{grid-template-columns:48px 1fr}.mock-hero-card{padding:22px}.mock-orb{width:90px;height:90px}.mock-hero-card h3{font-size:38px}}
   </style>
 </head>
 <body>
@@ -33,7 +31,7 @@
       <span class="brand-mark"><img src="assets/amethyst-mark.svg" alt="Amethyst OS"></span>
       <span><strong>AMETHYST</strong><small>OS · AURORA</small></span>
     </a>
-    <nav><a href="#features">Features</a><a href="#visuals">Visuals</a><a href="#download">Download</a><a class="nav-github" href="https://github.com/Jackson4Rocks/amethyst-os" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
+    <nav><a href="#features">Features</a><a href="#community">Community</a><a href="#download">Download</a><a class="nav-github" href="https://github.com/Jackson4Rocks/amethyst-os" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
   </header>
 
   <main id="top">
@@ -78,38 +76,42 @@
       </div>
     </section>
 
-    <section id="visuals" class="section wrap">
-      <div class="section-head"><div><p class="kicker">VISUALS</p><h2>Pick your AURORA.</h2></div><p>Four color directions are built into this page so release posts and wallpapers can keep the same design language.</p></div>
-      <div class="wall-grid">
-        <article class="wall-card"><div class="wall-label"><strong>AMETHYST</strong><span>Violet / Default</span></div><svg viewBox="0 0 1600 900" aria-label="Purple AURORA wallpaper"><defs><radialGradient id="g1"><stop stop-color="#d8b4fe"/><stop offset=".35" stop-color="#a855f7"/><stop offset="1" stop-color="#09050f" stop-opacity="0"/></radialGradient><linearGradient id="b1" x1="0" x2="1"><stop stop-color="#12071f"/><stop offset=".5" stop-color="#4c1d95"/><stop offset="1" stop-color="#08050d"/></linearGradient></defs><rect width="1600" height="900" fill="url(#b1)"/><circle cx="1260" cy="220" r="380" fill="url(#g1)" opacity=".55"/><circle cx="390" cy="780" r="300" fill="#7c3aed" opacity=".14"/><g transform="translate(800 410) rotate(45)"><polygon points="0,-210 175,-35 0,250 -175,-35" fill="#ffffff" fill-opacity=".04" stroke="#e9d5ff" stroke-opacity=".65" stroke-width="4"/><polygon points="0,-145 120,-25 0,175 -120,-25" fill="#a855f7" fill-opacity=".25"/><polygon points="0,-80 72,-16 0,110 -72,-16" fill="#f5e9ff" fill-opacity=".28"/></g></svg></article>
-        <article class="wall-card"><div class="wall-label"><strong>POLARIS</strong><span>Cyan / Ice</span></div><svg viewBox="0 0 1600 900" aria-label="Cyan AURORA wallpaper"><defs><radialGradient id="g2"><stop stop-color="#c7f9ff"/><stop offset=".32" stop-color="#22d3ee"/><stop offset="1" stop-color="#06131a" stop-opacity="0"/></radialGradient><linearGradient id="b2" x1="0" x2="1"><stop stop-color="#041116"/><stop offset=".55" stop-color="#0e7490"/><stop offset="1" stop-color="#04080d"/></linearGradient></defs><rect width="1600" height="900" fill="url(#b2)"/><circle cx="1220" cy="210" r="380" fill="url(#g2)" opacity=".48"/><g transform="translate(800 410) rotate(45)"><polygon points="0,-210 175,-35 0,250 -175,-35" fill="#e9fdff" fill-opacity=".03" stroke="#b7f8ff" stroke-opacity=".7" stroke-width="4"/><polygon points="0,-145 120,-25 0,175 -120,-25" fill="#22d3ee" fill-opacity=".2"/><polygon points="0,-80 72,-16 0,110 -72,-16" fill="#ecfeff" fill-opacity=".28"/></g></svg></article>
-        <article class="wall-card"><div class="wall-label"><strong>EMBER</strong><span>Rose / Heat</span></div><svg viewBox="0 0 1600 900" aria-label="Rose AURORA wallpaper"><defs><radialGradient id="g3"><stop stop-color="#ffd0e0"/><stop offset=".32" stop-color="#f43f5e"/><stop offset="1" stop-color="#17050b" stop-opacity="0"/></radialGradient><linearGradient id="b3" x1="0" x2="1"><stop stop-color="#14050a"/><stop offset=".55" stop-color="#9f1239"/><stop offset="1" stop-color="#090507"/></linearGradient></defs><rect width="1600" height="900" fill="url(#b3)"/><circle cx="1220" cy="210" r="380" fill="url(#g3)" opacity=".5"/><g transform="translate(800 410) rotate(45)"><polygon points="0,-210 175,-35 0,250 -175,-35" fill="#fff1f2" fill-opacity=".03" stroke="#fecdd3" stroke-opacity=".72" stroke-width="4"/><polygon points="0,-145 120,-25 0,175 -120,-25" fill="#f43f5e" fill-opacity=".2"/><polygon points="0,-80 72,-16 0,110 -72,-16" fill="#fff1f2" fill-opacity=".25"/></g></svg></article>
-        <article class="wall-card"><div class="wall-label"><strong>NIGHTFALL</strong><span>Indigo / Deep</span></div><svg viewBox="0 0 1600 900" aria-label="Indigo AURORA wallpaper"><defs><radialGradient id="g4"><stop stop-color="#dbe4ff"/><stop offset=".28" stop-color="#6366f1"/><stop offset="1" stop-color="#070915" stop-opacity="0"/></radialGradient><linearGradient id="b4" x1="0" x2="1"><stop stop-color="#060817"/><stop offset=".5" stop-color="#312e81"/><stop offset="1" stop-color="#050611"/></linearGradient></defs><rect width="1600" height="900" fill="url(#b4)"/><circle cx="1200" cy="220" r="380" fill="url(#g4)" opacity=".46"/><g transform="translate(800 410) rotate(45)"><polygon points="0,-210 175,-35 0,250 -175,-35" fill="#eef2ff" fill-opacity=".03" stroke="#c7d2fe" stroke-opacity=".72" stroke-width="4"/><polygon points="0,-145 120,-25 0,175 -120,-25" fill="#6366f1" fill-opacity=".2"/><polygon points="0,-80 72,-16 0,110 -72,-16" fill="#eef2ff" fill-opacity=".24"/></g></svg></article>
+    <section id="community" class="section wrap">
+      <div class="section-head">
+        <div><p class="kicker">THE COMMUNITY</p><h2>Build it with us.</h2></div>
+        <p>Amethyst OS is a fun project built in public. Development, ideas, testing, feedback, and general Linux chaos all have a place.</p>
       </div>
-
-      <div class="preview-wrap">
-        <div class="preview-heading"><p class="kicker">DESKTOP PREVIEW</p><span>Concept mockup — swap this for a real AURORA screenshot later.</span></div>
-        <div class="mock-desktop"><div class="mock-sidebar"><div class="mock-dot active"></div><div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div></div><div class="mock-main"><div class="mock-top"><span>Amethyst OS</span><span>12:48</span></div><div class="mock-hero-card"><div><small>WELCOME TO</small><h3>AURORA</h3><p>Beauty meets performance.</p></div><div class="mock-orb"></div></div><div class="mock-panels"><div></div><div></div><div></div></div></div></div>
-      </div>
-    </section>
-
-
-    <section class="section wrap">
-      <div class="card" style="display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;padding:28px 30px">
-        <div>
-          <p class="kicker">AURORA / EARLY PROJECT</p>
-          <h3 style="font-size:24px;margin:8px 0 6px;letter-spacing:-.03em">Built to experiment. Built to feel good.</h3>
-          <p style="margin:0;color:#9b91a4;max-width:760px;font-size:13px">Amethyst OS is a fun project that grows in public — from the ISO profile and desktop configs to the artwork and release tooling.</p>
-        </div>
-        <a class="btn ghost" href="https://github.com/Jackson4Rocks/amethyst-os" target="_blank" rel="noreferrer">Follow the project ↗</a>
+      <div class="feature-grid">
+        <article class="card feature">
+          <span class="icon">◌</span>
+          <h3>Telegram</h3>
+          <p>Join the Amethyst OS group and chat with the people following AURORA.</p>
+          <a class="btn ghost" style="margin-top:18px" href="https://t.me/AmethystOSHYPR" target="_blank" rel="noreferrer">Join the group ↗</a>
+        </article>
+        <article class="card feature">
+          <span class="icon">⌘</span>
+          <h3>Source</h3>
+          <p>The ISO profile, shell, branding, configs, and build files live openly on GitHub.</p>
+          <a class="btn ghost" style="margin-top:18px" href="https://github.com/Jackson4Rocks/amethyst-os" target="_blank" rel="noreferrer">Open GitHub ↗</a>
+        </article>
+        <article class="card feature">
+          <span class="icon">◇</span>
+          <h3>Try & test</h3>
+          <p>Boot an AURORA build, break something, fix it, and send back the useful bits.</p>
+        </article>
+        <article class="card feature">
+          <span class="icon">✦</span>
+          <h3>Shape AURORA</h3>
+          <p>The desktop is intentionally open to ideas — from shell polish to artwork and tooling.</p>
+        </article>
       </div>
     </section>
 
     <section id="download" class="download wrap">
       <div class="download-card">
-        <div><p class="kicker">AMETHYST OS</p><h2>Build your own AURORA.</h2><p>Browse the project source, follow development, and grab releases when they are published.</p></div>
-        <div class="download-actions"><a class="btn primary" href="https://github.com/Jackson4Rocks/amethyst-os" target="_blank" rel="noreferrer">Open GitHub ↗</a><a class="btn ghost" href="#visuals">View visuals ↑</a></div>
-        <p class="tiny">ISO download links can be added here once the SourceForge release URL is ready.</p>
+        <div><p class="kicker">AMETHYST OS</p><h2>Build your own AURORA.</h2><p>Browse the source, follow development, join the community, and grab releases when they are published.</p></div>
+        <div class="download-actions"><a class="btn primary" href="https://github.com/Jackson4Rocks/amethyst-os" target="_blank" rel="noreferrer">Open GitHub ↗</a><a class="btn ghost" href="https://t.me/AmethystOSHYPR" target="_blank" rel="noreferrer">Telegram chat ↗</a></div>
+        <p class="tiny">ISO downloads will appear here when the first public AURORA release is ready.</p>
       </div>
     </section>
   </main>
