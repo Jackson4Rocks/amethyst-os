@@ -16,7 +16,7 @@ Aurora Dotfiles are intentionally built as a small, custom desktop stack:
 - Fuzzel — lightweight app launcher
 - Yazi — terminal file manager
 
-Quickshell configs live in `~/.config/quickshell/<name>`; Aurora Dotfiles uses the named `aurora` config and starts it with `qs -c aurora`. citeturn912860search2turn362347search1
+Quickshell configs live in `~/.config/quickshell/<name>`; Aurora Dotfiles uses the named `aurora` config and starts it with `qs -c aurora`.
 
 ## Shell design
 
@@ -28,7 +28,7 @@ The default shell is a floating, centered top panel with:
 - clock
 - wallpaper-derived colors
 
-Quickshell provides native Hyprland workspace access and can create one panel per connected monitor. citeturn893622search2turn362347search1
+Quickshell provides native Hyprland workspace access and can create one panel per connected monitor.
 
 ## Keybinds
 
@@ -54,7 +54,7 @@ Use:
 
     calypso-wallpaper ~/Pictures/wallpapers/my-wallpaper.png
 
-Matugen generates the Quickshell theme, Kitty colors, and Fuzzel colors from the wallpaper. Quickshell watches its config files for changes, so the shell can update when the generated `Theme.qml` changes. citeturn362347search1
+Matugen generates the Quickshell theme, Kitty colors, and Fuzzel colors from the wallpaper. Quickshell watches its config files for changes, so the shell can update when the generated `Theme.qml` changes.
 
 ## Installation
 
@@ -65,6 +65,6 @@ For the Calypso Linux ISO, place the same files into `/etc/skel` so new users re
 
 ## Notes
 
-The Hyprland configuration targets the Lua-based configuration system used by current Hyprland releases. citeturn133000search3turn133000search5
+The Hyprland configuration targets the Lua-based configuration system used by current Hyprland releases.
 
-Quickshell is intentionally treated as the framework for the Calypso shell rather than relying on another full desktop shell. Its current documentation describes it as a toolkit for building bars, widgets, notifications, lock screens, and other desktop components. citeturn764349search0
+Quickshell is intentionally treated as the framework for the Calypso shell rather than relying on another full desktop shell. Its current documentation describes it as a toolkit for building bars, widgets, notifications, lock screens, and other desktop components.
