@@ -7,10 +7,10 @@
   <meta name="description" content="Calypso Linux — an Arch-based Linux desktop built around Hyprland and Aurora Dotfiles.">
   <link rel="canonical" href="https://jackson4rocks.github.io/calypso-linux/">
   <meta name="google-site-verification" content="We36Y7aFzCz1YLPHX3e1_N9cVgiQCA7kGBMNkEAoVyQ">
-  <link rel="icon" type="image/png" sizes="512x512" href="./assets/calypso-mark.png?v=3">
-  <link rel="shortcut icon" type="image/png" href="./assets/calypso-mark.png?v=3">
-  <link rel="apple-touch-icon" sizes="512x512" href="./assets/calypso-mark.png?v=3">
-  <meta property="og:image" content="https://jackson4rocks.github.io/calypso-linux/assets/calypso-mark.png">
+  <link rel="icon" type="image/svg+xml" href="./assets/calypso-mark.svg">
+  <link rel="shortcut icon" type="image/svg+xml" href="./assets/calypso-mark.svg">
+  <link rel="apple-touch-icon" href="./assets/calypso-mark.svg">
+  <meta property="og:image" content="https://jackson4rocks.github.io/calypso-linux/assets/calypso-mark.svg">
   <link rel="manifest" href="site.webmanifest">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Calypso Linux">
@@ -135,9 +135,9 @@
         radial-gradient(circle at 18% 53%,rgba(47,255,168,.55) 0 1px,transparent 2px);
     }
     .hero-visual:after{
-      content:"";position:absolute;width:440px;height:440px;border-radius:50%;
-      background:radial-gradient(circle,rgba(29,255,165,.22),transparent 65%);
-      filter:blur(18px);
+      content:"";position:absolute;width:420px;height:420px;border-radius:50%;
+      background:radial-gradient(circle,rgba(255,128,224,.14),rgba(29,255,165,.10) 38%,transparent 70%);
+      filter:blur(18px);z-index:1;
     }
     .sky,.mountains,.water{position:absolute;inset:0;pointer-events:none}
     .sky{
@@ -168,11 +168,15 @@
     .orbit:before,.orbit:after{content:"";position:absolute;left:50%;width:2px;height:28px;background:#adffda;transform:translateX(-50%);box-shadow:0 0 16px #2fffa8}
     .orbit:before{top:-14px}.orbit:after{bottom:-14px}
     .logo-wrap{
-      width:min(420px,72%);aspect-ratio:1;position:relative;z-index:2;
+      width:min(360px,64%);aspect-ratio:1;position:relative;z-index:3;
+      display:grid;place-items:center;
       transition:transform .18s ease-out;will-change:transform;
-      filter:drop-shadow(0 20px 55px rgba(20,255,160,.32));
+      filter:drop-shadow(0 22px 48px rgba(0,0,0,.55)) drop-shadow(0 0 34px rgba(255,143,229,.22));
     }
-    .logo-wrap img{width:100%;height:100%;display:block;filter:drop-shadow(0 0 34px rgba(25,255,164,.28))}
+    .logo-wrap img{
+      width:100%;height:100%;display:block;object-fit:contain;
+      opacity:1;visibility:visible;mix-blend-mode:normal;
+    }
     .visual-label{position:absolute;bottom:58px;color:#628077;font-size:8px;letter-spacing:.3em;z-index:3}
 
     .ticker{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;padding:28px 0 64px;color:#5f7a70;font-size:9px;font-weight:800;letter-spacing:.2em}
@@ -262,7 +266,7 @@
 <body>
   <header class="nav wrap">
     <a class="brand" href="#top" aria-label="Calypso Linux home">
-      <span class="brand-mark"><img src="./assets/calypso-mark.png?v=3" alt=""></span>
+      <span class="brand-mark"><img src="./assets/calypso-mark.svg" alt=""></span>
       <span><span class="brand-name">CALYPSO</span><span class="brand-sub">LINUX · AURORA DOTFILES</span></span>
     </a>
     <nav class="nav-links">
@@ -299,7 +303,7 @@
           <div class="mountains"></div>
           <div class="water"></div>
           <div class="orbit"></div>
-          <div class="logo-wrap" id="hero-logo"><img src="./assets/calypso-mark.png?v=3" alt="Calypso Linux"></div>
+          <div class="logo-wrap" id="hero-logo"><img src="./assets/calypso-mark.svg" alt="Calypso Linux"></div>
           <div class="visual-label">A NEW HORIZON FOR YOUR DESKTOP</div>
         </div>
       </div>
@@ -330,7 +334,7 @@
           <p class="kicker">THE VISUAL SYSTEM</p>
           <h3>Emerald glass.<br>Black space.</h3>
           <p>Glowing edges, translucent surfaces, crystalline geometry, and restrained motion carry the same identity through the desktop and the web.</p>
-          <div class="mini-logo"><img src="./assets/calypso-mark.png?v=3" alt=""></div>
+          <div class="mini-logo"><img src="./assets/calypso-mark.svg" alt=""></div>
         </article>
         <article class="showcase-card">
           <p class="kicker">THE STACK</p>
