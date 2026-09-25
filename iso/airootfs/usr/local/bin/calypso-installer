@@ -144,6 +144,7 @@ mount "$EFI" /mnt/boot
 
 install -d -m 0755 /mnt/usr/local/bin
 install -m 0755 /usr/local/bin/calypso-install-wallpapers /mnt/usr/local/bin/calypso-install-wallpapers
+install -m 0755 /usr/local/bin/calypso-apply-wallpaper /mnt/usr/local/bin/calypso-apply-wallpaper
 install -d -m 0755 /mnt/etc/systemd/system
 install -m 0644 /etc/systemd/system/calypso-wallpapers.service /mnt/etc/systemd/system/calypso-wallpapers.service
 
