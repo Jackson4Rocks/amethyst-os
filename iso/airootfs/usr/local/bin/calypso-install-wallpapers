@@ -1,0 +1,27 @@
+#!/bin/bash
+set -u
+
+# Calypso Linux curated wallpaper installer.
+# All stock photo sources are intentionally limited to:
+# https://files.enderman.ch/wallpapers/
+
+TARGET="${1:-/usr/share/backgrounds/calypso/stock}"
+mkdir -p "$TARGET"
+
+download() {
+    local url="$1"
+    local out="$2"
+    printf 'Wallpaper: %s\n' "$out"
+    if curl -fL --retry 3 --connect-timeout 10 --max-time 120 -o "$TARGET/$out" "$url"; then
+        chmod 0644 "$TARGET/$out"
+    else
+        rm -f "$TARGET/$out"
+        printf 'Warning: could not download %s\n' "$out" >&2
+    fi
+}
+
+download "https://files.enderman.ch/wallpapers/Aurora.jpg" "Aurora.jpg"
+download "https://files.enderman.ch/wallpapers/Deep%20Forest.jpg" "Deep Forest.jpg"
+download "https://files.enderman.ch/wallpapers/Evening%20Mountain.jpg" "Evening Mountain.jpg"
+download "https://files.enderman.ch/wallpapers/Night%20Mountains.png" "Night Mountains.png"
+download "https://files.enderman.ch/wallpapers/Starry%20Horizon.jpg" "Starry Horizon.jpg"
