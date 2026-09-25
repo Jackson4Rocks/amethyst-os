@@ -1,6 +1,6 @@
 # Calypso Linux — Aurora Dotfiles
 
-The reference desktop configuration for Calypso Linux. The canonical brand mark is `assets/calypso-mark.svg`; reuse it everywhere instead of creating alternate logos.
+The reference desktop configuration for Calypso Linux. Aurora Dotfiles are currently developed for Hyprland first. The Calypso installer also supports GNOME, KDE Plasma, and Niri as desktop targets, but those profiles do not receive Aurora configuration yet.
 
 ## Design
 
@@ -68,3 +68,15 @@ For the Calypso Linux ISO, place the same files into `/etc/skel` so new users re
 The Hyprland configuration targets the Lua-based configuration system used by current Hyprland releases.
 
 Quickshell is intentionally treated as the framework for the Calypso shell rather than relying on another full desktop shell. Its current documentation describes it as a toolkit for building bars, widgets, notifications, lock screens, and other desktop components.
+
+
+## Desktop targets
+
+| Desktop | Installer | Aurora profile |
+| --- | --- | --- |
+| GNOME | Yes | Planned |
+| KDE Plasma | Yes | Planned |
+| Niri | Yes | Planned |
+| Hyprland | Yes | Current |
+
+The installer installs the selected desktop and applies the Aurora configuration only when Hyprland is selected.
