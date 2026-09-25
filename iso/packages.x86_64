@@ -10,6 +10,7 @@ brltty
 btrfs-progs
 clonezilla
 cloud-init
+curl
 cryptsetup
 darkhttpd
 ddrescue
