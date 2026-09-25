@@ -117,7 +117,11 @@
       mix-blend-mode:screen;
     }
     .wordmark{
-      line-height:.92;
+      display:flex;
+      flex-direction:column;
+      align-items:flex-start;
+      justify-content:center;
+      line-height:1;
       text-transform:uppercase;
       letter-spacing:.34em;
     }
@@ -126,13 +130,17 @@
       font-size:22px;
       font-weight:500;
       letter-spacing:.29em;
+      line-height:1;
+      white-space:nowrap;
     }
     .wordmark-sub{
-      margin-top:10px;
+      margin-top:7px;
       color:var(--green);
       font-size:9px;
       letter-spacing:.55em;
-      text-align:center;
+      line-height:1;
+      text-align:left;
+      white-space:nowrap;
     }
 
     .nav-links{display:flex;align-items:center;gap:33px}
@@ -173,6 +181,7 @@
       position:relative;
       z-index:4;
       padding:82px 0 24px 28px;
+      text-align:left;
     }
     .hero-copy:before{
       content:"";
@@ -184,7 +193,10 @@
       z-index:-1;
     }
     .eyebrow{
-      display:flex;align-items:center;gap:12px;
+      display:flex;
+      align-items:center;
+      justify-content:flex-start;
+      gap:12px;
       color:var(--green);
       font-size:11px;font-weight:800;
       letter-spacing:.34em;
@@ -311,7 +323,9 @@
       z-index:5;
       margin-top:46px;
       display:flex;
-      gap:28px;
+      align-items:flex-start;
+      justify-content:flex-start;
+      gap:32px;
       flex-wrap:wrap;
     }
     .stat small{
