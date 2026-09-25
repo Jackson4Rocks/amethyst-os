@@ -1,0 +1,17 @@
+# Amethyst OS wallpaper-driven palette generation.
+
+[config]
+reload_apps = true
+caching = true
+
+[templates.hyprland]
+input_path = './templates/amethyst-colors.lua'
+output_path = '~/.config/amethyst/colors.lua'
+post_hook = 'hyprctl reload'
+
+[templates.kitty]
+input_path = './templates/kitty-colors.conf'
+output_path = '~/.config/kitty/amethyst-colors.conf'
+
+[config.wallpaper]
+set = false
