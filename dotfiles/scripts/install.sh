@@ -21,7 +21,7 @@ cp "$ROOT/kitty/amethyst-colors.conf" "$XDG_CONFIG_HOME/kitty/amethyst-colors.co
 cp "$ROOT/fastfetch/config.jsonc" "$XDG_CONFIG_HOME/fastfetch/config.jsonc"
 cp "$ROOT/zsh/.zshrc" "$HOME/.zshrc"
 cp "$ROOT/../assets/amethyst-mark.svg" "$HOME/.local/share/amethyst/amethyst-mark.svg"
-cp "$ROOT/assets/amethyst-mark.svg" "$XDG_CONFIG_HOME/quickshell/amethyst/assets/amethyst-mark.svg"
+cp "$ROOT/../assets/amethyst-mark.svg" "$XDG_CONFIG_HOME/quickshell/amethyst/assets/amethyst-mark.svg"
 
 cp "$ROOT/quickshell/amethyst/shell.qml" "$XDG_CONFIG_HOME/quickshell/amethyst/shell.qml"
 cp "$ROOT/quickshell/amethyst/Theme.qml" "$XDG_CONFIG_HOME/quickshell/amethyst/Theme.qml"
