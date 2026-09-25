@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-# Calypso Linux — Plasma + Aurora Dotfiles installer
+# Calypso Linux — Plasma + Hyprland installer
 # WARNING: the selected disk is erased completely.
 
 if [ "$EUID" -ne 0 ]; then exec sudo "$0" "$@"; fi
@@ -25,7 +25,7 @@ printf '%s\n' '                 GUIDED INSTALLER'
 printf '%s\n' '============================================================'
 printf '\n'
 printf 'Calypso Linux is an Arch-based desktop system.\n'
-printf 'Profiles: KDE Plasma (default) and Hyprland + Aurora Dotfiles.\n\n'
+printf 'Profiles: KDE Plasma (default) and Hyprland (alternative).\n\n'
 printf '%bWARNING:%b Whole-disk installation only.\n' "$RED" "$RESET"
 printf '%bWARNING:%b The selected disk will be erased completely.\n' "$RED" "$RESET"
 printf 'There is no automatic dual-boot partitioning in this installer.\n\n'
@@ -86,7 +86,7 @@ TIMEZONE="${TIMEZONE:-Asia/Kolkata}"
 
 printf '\n%bDESKTOP PROFILE%b\n' "$CYAN" "$RESET"
 printf '  1) KDE Plasma       — Calypso Desktop [default]\n'
-printf '  2) Hyprland         — Aurora Dotfiles\n\n'
+printf '  2) Hyprland         — Alternative Wayland desktop\n\n'
 
 while true; do
     read -r -p 'Select [1-2] (Enter = 1): ' CHOICE
@@ -109,7 +109,7 @@ while true; do
 done
 
 printf '\nSelected: %b%s%b\n' "$GREEN" "$DESKTOP_NAME" "$RESET"
-[ "$DESKTOP_ID" = kde ] && printf 'Branding: Calypso KDE wallpaper enabled.\n' || printf 'Branding: Aurora Dotfiles enabled.\n'
+[ "$DESKTOP_ID" = kde ] && printf 'Branding: Calypso KDE wallpaper enabled.\n' || printf 'Branding: Hyprland profile enabled.\n'
 
 case "$DISK" in
     *[0-9]) PREFIX="${DISK}p" ;;
@@ -142,7 +142,10 @@ mount "$ROOT" /mnt
 mkdir -p /mnt/boot
 mount "$EFI" /mnt/boot
 
-BASE=(base base-devel linux linux-firmware sudo zsh git networkmanager systemd-resolvconf sddm kitty fastfetch pipewire pipewire-pulse wireplumber xdg-desktop-portal xdg-desktop-portal-gtk xorg-xwayland mesa polkit brightnessctl playerctl grim slurp wl-clipboard power-profiles-daemon noto-fonts)
+install -d -m 0755 /mnt/usr/local/bin
+install -m 0755 /usr/local/bin/calypso-install-wallpapers /mnt/usr/local/bin/calypso-install-wallpapers
+
+BASE=(base base-devel linux linux-firmware sudo zsh git curl networkmanager systemd-resolvconf sddm kitty fastfetch pipewire pipewire-pulse wireplumber xdg-desktop-portal xdg-desktop-portal-gtk xorg-xwayland mesa polkit brightnessctl playerctl grim slurp wl-clipboard power-profiles-daemon noto-fonts)
 printf '\nInstalling Calypso Linux + %s...\n' "$DESKTOP_NAME"
 pacstrap -K /mnt "${BASE[@]}" "${DESKTOP_PACKAGES[@]}"
 
@@ -235,6 +238,9 @@ EOF
 
 if [ "$DESKTOP" = kde ]; then
     cp -a /etc/skel/.config/autostart/calypso-plasma-wallpaper.desktop "/home/$USERNAME/.config/autostart/"
+    /usr/local/bin/calypso-install-wallpapers /usr/share/backgrounds/calypso/stock
+    install -d -m 0755 "/home/$USERNAME/Pictures/Wallpapers/Calypso"
+    cp -a /usr/share/backgrounds/calypso/stock/. "/home/$USERNAME/Pictures/Wallpapers/Calypso/" 2>/dev/null || true
 fi
 
 if [ "$DESKTOP" = hyprland ]; then
@@ -247,14 +253,13 @@ fi
 
 cat > "/home/$USERNAME/.profile" <<EOF
 export CALYPSO_NAME="Calypso Linux"
-export CALYPSO_DOTFILES="Aurora Dotfiles"
 export CALYPSO_DESKTOP="$DESKTOP"
 export QT_QPA_PLATFORM=wayland
 export GDK_BACKEND=wayland,x11
 export SDL_VIDEODRIVER=wayland
 export MOZ_ENABLE_WAYLAND=1
 EOF
-printf '%s\n' 'export CALYPSO_NAME="Calypso Linux"' 'export CALYPSO_DOTFILES="Aurora Dotfiles"' > "/home/$USERNAME/.zshenv"
+printf '%s\n' 'export CALYPSO_NAME="Calypso Linux"' 'export CALYPSO_DESKTOP="$DESKTOP"' > "/home/$USERNAME/.zshenv"
 
 if [ -f "/home/$USERNAME/.local/share/calypso/calypso-mark.svg" ]; then
     install -d -m 0755 /usr/share/icons/hicolor/scalable/apps
@@ -288,9 +293,9 @@ if [ "$DESKTOP_ID" = kde ]; then
     [ -f /mnt/usr/share/wayland-sessions/plasma.desktop ] || die 'KDE Plasma Wayland session missing.'
 fi
 if [ "$DESKTOP_ID" = hyprland ]; then
-    [ -f "/mnt/home/$USERNAME/.config/hypr/hyprland.lua" ] || die 'Hyprland configuration missing.'
-    [ -f "/mnt/home/$USERNAME/.config/quickshell/aurora/shell.qml" ] || die 'Aurora Quickshell configuration missing.'
     [ -f /mnt/usr/share/wayland-sessions/hyprland.desktop ] || die 'Hyprland Wayland session missing.'
+    [ -f "/mnt/home/$USERNAME/.config/hypr/hyprland.lua" ] || printf 'Warning: optional Hyprland configuration was not copied.\n'
+    [ -f "/mnt/home/$USERNAME/.config/quickshell/aurora/shell.qml" ] || printf 'Warning: optional Quickshell configuration was not copied.\n'
 fi
 
 printf '\n%bCALYPSO LINUX READY%b\n' "$CYAN" "$RESET"
