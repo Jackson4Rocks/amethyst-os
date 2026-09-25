@@ -55,7 +55,7 @@ EOF_SUDO
 chmod 0440 /etc/sudoers.d/calypso
 
 ###############################################################################
-# BUNDLE AURORA DOTFILES
+# OPTIONAL HYPRLAND CUSTOMIZATION
 ###############################################################################
 
 echo "==> Preparing Calypso desktop defaults..."
