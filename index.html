@@ -16,7 +16,7 @@
     .noise{position:fixed;inset:0;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");z-index:9}
     .nav{height:82px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:10}.brand{display:flex;align-items:center;gap:12px}.brand-mark{display:grid;place-items:center;width:42px;height:42px;border:1px solid rgba(192,132,252,.45);border-radius:14px;background:linear-gradient(135deg,rgba(168,85,247,.24),rgba(124,58,237,.06));box-shadow:0 0 32px var(--glow);overflow:hidden}.brand-mark img{width:31px;height:31px;display:block}.brand strong{display:block;font-size:14px;letter-spacing:.14em}.brand small{display:block;font-size:10px;color:var(--muted);letter-spacing:.2em;margin-top:1px}.nav nav{display:flex;gap:24px;align-items:center}.nav nav a{font-size:13px;color:#b9b0c6;transition:.2s}.nav nav a:hover{color:#fff}.nav-github{padding:9px 13px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.025)}
     .hero{min-height:760px;display:grid;grid-template-columns:1.02fr .98fr;gap:36px;align-items:center;padding:72px 0 58px}.eyebrow,.kicker{font-size:11px;font-weight:800;letter-spacing:.2em;color:#bc8cff}.eyebrow{display:flex;align-items:center;gap:8px}.dot{width:7px;height:7px;border-radius:999px;background:#c084fc;box-shadow:0 0 14px #c084fc}.hero h1{font-size:clamp(58px,8vw,108px);line-height:.92;letter-spacing:-.075em;margin:20px 0 26px;font-weight:900}.hero h1 span{color:#c084fc;text-shadow:0 0 42px rgba(168,85,247,.22)}.lede{font-size:18px;max-width:660px;color:#bbb1c4;line-height:1.7}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0}.btn{display:inline-flex;align-items:center;justify-content:center;gap:11px;padding:13px 17px;border-radius:14px;border:1px solid var(--line);font-size:13px;font-weight:800;transition:.2s}.btn.primary{background:linear-gradient(135deg,#a855f7,#7c3aed);box-shadow:0 14px 50px rgba(124,58,237,.26);border-color:transparent}.btn.primary:hover{transform:translateY(-2px);box-shadow:0 18px 60px rgba(124,58,237,.34)}.btn.ghost:hover{background:rgba(255,255,255,.045)}.hero-meta{display:flex;gap:34px;margin-top:38px;flex-wrap:wrap}.hero-meta span{display:block;color:#786d80;font-size:9px;letter-spacing:.18em}.hero-meta strong{font-size:13px;margin-top:3px;display:block}
-    .hero-art{position:relative;min-height:540px;border:1px solid var(--line);border-radius:32px;background:linear-gradient(145deg,rgba(168,85,247,.09),rgba(255,255,255,.015));overflow:hidden;display:grid;place-items:center;box-shadow:inset 0 1px rgba(255,255,255,.04),0 30px 100px rgba(0,0,0,.32)}.orb{position:absolute;border-radius:50%;filter:blur(10px);opacity:.48}.orb-a{width:290px;height:290px;background:radial-gradient(circle,#c084fc 0,rgba(168,85,247,.55) 35%,transparent 72%);top:40px;right:30px}.orb-b{width:260px;height:260px;background:radial-gradient(circle,#7c3aed 0,rgba(124,58,237,.45) 35%,transparent 72%);bottom:-20px;left:20px}.hero-logo{width:250px;height:250px;object-fit:contain;position:relative;z-index:2;filter:drop-shadow(0 18px 60px rgba(168,85,247,.42))}.hero-wordmark{position:absolute;bottom:52px;letter-spacing:.55em;font-size:12px;color:#d8ccdf}.hero-caption{position:absolute;bottom:28px;color:#786d80;font-size:8px;letter-spacing:.24em}
+    .hero-art{position:relative;min-height:540px;border:1px solid var(--line);border-radius:32px;background:linear-gradient(145deg,rgba(168,85,247,.09),rgba(255,255,255,.015));overflow:hidden;display:grid;place-items:center;box-shadow:inset 0 1px rgba(255,255,255,.04),0 30px 100px rgba(0,0,0,.32)}.hero-art{perspective:1000px;--mx:50%;--my:50%;isolation:isolate}.hero-art::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(circle at var(--mx) var(--my),rgba(216,180,254,.18),transparent 30%);opacity:0;transition:opacity .35s ease}.hero-art:hover::after{opacity:1}.brand-mark,.brand-mark img{transition:transform .32s cubic-bezier(.2,.8,.2,1),filter .32s ease}.brand:hover .brand-mark{transform:translateY(-2px) rotate(-6deg) scale(1.04);box-shadow:0 0 42px rgba(168,85,247,.5)}.brand:hover .brand-mark img{transform:scale(1.08) rotate(6deg);filter:drop-shadow(0 0 12px rgba(216,180,254,.55))}.hero-logo{transition:transform .18s ease-out,filter .18s ease-out;transform-style:preserve-3d;will-change:transform}.hero-art:hover .hero-logo{filter:drop-shadow(0 24px 70px rgba(168,85,247,.58)) drop-shadow(0 0 22px rgba(216,180,254,.22))}.orb{position:absolute;border-radius:50%;filter:blur(10px);opacity:.48}.orb-a{width:290px;height:290px;background:radial-gradient(circle,#c084fc 0,rgba(168,85,247,.55) 35%,transparent 72%);top:40px;right:30px}.orb-b{width:260px;height:260px;background:radial-gradient(circle,#7c3aed 0,rgba(124,58,237,.45) 35%,transparent 72%);bottom:-20px;left:20px}.hero-logo{width:250px;height:250px;object-fit:contain;position:relative;z-index:2;filter:drop-shadow(0 18px 60px rgba(168,85,247,.42))}.hero-wordmark{position:absolute;bottom:52px;letter-spacing:.55em;font-size:12px;color:#d8ccdf}.hero-caption{position:absolute;bottom:28px;color:#786d80;font-size:8px;letter-spacing:.24em}
     .ticker{display:flex;justify-content:center;align-items:center;gap:16px;color:#94899c;font-size:9px;font-weight:800;letter-spacing:.18em;flex-wrap:wrap;padding:20px 0 78px}.ticker span:first-child{color:#bfa9ce}.ticker i{width:4px;height:4px;background:#6b5f73;border-radius:50%}
     .section{padding:76px 0}.section-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:26px}.section-head h2{font-size:clamp(34px,5vw,54px);letter-spacing:-.05em;margin:8px 0 0}.section-head>p{max-width:470px;color:#9b91a4;font-size:14px}
     .feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.card{border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.015)),var(--panel);backdrop-filter:blur(18px);padding:24px;box-shadow:inset 0 1px rgba(255,255,255,.035),0 22px 70px rgba(0,0,0,.16);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}.card:hover{transform:translateY(-4px);border-color:rgba(192,132,252,.23);box-shadow:inset 0 1px rgba(255,255,255,.05),0 28px 90px rgba(0,0,0,.22)}.icon{font-size:24px;color:#d8b4fe}.feature h3{margin:20px 0 8px;font-size:16px}.feature p{margin:0;color:#968b9f;font-size:13px}
@@ -119,5 +119,50 @@
   </main>
 
   <footer><div class="footer-in wrap"><span>© Amethyst OS · <strong>AURORA</strong></span><span>Arch-based · Open source</span><span class="footer-meta"><span class="footer-note">Maintained by Leon Sony · An independent project</span><span class="footer-note">Website vibe-coded by AI</span></span></div></footer>
+
+  <script>
+    (() => {
+      const art = document.querySelector(".hero-art");
+      const logo = document.querySelector(".hero-logo");
+      if (!art || !logo) return;
+
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      if (reduceMotion.matches) return;
+
+      let frame = 0;
+
+      const resetLogo = () => {
+        cancelAnimationFrame(frame);
+        art.style.setProperty("--mx", "50%");
+        art.style.setProperty("--my", "50%");
+        logo.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg) translate3d(0,0,0) scale(1)";
+      };
+
+      art.addEventListener("pointermove", (event) => {
+        if (event.pointerType !== "mouse") return;
+
+        const rect = art.getBoundingClientRect();
+        const x = (event.clientX - rect.left) / rect.width - 0.5;
+        const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+        art.style.setProperty("--mx", `${(x + 0.5) * 100}%`);
+        art.style.setProperty("--my", `${(y + 0.5) * 100}%`);
+
+        const rotateX = y * -10;
+        const rotateY = x * 12;
+        const moveX = x * 10;
+        const moveY = y * 10;
+
+        cancelAnimationFrame(frame);
+        frame = requestAnimationFrame(() => {
+          logo.style.transform =
+            `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translate3d(${moveX}px,${moveY}px,0) scale(1.035)`;
+        });
+      });
+
+      art.addEventListener("pointerleave", resetLogo);
+    })();
+  </script>
+
 </body>
 </html>
