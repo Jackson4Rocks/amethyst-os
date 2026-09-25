@@ -25,9 +25,9 @@ NAME="Calypso Linux"
 ID=calypso
 ID_LIKE=arch
 PRETTY_NAME="Calypso Linux"
-VERSION="0.1"
-VERSION_ID="0.1"
-HOME_URL="https://github.com/Jackson4Rocks/amethyst-os"
+VERSION="0.2"
+VERSION_ID="0.2"
+HOME_URL="https://github.com/Jackson4Rocks/calypso-linux"
 SUPPORT_URL="https://github.com/Jackson4Rocks/amethyst-os/issues"
 BUG_REPORT_URL="https://github.com/Jackson4Rocks/amethyst-os/issues"
 EOF_OS
@@ -77,22 +77,13 @@ fi
 # CALYPSO WALLPAPER
 ###############################################################################
 
-echo "==> Creating Calypso emerald wallpaper..."
+echo "==> Installing Calypso branded wallpaper..."
 
-if command -v magick >/dev/null 2>&1; then
-    magick -size 1920x1080 \
-        gradient:'#020806-#064e3b' \
-        -fill 'rgba(16,185,129,0.18)' \
-        -draw 'circle 1540,250 1810,250' \
-        -fill 'rgba(52,211,153,0.12)' \
-        -draw 'circle 360,850 620,850' \
-        /usr/share/backgrounds/calypso/CALYPSO-16x9.png
+if [ -f /etc/skel/.local/share/calypso/wallpapers/Calypso-Default.svg ]; then
+    install -d -m 0755 /usr/share/backgrounds/calypso
+    install -m 0644         /etc/skel/.local/share/calypso/wallpapers/Calypso-Default.svg         /usr/share/backgrounds/calypso/Calypso-Default.svg
 else
-    echo "WARNING: ImageMagick is missing; no generated Calypso wallpaper."
-fi
-
-if [ -f /usr/share/backgrounds/calypso/CALYPSO-16x9.png ]; then
-    chmod 0644 /usr/share/backgrounds/calypso/CALYPSO-16x9.png
+    echo "WARNING: Calypso SVG wallpaper is missing from the ISO skeleton."
 fi
 
 ###############################################################################
@@ -105,7 +96,7 @@ DisplayServer=wayland
 
 [Autologin]
 User=calypso
-Session=hyprland.desktop
+Session=plasma.desktop
 Relogin=false
 EOF_SDDM
 chmod 0644 /etc/sddm.conf.d/calypso.conf
@@ -192,10 +183,11 @@ echo "                 AURORA DOTFILES"
 echo "============================================================"
 printf 'User       : %s\n' "$(id -un calypso)"
 printf 'Shell      : %s\n' "$(getent passwd calypso | cut -d: -f7)"
+printf 'KDE Plasma : %s\n' "$(command -v plasmashell >/dev/null 2>&1 && echo installed || echo missing)"
 printf 'Hyprland   : %s\n' "$(command -v hyprland >/dev/null 2>&1 && echo installed || echo missing)"
 printf 'Quickshell : %s\n' "$(command -v qs >/dev/null 2>&1 && echo installed || echo missing)"
 printf 'Fastfetch  : %s\n' "$(command -v fastfetch >/dev/null 2>&1 && echo installed || echo missing)"
-printf 'Wallpaper  : %s\n' "$(test -f /usr/share/backgrounds/calypso/CALYPSO-16x9.png && echo installed || echo missing)"
+printf 'Wallpaper  : %s\n' "$(test -f /usr/share/backgrounds/calypso/Calypso-Default.svg && echo installed || echo missing)"
 echo "============================================================"
 
 exit 0
