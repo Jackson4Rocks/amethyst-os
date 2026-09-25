@@ -129,7 +129,6 @@ zsh
 
 
 hyprland
-dms-shell-hyprland
 
 networkmanager
 
@@ -158,3 +157,9 @@ hyprpaper
 git
 noto-fonts
 fastfetch
+
+quickshell
+matugen
+fuzzel
+yazi
+jq
