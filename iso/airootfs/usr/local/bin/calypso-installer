@@ -6,28 +6,28 @@ set -euo pipefail
 
 if [ "$EUID" -ne 0 ]; then exec sudo "$0" "$@"; fi
 
-RED='$\033[1;31m'
-GREEN='$\033[1;32m'
-YELLOW='$\033[1;33m'
-CYAN='$\033[1;36m'
-RESET='$\033[0m'
+RED='\033[1;31m'
+GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+CYAN='\033[1;36m'
+RESET='\033[0m'
 
-die() { printf '\n$bERROR:$b %s\n' "$RED" "$RESET" "$*"; exit 1; }
+die() { printf '\n%bERROR:%b %s\n' "$RED" "$RESET" "$*"; exit 1; }
 cleanup() { sync || true; umount -R /mnt 2>/dev/null || true; swapoff -a 2>/dev/null || true; }
 trap cleanup EXIT
 need() { command -v "$1" >/dev/null 2>&1 || die "Missing command: $1"; }
 
 clear
 printf '%s\n' '============================================================'
-printf '$b%s$b\n' "$CYAN" 'CALYPSO LINUX' "$RESET"
+printf '%b%s%b\n' "$CYAN" 'CALYPSO LINUX' "$RESET"
 printf '%s\n' '             PLASMA + AURORA DOTFILES'
 printf '%s\n' '                 GUIDED INSTALLER'
 printf '%s\n' '============================================================'
 printf '\n'
 printf 'Calypso Linux is an Arch-based desktop system.\n'
 printf 'Profiles: KDE Plasma (default) and Hyprland + Aurora Dotfiles.\n\n'
-printf '$bWARNING:$b Whole-disk installation only.\n' "$RED" "$RESET"
-printf '$bWARNING:$b The selected disk will be erased completely.\n' "$RED" "$RESET"
+printf '%bWARNING:%b Whole-disk installation only.\n' "$RED" "$RESET"
+printf '%bWARNING:%b The selected disk will be erased completely.\n' "$RED" "$RESET"
 printf 'There is no automatic dual-boot partitioning in this installer.\n\n'
 
 [ -d /sys/firmware/efi ] || die 'Boot the ISO in UEFI mode.'
@@ -35,13 +35,13 @@ for c in lsblk wipefs parted partprobe udevadm mkfs.fat mkfs.ext4 mount umount p
 
 printf 'Checking network...\n'
 if ! getent hosts archlinux.org >/dev/null 2>&1; then
-    printf '$bNetwork is not ready. $bUse nmtui or nmcli, then return here.\n' "$YELLOW" "$RESET"
+    printf '%bNetwork is not ready. %bUse nmtui or nmcli, then return here.\n' "$YELLOW" "$RESET"
     read -r -p 'Press Enter when connected... ' _
     getent hosts archlinux.org >/dev/null 2>&1 || die 'Network is unavailable.'
 fi
-printf '$bNetwork: OK$b\n\n' "$GREEN" "$RESET"
+printf '%bNetwork: OK%b\n\n' "$GREEN" "$RESET"
 
-printf '$bAVAILABLE DISKS$b\n' "$CYAN" "$RESET"
+printf '%bAVAILABLE DISKS%b\n' "$CYAN" "$RESET"
 lsblk -dpno NAME,SIZE,MODEL,TRAN,TYPE | awk '$5=="disk"{print}'
 printf '\n'
 
@@ -53,10 +53,10 @@ while true; do
 
     DISK="$(readlink -f -- "$DISK")"
     TYPE="$(lsblk -dnro TYPE -- "$DISK" 2>/dev/null || true)"
-    [ "$TYPE" = disk ] || { printf '$s is not a whole disk. Do not use a partition.\n' "$DISK"; continue; }
+    [ "$TYPE" = disk ] || { printf '%s is not a whole disk. Do not use a partition.\n' "$DISK"; continue; }
 
     if lsblk -nrpo MOUNTPOINTS -- "$DISK" | grep -q '[^[:space:]]'; then
-        printf '$s has mounted filesystems. Unmount it first.\n' "$DISK"
+        printf '%s has mounted filesystems. Unmount it first.\n' "$DISK"
         continue
     fi
     break
@@ -64,10 +64,10 @@ done
 
 printf '\n'
 lsblk "$DISK"
-printf '\n$bFINAL DISK CHECK$b\n' "$CYAN" "$RESET"
-printf 'Target: $s\n' "$DISK"
+printf '\n%bFINAL DISK CHECK%b\n' "$CYAN" "$RESET"
+printf 'Target: %s\n' "$DISK"
 printf 'Everything on this disk will be destroyed.\n'
-printf 'Type $bERASE$b to continue: ' "$RED" "$RESET"
+printf 'Type %bERASE%b to continue: ' "$RED" "$RESET"
 read -r CONFIRM
 [ "$CONFIRM" = ERASE ] || die 'Confirmation did not match. Nothing was changed.'
 
@@ -83,7 +83,7 @@ read -r -p 'Timezone [Asia/Kolkata]: ' TIMEZONE
 TIMEZONE="${TIMEZONE:-Asia/Kolkata}"
 [ -f "/usr/share/zoneinfo/$TIMEZONE" ] || die "Unknown timezone: $TIMEZONE"
 
-printf '\n$bDESKTOP PROFILE$b\n' "$CYAN" "$RESET"
+printf '\n%bDESKTOP PROFILE%b\n' "$CYAN" "$RESET"
 printf '  1) KDE Plasma       — Calypso Desktop [default]\n'
 printf '  2) Hyprland         — Aurora Dotfiles\n\n'
 
@@ -107,7 +107,7 @@ while true; do
     esac
 done
 
-printf '\nSelected: $b%s$b\n' "$GREEN" "$DESKTOP_NAME" "$RESET"
+printf '\nSelected: %b%s%b\n' "$GREEN" "$DESKTOP_NAME" "$RESET"
 [ "$DESKTOP_ID" = kde ] && printf 'Branding: Calypso KDE wallpaper enabled.\n' || printf 'Branding: Aurora Dotfiles enabled.\n'
 
 case "$DISK" in
@@ -142,7 +142,7 @@ mkdir -p /mnt/boot
 mount "$EFI" /mnt/boot
 
 BASE=(base base-devel linux linux-firmware sudo zsh git networkmanager systemd-resolvconf sddm kitty fastfetch pipewire pipewire-pulse wireplumber xdg-desktop-portal xdg-desktop-portal-gtk xorg-xwayland mesa polkit brightnessctl playerctl grim slurp wl-clipboard power-profiles-daemon noto-fonts)
-printf '\nInstalling Calypso Linux + $s...\n' "$DESKTOP_NAME"
+printf '\nInstalling Calypso Linux + %s...\n' "$DESKTOP_NAME"
 pacstrap -K /mnt "${BASE[@]}" "${DESKTOP_PACKAGES[@]}"
 
 CPU="$(lscpu | awk -F: '/Vendor ID/{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2; exit}')"
@@ -292,8 +292,8 @@ if [ "$DESKTOP_ID" = hyprland ]; then
     [ -f /mnt/usr/share/wayland-sessions/hyprland.desktop ] || die 'Hyprland Wayland session missing.'
 fi
 
-printf '\n$bCALYPSO LINUX READY$b\n' "$CYAN" "$RESET"
-printf 'User: $s\nHostname: $s\nDesktop: $s\nBoot: systemd-boot (UEFI)\n' "$USERNAME" "$HOSTNAME" "$DESKTOP_NAME"
+printf '\n%bCALYPSO LINUX READY%b\n' "$CYAN" "$RESET"
+printf 'User: %s\nHostname: %s\nDesktop: %s\nBoot: systemd-boot (UEFI)\n' "$USERNAME" "$HOSTNAME" "$DESKTOP_NAME"
 printf 'Installation complete. Remove the ISO and reboot.\n'
 read -r -p 'Press Enter to reboot, or Ctrl+C to stay in the live session... ' _
 reboot
