@@ -20,6 +20,28 @@ install -d -m 0755 /usr/local/bin
 install -d -m 0755 /usr/share/applications
 
 ###############################################################################
+# AMETHYST OS IDENTITY
+###############################################################################
+
+echo "==> Setting Amethyst OS identity..."
+
+cat > /usr/lib/os-release <<'EOF'
+NAME="Amethyst OS"
+ID=amethyst
+ID_LIKE=arch
+PRETTY_NAME="Amethyst OS AURORA"
+VERSION="AURORA"
+VERSION_ID="aurora"
+VERSION_CODENAME="aurora"
+HOME_URL="https://github.com/Jackson4Rocks/amethyst-os"
+SUPPORT_URL="https://github.com/Jackson4Rocks/amethyst-os/issues"
+BUG_REPORT_URL="https://github.com/Jackson4Rocks/amethyst-os/issues"
+EOF
+
+rm -f /etc/os-release
+ln -s ../usr/lib/os-release /etc/os-release
+
+###############################################################################
 # AMETHYST LIVE USER
 ###############################################################################
 
