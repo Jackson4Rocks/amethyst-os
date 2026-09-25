@@ -1,7 +1,6 @@
 alsa-utils
 amd-ucode
 arch-install-scripts
-archinstall
 b43-fwcutter
 base
 bcachefs-tools
@@ -149,6 +148,7 @@ slurp
 wl-clipboard
 
 brightnessctl
+playerctl
 power-profiles-daemon
 cava
 sddm
