@@ -3,168 +3,356 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#04110c">
-  <link rel="canonical" href="https://jackson4rocks.github.io/amethyst-os/">
-  <meta name="google-site-verification" content="We36Y7aFzCz1YLPHX3e1_N9cVgiQCA7kGBMNkEAoVyQ" />
-  <link rel="icon" type="image/svg+xml" href="assets/calypso-mark.svg">
-  <link rel="apple-touch-icon" href="assets/calypso-mark.svg">
-  <meta name="description" content="Calypso Linux — Aurora Dotfiles — an Arch-based Linux project with Hyprland, Quickshell, dynamic theming, and a cohesive minimal desktop.">
+  <meta name="theme-color" content="#000000">
+  <meta name="description" content="Calypso Linux — an Arch-based Linux desktop built around Hyprland and Aurora Dotfiles.">
+  <link rel="canonical" href="https://jackson4rocks.github.io/calypso-linux/">
+  <meta name="google-site-verification" content="We36Y7aFzCz1YLPHX3e1_N9cVgiQCA7kGBMNkEAoVyQ">
+  <link rel="icon" type="image/png" sizes="256x256" href="assets/calypso-mark.png">
+  <link rel="apple-touch-icon" href="assets/calypso-mark.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Calypso Linux">
+  <meta property="og:description" content="A crystalline Arch-based Linux desktop built around Hyprland and Aurora Dotfiles.">
+  <meta property="og:url" content="https://jackson4rocks.github.io/calypso-linux/">
   <title>Calypso Linux — Aurora Dotfiles</title>
+
   <style>
-    :root{--bg:#020806;--panel:rgba(19,14,28,.72);--panel2:rgba(255,255,255,.035);--line:rgba(255,255,255,.09);--text:#ecfdf5;--muted:#8ca99c;--soft:#5f7a6e;--accent:#34d399;--accent2:#059669;--glow:rgba(16,185,129,.34);--max:1220px}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}
-    body{margin:0;background:radial-gradient(circle at 65% 8%,rgba(5,150,105,.18),transparent 28%),radial-gradient(circle at 10% 35%,rgba(16,185,129,.1),transparent 25%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6;overflow-x:hidden}
-    a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
-    .noise{position:fixed;inset:0;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");z-index:9}
-    .nav{height:82px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:10}.brand{display:flex;align-items:center;gap:12px}.brand-mark{display:grid;place-items:center;width:42px;height:42px;border:1px solid rgba(52,211,153,.45);border-radius:14px;background:linear-gradient(135deg,rgba(16,185,129,.24),rgba(5,150,105,.06));box-shadow:0 0 32px var(--glow);overflow:hidden}.brand-mark img{width:31px;height:31px;display:block}.brand strong{display:block;font-size:14px;letter-spacing:.14em}.brand small{display:block;font-size:10px;color:var(--muted);letter-spacing:.2em;margin-top:1px}.nav nav{display:flex;gap:24px;align-items:center}.nav nav a{font-size:13px;color:#9fc0b1;transition:.2s}.nav nav a:hover{color:#fff}.nav-github{padding:9px 13px;border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.025)}
-    .hero{min-height:760px;display:grid;grid-template-columns:1.02fr .98fr;gap:36px;align-items:center;padding:72px 0 58px}.eyebrow,.kicker{font-size:11px;font-weight:800;letter-spacing:.2em;color:#6ee7b7}.eyebrow{display:flex;align-items:center;gap:8px}.dot{width:7px;height:7px;border-radius:999px;background:#6ee7b7;box-shadow:0 0 14px #6ee7b7}.hero h1{font-size:clamp(58px,8vw,108px);line-height:.92;letter-spacing:-.075em;margin:20px 0 26px;font-weight:900}.hero h1 span{color:#6ee7b7;text-shadow:0 0 42px rgba(16,185,129,.22)}.lede{font-size:18px;max-width:660px;color:#b7cfc5;line-height:1.7}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0}.btn{display:inline-flex;align-items:center;justify-content:center;gap:11px;padding:13px 17px;border-radius:14px;border:1px solid var(--line);font-size:13px;font-weight:800;transition:.2s}.btn.primary{background:linear-gradient(135deg,#10b981,#059669);box-shadow:0 14px 50px rgba(5,150,105,.26);border-color:transparent}.btn.primary:hover{transform:translateY(-2px);box-shadow:0 18px 60px rgba(5,150,105,.34)}.btn.ghost:hover{background:rgba(255,255,255,.045)}.hero-meta{display:flex;gap:34px;margin-top:38px;flex-wrap:wrap}.hero-meta span{display:block;color:#587466;font-size:9px;letter-spacing:.18em}.hero-meta strong{font-size:13px;margin-top:3px;display:block}
-    .hero-art{position:relative;min-height:540px;border:1px solid var(--line);border-radius:32px;background:linear-gradient(145deg,rgba(16,185,129,.09),rgba(255,255,255,.015));overflow:hidden;display:grid;place-items:center;box-shadow:inset 0 1px rgba(255,255,255,.04),0 30px 100px rgba(0,0,0,.32)}.hero-art{perspective:1000px;--mx:50%;--my:50%;isolation:isolate}.hero-art::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:1;background:radial-gradient(circle at var(--mx) var(--my),rgba(167,243,208,.18),transparent 30%);opacity:0;transition:opacity .35s ease}.hero-art:hover::after{opacity:1}.brand-mark,.brand-mark img{transition:transform .32s cubic-bezier(.2,.8,.2,1),filter .32s ease}.brand:hover .brand-mark{transform:translateY(-2px) rotate(-6deg) scale(1.04);box-shadow:0 0 42px rgba(16,185,129,.5)}.brand:hover .brand-mark img{transform:scale(1.08) rotate(6deg);filter:drop-shadow(0 0 12px rgba(167,243,208,.55))}.hero-logo{transition:transform .18s ease-out,filter .18s ease-out;transform-style:preserve-3d;will-change:transform}.hero-art:hover .hero-logo{filter:drop-shadow(0 24px 70px rgba(16,185,129,.58)) drop-shadow(0 0 22px rgba(167,243,208,.22))}.orb{position:absolute;border-radius:50%;filter:blur(10px);opacity:.48}.orb-a{width:290px;height:290px;background:radial-gradient(circle,#6ee7b7 0,rgba(16,185,129,.55) 35%,transparent 72%);top:40px;right:30px}.orb-b{width:260px;height:260px;background:radial-gradient(circle,#059669 0,rgba(5,150,105,.45) 35%,transparent 72%);bottom:-20px;left:20px}.hero-logo{width:250px;height:250px;object-fit:contain;position:relative;z-index:2;filter:drop-shadow(0 18px 60px rgba(16,185,129,.42))}.hero-wordmark{position:absolute;bottom:52px;letter-spacing:.55em;font-size:12px;color:#c7f9dc}.hero-caption{position:absolute;bottom:28px;color:#587466;font-size:8px;letter-spacing:.24em}
-    .ticker{display:flex;justify-content:center;align-items:center;gap:16px;color:#789486;font-size:9px;font-weight:800;letter-spacing:.18em;flex-wrap:wrap;padding:20px 0 78px}.ticker span:first-child{color:#98c9b3}.ticker i{width:4px;height:4px;background:#6b5f73;border-radius:50%}
-    .section{padding:76px 0}.section-head{display:flex;justify-content:space-between;gap:40px;align-items:end;margin-bottom:26px}.section-head h2{font-size:clamp(34px,5vw,54px);letter-spacing:-.05em;margin:8px 0 0}.section-head>p{max-width:470px;color:#86a99a;font-size:14px}
-    .feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.card{border:1px solid var(--line);border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.015)),var(--panel);backdrop-filter:blur(18px);padding:24px;box-shadow:inset 0 1px rgba(255,255,255,.035),0 22px 70px rgba(0,0,0,.16);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}.card:hover{transform:translateY(-4px);border-color:rgba(52,211,153,.23);box-shadow:inset 0 1px rgba(255,255,255,.05),0 28px 90px rgba(0,0,0,.22)}.icon{font-size:24px;color:#a7f3d0}.feature h3{margin:20px 0 8px;font-size:16px}.feature p{margin:0;color:#7a9b8c;font-size:13px}
-    .download{padding:88px 0 110px}.download-card{border:1px solid rgba(52,211,153,.18);border-radius:28px;padding:34px;background:radial-gradient(circle at 75% 0,rgba(16,185,129,.18),transparent 38%),linear-gradient(135deg,rgba(16,185,129,.08),rgba(255,255,255,.018));display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center}.download-card h2{font-size:clamp(34px,5vw,54px);margin:8px 0;letter-spacing:-.05em}.download-card>div>p{max-width:640px;color:#88a99b}.download-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:flex-end}.tiny{grid-column:1/-1;margin:0;color:#587466;font-size:10px}.tiny code{color:#b9a4ca}
-    footer{border-top:1px solid var(--line);padding:30px 0 42px;color:#4e675c;font-size:11px;background:linear-gradient(180deg,rgba(255,255,255,.012),transparent)}.footer-in{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.footer-in strong{color:#9cc1ac}.footer-meta{display:flex;flex-direction:column;align-items:flex-end;gap:4px}.footer-note{font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#4a665a}
-    @media(max-width:900px){.hero{grid-template-columns:1fr;padding-top:46px}.hero-art{min-height:420px}.feature-grid{grid-template-columns:repeat(2,1fr)}.download-card{grid-template-columns:1fr}.download-actions{justify-content:flex-start}}
-    @media(max-width:620px){.wrap{width:min(var(--max),calc(100% - 24px))}.nav nav a:not(.nav-github){display:none}.hero h1{font-size:56px}.section-head{display:block}.section-head>p{margin-top:14px}.feature-grid{grid-template-columns:1fr}.mock-desktop{grid-template-columns:48px 1fr}.mock-hero-card{padding:22px}.mock-orb{width:90px;height:90px}.mock-hero-card h3{font-size:38px}}
+    :root{
+      --bg:#000;
+      --bg2:#020805;
+      --panel:rgba(6,18,13,.72);
+      --panel-hi:rgba(12,35,25,.78);
+      --line:rgba(91,255,181,.16);
+      --line-hi:rgba(91,255,181,.34);
+      --text:#effff8;
+      --muted:#92aaa0;
+      --dim:#557066;
+      --green:#2fffa8;
+      --green2:#0fd789;
+      --green3:#087653;
+      --glow:rgba(27,255,164,.36);
+      --max:1240px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 78% 9%,rgba(0,255,153,.12),transparent 25%),
+        radial-gradient(circle at 16% 25%,rgba(0,185,105,.09),transparent 28%),
+        linear-gradient(180deg,#000 0%,#010604 52%,#000 100%);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    body:before{
+      content:"";position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.055;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
+
+    .nav{
+      height:78px;display:flex;align-items:center;justify-content:space-between;
+      position:relative;z-index:30;border-bottom:1px solid rgba(91,255,181,.08);
+    }
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-mark{
+      width:43px;height:43px;border-radius:50%;overflow:hidden;display:grid;place-items:center;
+      border:1px solid var(--line-hi);background:#000;box-shadow:0 0 28px rgba(27,255,164,.2);
+      transition:transform .35s ease,box-shadow .35s ease;
+    }
+    .brand-mark img{width:100%;height:100%;display:block}
+    .brand:hover .brand-mark{transform:rotate(-7deg) scale(1.06);box-shadow:0 0 42px rgba(27,255,164,.45)}
+    .brand-name{font-size:14px;letter-spacing:.28em;font-weight:800}
+    .brand-sub{display:block;color:#68857a;font-size:8px;letter-spacing:.24em;margin-top:1px}
+    .nav-links{display:flex;gap:27px;align-items:center}
+    .nav-links a{font-size:12px;color:#9eb5ab;transition:color .2s ease}
+    .nav-links a:hover{color:var(--green)}
+    .nav-github{border:1px solid var(--line);padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.025)}
+
+    .hero{padding:74px 0 32px}
+    .hero-shell{
+      min-height:650px;display:grid;grid-template-columns:1fr .9fr;align-items:center;gap:20px;
+      position:relative;overflow:hidden;border:1px solid var(--line);border-radius:32px;
+      background:
+        radial-gradient(circle at 76% 50%,rgba(27,255,164,.13),transparent 30%),
+        radial-gradient(circle at 82% 84%,rgba(0,112,75,.2),transparent 32%),
+        linear-gradient(135deg,rgba(9,28,20,.88),rgba(0,0,0,.96) 58%);
+      box-shadow:0 35px 100px rgba(0,0,0,.55),inset 0 1px rgba(255,255,255,.045);
+    }
+    .hero-shell:before{
+      content:"";position:absolute;inset:auto -10% -40% 38%;height:70%;
+      background:radial-gradient(ellipse,rgba(22,255,164,.18),transparent 66%);
+      filter:blur(28px);pointer-events:none;
+    }
+    .hero-copy{padding:70px 10px 70px 70px;position:relative;z-index:2}
+    .eyebrow{display:flex;align-items:center;gap:10px;color:#70ffc1;font-size:10px;font-weight:800;letter-spacing:.28em}
+    .pulse{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 16px var(--green)}
+    h1{
+      font-family:Georgia,"Times New Roman",serif;font-weight:400;
+      font-size:clamp(62px,7.2vw,108px);line-height:.92;letter-spacing:-.065em;margin:22px 0 25px;
+    }
+    h1 span{color:#b9ffe0;text-shadow:0 0 42px rgba(47,255,168,.2)}
+    .lede{max-width:610px;color:#a8beb5;font-size:16px;line-height:1.8}
+    .actions{display:flex;gap:11px;flex-wrap:wrap;margin:30px 0 0}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:9px;
+      padding:12px 17px;border-radius:999px;border:1px solid var(--line-hi);
+      font-size:12px;font-weight:800;letter-spacing:.03em;transition:transform .22s ease,box-shadow .22s ease,background .22s ease;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{border-color:transparent;background:linear-gradient(135deg,#28f6a0,#08b878);color:#00140b;box-shadow:0 15px 48px rgba(8,184,120,.25)}
+    .btn-primary:hover{box-shadow:0 20px 65px rgba(8,184,120,.38)}
+    .btn-ghost{background:rgba(255,255,255,.025)}
+    .btn-ghost:hover{background:rgba(47,255,168,.07)}
+    .hero-stats{display:flex;gap:30px;margin-top:42px;flex-wrap:wrap}
+    .stat small{display:block;color:#547066;font-size:8px;letter-spacing:.2em}
+    .stat strong{display:block;font-size:12px;margin-top:3px}
+
+    .hero-visual{
+      min-height:650px;position:relative;display:grid;place-items:center;perspective:1000px;
+    }
+    .hero-visual:after{
+      content:"";position:absolute;width:440px;height:440px;border-radius:50%;
+      background:radial-gradient(circle,rgba(29,255,165,.17),transparent 65%);
+      filter:blur(15px);
+    }
+    .orbit{position:absolute;width:420px;height:420px;border:1px solid rgba(55,255,181,.28);border-radius:50%;box-shadow:0 0 65px rgba(27,255,164,.08)}
+    .orbit:before,.orbit:after{content:"";position:absolute;left:50%;width:2px;height:28px;background:#adffda;transform:translateX(-50%);box-shadow:0 0 16px #2fffa8}
+    .orbit:before{top:-14px}.orbit:after{bottom:-14px}
+    .logo-wrap{
+      width:min(420px,72%);aspect-ratio:1;position:relative;z-index:2;
+      transition:transform .18s ease-out;will-change:transform;
+      filter:drop-shadow(0 20px 55px rgba(20,255,160,.32));
+    }
+    .logo-wrap img{width:100%;height:100%;display:block;border-radius:50%}
+    .visual-label{position:absolute;bottom:58px;color:#628077;font-size:8px;letter-spacing:.3em;z-index:3}
+
+    .ticker{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;padding:28px 0 64px;color:#5f7a70;font-size:9px;font-weight:800;letter-spacing:.2em}
+    .ticker b{color:#9dffcf}.ticker i{width:4px;height:4px;border-radius:50%;background:#355047;align-self:center}
+
+    section{scroll-margin-top:90px}
+    .section{padding:70px 0}
+    .section-head{display:flex;justify-content:space-between;gap:35px;align-items:end;margin-bottom:25px}
+    .kicker{margin:0;color:#5dffb5;font-size:9px;font-weight:900;letter-spacing:.28em}
+    h2{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:clamp(38px,5vw,62px);letter-spacing:-.055em;line-height:1;margin:9px 0 0}
+    .section-head>p{max-width:500px;color:#789189;font-size:13px}
+
+    .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .card{
+      position:relative;overflow:hidden;min-height:205px;padding:24px;border:1px solid var(--line);
+      border-radius:22px;background:linear-gradient(160deg,rgba(13,38,27,.64),rgba(2,9,6,.78));
+      box-shadow:inset 0 1px rgba(255,255,255,.035),0 25px 70px rgba(0,0,0,.22);
+      transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease;
+    }
+    .card:before{content:"";position:absolute;inset:-60% 25% 40% -30%;background:radial-gradient(circle,rgba(47,255,168,.11),transparent 65%);pointer-events:none}
+    .card:hover{transform:translateY(-5px);border-color:var(--line-hi);box-shadow:inset 0 1px rgba(255,255,255,.05),0 32px 90px rgba(0,0,0,.32)}
+    .card-icon{font-size:21px;color:#8dffd0}
+    .card h3{font-size:15px;margin:24px 0 7px}
+    .card p{font-size:12px;color:#6f897f;margin:0}
+
+    .showcase{
+      display:grid;grid-template-columns:1.05fr .95fr;gap:15px;margin-top:15px;
+    }
+    .showcase-card{
+      min-height:360px;border:1px solid var(--line);border-radius:26px;overflow:hidden;position:relative;
+      background:
+        radial-gradient(circle at 80% 25%,rgba(47,255,168,.13),transparent 30%),
+        linear-gradient(145deg,#06140d,#000 68%);
+      padding:32px;box-shadow:inset 0 1px rgba(255,255,255,.035);
+    }
+    .showcase-card h3{font-family:Georgia,"Times New Roman",serif;font-size:34px;font-weight:400;margin:12px 0}
+    .showcase-card p{color:#789189;font-size:13px;max-width:520px}
+    .mini-logo{position:absolute;width:230px;height:230px;right:-25px;bottom:-45px;opacity:.9;filter:drop-shadow(0 0 38px rgba(27,255,164,.25))}
+    .mini-logo img{width:100%;height:100%;border-radius:50%}
+    .terminal{
+      position:absolute;left:30px;right:30px;bottom:28px;height:130px;border:1px solid rgba(91,255,181,.15);
+      border-radius:16px;background:rgba(0,0,0,.68);padding:17px;font:11px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;color:#6dffbb;
+      box-shadow:0 20px 50px rgba(0,0,0,.35);
+    }
+    .terminal span{color:#638078}
+
+    .community-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+    .community{
+      border:1px solid var(--line);border-radius:24px;padding:28px;background:rgba(5,18,12,.62);
+      display:flex;align-items:center;justify-content:space-between;gap:20px;
+    }
+    .community h3{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:30px;margin:0 0 5px}
+    .community p{margin:0;color:#708980;font-size:12px}
+
+    .download{padding:80px 0 110px}
+    .download-card{
+      position:relative;overflow:hidden;border:1px solid rgba(70,255,181,.25);border-radius:30px;padding:42px;
+      background:radial-gradient(circle at 80% 0,rgba(47,255,168,.16),transparent 34%),linear-gradient(135deg,rgba(10,38,26,.82),rgba(0,0,0,.96));
+      box-shadow:0 35px 100px rgba(0,0,0,.42);
+    }
+    .download-card h2{font-size:clamp(40px,6vw,70px)}
+    .download-card p{max-width:650px;color:#789189;font-size:13px}
+    .download-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+    footer{border-top:1px solid rgba(91,255,181,.08);padding:28px 0 38px;color:#476058;font-size:10px}
+    .footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    .footer strong{color:#87a69a}.footer-right{text-align:right}
+
+    @media(max-width:920px){
+      .hero-shell,.showcase{grid-template-columns:1fr}
+      .hero-copy{padding:55px 40px 20px}.hero-visual{min-height:480px}.hero-shell{min-height:0}
+      .cards{grid-template-columns:repeat(2,1fr)}
+      .community-grid{grid-template-columns:1fr}
+    }
+    @media(max-width:620px){
+      .wrap{width:min(var(--max),calc(100% - 24px))}
+      .nav{height:70px}.nav-links a:not(.nav-github){display:none}
+      .hero{padding-top:35px}.hero-copy{padding:42px 24px 10px}
+      h1{font-size:58px}.hero-visual{min-height:390px}.orbit{width:300px;height:300px}.logo-wrap{width:260px}.visual-label{bottom:35px}
+      .cards{grid-template-columns:1fr}.section{padding:55px 0}
+      .section-head{display:block}.section-head>p{margin-top:15px}
+      .community{align-items:flex-start;flex-direction:column}
+      .download-card{padding:28px 23px}
+      .footer-right{text-align:left}
+    }
   </style>
 </head>
 <body>
-  <div class="noise"></div>
   <header class="nav wrap">
     <a class="brand" href="#top" aria-label="Calypso Linux home">
-      <span class="brand-mark"><img src="assets/calypso-mark.svg" alt="Calypso Linux"></span>
-      <span><strong>CALYPSO</strong><small>OS · Aurora Dotfiles</small></span>
+      <span class="brand-mark"><img src="assets/calypso-mark.png" alt=""></span>
+      <span><span class="brand-name">CALYPSO</span><span class="brand-sub">LINUX · AURORA DOTFILES</span></span>
     </a>
-    <nav><a href="#features">Features</a><a href="#community">Community</a><a href="#download">Download</a><a class="nav-github" href="https://github.com/Jackson4Rocks/amethyst-os" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
+    <nav class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#desktop">Desktop</a>
+      <a href="#community">Community</a>
+      <a href="#download">Download</a>
+      <a class="nav-github" href="https://github.com/Jackson4Rocks/calypso-linux" target="_blank" rel="noreferrer">GitHub ↗</a>
+    </nav>
   </header>
 
   <main id="top">
     <section class="hero wrap">
-      <div class="hero-copy">
-        <div class="eyebrow"><span class="dot"></span> ARCH-BASED · WAYLAND · HYPRLAND</div>
-        <h1>Beauty meets<br><span>performance.</span></h1>
-        <p class="lede">Calypso Linux is a clean, fast Arch-based Linux experience shaped around Hyprland, a custom Quickshell desktop, and a deliberately minimal Aurora Dotfiles aesthetic.</p>
-        <div class="hero-actions"><a class="btn primary" href="#download">Explore Aurora Dotfiles ↓</a><a class="btn ghost" href="https://github.com/Jackson4Rocks/amethyst-os" target="_blank" rel="noreferrer">View source ↗</a></div>
-        <div class="hero-meta"><div><span>DESKTOP</span><strong>Aurora Dotfiles</strong></div><div><span>BASE</span><strong>ARCH LINUX</strong></div><div><span>ARCH</span><strong>x86_64</strong></div></div>
-      </div>
-      <div class="hero-art" aria-label="Calypso Aurora Dotfiles visual">
-        <div class="orb orb-a"></div><div class="orb orb-b"></div>
-        <img class="hero-logo" src="assets/calypso-mark.svg" alt="Calypso Linux logo">
-        <div class="hero-wordmark">Aurora Dotfiles</div><div class="hero-caption">A DISTRO BUILT TO FEEL LIKE HOME</div>
+      <div class="hero-shell">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="pulse"></span> FAST · BEAUTIFUL · OPEN SOURCE</div>
+          <h1>Calypso<br><span>Linux.</span></h1>
+          <p class="lede">A polished Arch-based Linux experience built around Hyprland, Quickshell, and Aurora Dotfiles — with a crystalline visual identity from the boot screen to the desktop.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="#download">Explore Calypso →</a>
+            <a class="btn btn-ghost" href="https://github.com/Jackson4Rocks/calypso-linux" target="_blank" rel="noreferrer">View source ↗</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat"><small>BASE</small><strong>ARCH LINUX</strong></div>
+            <div class="stat"><small>COMPOSITOR</small><strong>HYPRLAND</strong></div>
+            <div class="stat"><small>SHELL</small><strong>QUICKSHELL</strong></div>
+            <div class="stat"><small>DOTFILES</small><strong>AURORA</strong></div>
+          </div>
+        </div>
+
+        <div class="hero-visual" id="logo-stage" aria-label="Calypso Linux crystalline logo">
+          <div class="orbit"></div>
+          <div class="logo-wrap" id="hero-logo"><img src="assets/calypso-mark.png" alt="Calypso Linux"></div>
+          <div class="visual-label">A NEW HORIZON FOR YOUR DESKTOP</div>
+        </div>
       </div>
     </section>
 
-    <section class="ticker wrap"><span>ONE BRAND · ONE MARK</span><i></i><span>HYPRLAND</span><i></i><span>QUICKSHELL</span><i></i><span>ZSH</span><i></i><span>FASTFETCH</span><i></i><span>Aurora Dotfiles</span></section>
-
-
-    <section class="section wrap">
-      <div class="section-head">
-        <div><p class="kicker">Aurora Dotfiles STACK</p><h2>Small stack. Clear purpose.</h2></div>
-        <p>Calypso is designed around a focused set of Wayland-native tools instead of a pile of overlapping desktop layers.</p>
-      </div>
-      <div class="feature-grid">
-        <article class="card feature"><span class="icon">⌘</span><h3>Quickshell</h3><p>A custom shell for the panel, workspaces, status surfaces, and the Aurora Dotfiles visual language.</p></article>
-        <article class="card feature"><span class="icon">◈</span><h3>Dynamic themes</h3><p>Wallpaper-derived colors flow into the desktop, terminal, and launcher for one visual system.</p></article>
-        <article class="card feature"><span class="icon">⌁</span><h3>Keyboard-first</h3><p>Simple Super-key bindings, quick launch, workspaces, media controls, and practical defaults.</p></article>
-        <article class="card feature"><span class="icon">↗</span><h3>Open by design</h3><p>Configs, artwork, build files, and the desktop itself live together in the project repository.</p></article>
-      </div>
-    </section>
+    <div class="ticker wrap"><b>ONE MARK</b><i></i><span>HYPRLAND</span><i></i><span>QUICKSHELL</span><i></i><span>AURORA DOTFILES</span><i></i><span>ARCH LINUX</span></div>
 
     <section id="features" class="section wrap">
-      <div class="section-head"><div><p class="kicker">WHY CALYPSO</p><h2>Minimal on purpose.</h2></div><p>Everything is tuned to feel cohesive from the first boot: compositor, shell, terminal, installer, and artwork all share the same visual language.</p></div>
-      <div class="feature-grid">
-        <article class="card feature"><span class="icon">⌁</span><h3>Hyprland first</h3><p>Wayland-native and responsive, with a workflow designed around keyboard-friendly control.</p></article>
-        <article class="card feature"><span class="icon">✦</span><h3>Aurora Dotfiles UI</h3><p>Rounded surfaces, soft glow, glassy depth, and a emerald-forward visual system.</p></article>
-        <article class="card feature"><span class="icon">⌘</span><h3>Ready to use</h3><p>Zsh, Fastfetch, Kitty, Aurora Dotfiles shell, networking, power management, and practical defaults.</p></article>
-        <article class="card feature"><span class="icon">↗</span><h3>Open & remixable</h3><p>Open configuration and a website that is intentionally easy to fork and customize.</p></article>
+      <div class="section-head">
+        <div><p class="kicker">WHY CALYPSO?</p><h2>Small stack.<br>Clear purpose.</h2></div>
+        <p>Calypso keeps the desktop focused: a Wayland compositor, a custom shell, dynamic theming, a fast launcher, and practical defaults — wrapped in one visual language.</p>
+      </div>
+      <div class="cards">
+        <article class="card"><div class="card-icon">◈</div><h3>Modern desktop</h3><p>Hyprland and Aurora Dotfiles combine into a responsive, keyboard-friendly workspace.</p></article>
+        <article class="card"><div class="card-icon">✦</div><h3>Crystal identity</h3><p>The emerald faceted C is the canonical Calypso mark across the project and website.</p></article>
+        <article class="card"><div class="card-icon">⌁</div><h3>Dynamic themes</h3><p>Matugen, wallpaper, Kitty, launcher, and shell styling are designed as one system.</p></article>
+        <article class="card"><div class="card-icon">↗</div><h3>Open & remixable</h3><p>Configs, build files, artwork, and desktop components stay open for experimentation.</p></article>
+      </div>
+    </section>
+
+    <section id="desktop" class="section wrap">
+      <div class="section-head">
+        <div><p class="kicker">AURORA DOTFILES</p><h2>A desktop with a point of view.</h2></div>
+        <p>The artwork sets the mood, while the stack keeps the actual workflow lightweight and useful.</p>
+      </div>
+      <div class="showcase">
+        <article class="showcase-card">
+          <p class="kicker">THE VISUAL SYSTEM</p>
+          <h3>Emerald glass.<br>Black space.</h3>
+          <p>Glowing edges, translucent surfaces, crystalline geometry, and restrained motion carry the same identity through the desktop and the web.</p>
+          <div class="mini-logo"><img src="assets/calypso-mark.png" alt=""></div>
+        </article>
+        <article class="showcase-card">
+          <p class="kicker">THE STACK</p>
+          <h3>Wayland-first.</h3>
+          <p>Hyprland, Quickshell, Kitty, Zsh, Fastfetch, Fuzzel, Matugen, Yazi, PipeWire, and practical system tooling.</p>
+          <div class="terminal"><span>calypso@aurora</span> ~<br>$ fastfetch<br><span>OS</span>  Calypso Linux<br><span>WM</span>  Hyprland<br><span>Shell</span> Quickshell<br><span>Theme</span> Aurora Dotfiles</div>
+        </article>
       </div>
     </section>
 
     <section id="community" class="section wrap">
       <div class="section-head">
-        <div><p class="kicker">THE COMMUNITY</p><h2>Build it with us.</h2></div>
-        <p>Calypso Linux is a fun project built in public. Development, ideas, testing, feedback, and general Linux chaos all have a place.</p>
+        <div><p class="kicker">THE COMMUNITY</p><h2>Built in public.</h2></div>
+        <p>Follow development, test builds, talk Linux, and help shape what Calypso becomes.</p>
       </div>
-      <div class="feature-grid">
-        <article class="card feature">
-          <span class="icon">◌</span>
-          <h3>Telegram</h3>
-          <p>Join the Calypso Linux group and chat with the people following Calypso Linux.</p>
-          <a class="btn ghost" style="margin-top:18px" href="https://t.me/AmethystOSHYPR" target="_blank" rel="noreferrer">Join the group ↗</a>
-        </article>
-        <article class="card feature">
-          <span class="icon">⌘</span>
-          <h3>Source</h3>
-          <p>The ISO profile, shell, branding, configs, and build files live openly on GitHub.</p>
-          <a class="btn ghost" style="margin-top:18px" href="https://github.com/Jackson4Rocks/amethyst-os" target="_blank" rel="noreferrer">Open GitHub ↗</a>
-        </article>
-        <article class="card feature">
-          <span class="icon">◇</span>
-          <h3>Try & test</h3>
-          <p>Boot a Calypso Linux build, break something, fix it, and send back the useful bits.</p>
-        </article>
-        <article class="card feature">
-          <span class="icon">✦</span>
-          <h3>Shape Calypso Linux</h3>
-          <p>The desktop is intentionally open to ideas — from shell polish to artwork and tooling.</p>
-        </article>
+      <div class="community-grid">
+        <a class="community" href="https://t.me/CalypsoOSHYPR" target="_blank" rel="noreferrer">
+          <div><h3>Telegram</h3><p>Join the Calypso Linux community.</p></div><span class="btn btn-ghost">Join ↗</span>
+        </a>
+        <a class="community" href="https://github.com/Jackson4Rocks/calypso-linux" target="_blank" rel="noreferrer">
+          <div><h3>GitHub</h3><p>Source, issues, artwork, ISO, and development.</p></div><span class="btn btn-ghost">Open ↗</span>
+        </a>
       </div>
     </section>
 
     <section id="download" class="download wrap">
       <div class="download-card">
-        <div><p class="kicker">CALYPSO OS</p><h2>Explore Calypso Linux.</h2><p>Browse the source, follow development, join the community, and grab releases when they are published.</p></div>
-        <div class="download-actions"><a class="btn primary" href="https://github.com/Jackson4Rocks/amethyst-os" target="_blank" rel="noreferrer">Open GitHub ↗</a><a class="btn ghost" href="https://t.me/CalypsoOSHYPR" target="_blank" rel="noreferrer">Telegram chat ↗</a></div>
-        <p class="tiny">ISO downloads will appear here when the first public Aurora Dotfiles release is ready.</p>
+        <p class="kicker">CALYPSO LINUX</p>
+        <h2>Ready when you are.</h2>
+        <p>The project is being built in the open. Browse the source, follow development, and grab public ISO releases here as they land.</p>
+        <div class="download-actions">
+          <a class="btn btn-primary" href="https://github.com/Jackson4Rocks/calypso-linux" target="_blank" rel="noreferrer">Open GitHub ↗</a>
+          <a class="btn btn-ghost" href="https://t.me/CalypsoOSHYPR" target="_blank" rel="noreferrer">Telegram ↗</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer><div class="footer-in wrap"><span>© Calypso Linux · <strong>Aurora Dotfiles</strong></span><span>Arch-based · Open source</span><span class="footer-meta"><span class="footer-note">Maintained by Leon Sony · An independent project</span><span class="footer-note">Website vibe-coded by AI</span></span></div></footer>
+  <footer>
+    <div class="footer wrap">
+      <span>© Calypso Linux · <strong>Aurora Dotfiles</strong></span>
+      <span>Arch-based · Open source</span>
+      <span class="footer-right">Maintained by Leon Sony · An independent project<br>Website vibe-coded by AI</span>
+    </div>
+  </footer>
 
   <script>
     (() => {
-      const art = document.querySelector(".hero-art");
-      const logo = document.querySelector(".hero-logo");
-      if (!art || !logo) return;
+      const stage = document.getElementById("logo-stage");
+      const logo = document.getElementById("hero-logo");
+      if (!stage || !logo || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-      if (reduceMotion.matches) return;
-
-      let frame = 0;
-
-      const resetLogo = () => {
-        cancelAnimationFrame(frame);
-        art.style.setProperty("--mx", "50%");
-        art.style.setProperty("--my", "50%");
-        logo.style.transform = "perspective(800px) rotateX(0deg) rotateY(0deg) translate3d(0,0,0) scale(1)";
+      let raf = 0;
+      const reset = () => {
+        cancelAnimationFrame(raf);
+        logo.style.transform = "rotateX(0deg) rotateY(0deg) translate3d(0,0,0) scale(1)";
       };
 
-      art.addEventListener("pointermove", (event) => {
-        if (event.pointerType !== "mouse") return;
-
-        const rect = art.getBoundingClientRect();
-        const x = (event.clientX - rect.left) / rect.width - 0.5;
-        const y = (event.clientY - rect.top) / rect.height - 0.5;
-
-        art.style.setProperty("--mx", `${(x + 0.5) * 100}%`);
-        art.style.setProperty("--my", `${(y + 0.5) * 100}%`);
-
-        const rotateX = y * -10;
-        const rotateY = x * 12;
-        const moveX = x * 10;
-        const moveY = y * 10;
-
-        cancelAnimationFrame(frame);
-        frame = requestAnimationFrame(() => {
-          logo.style.transform =
-            `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translate3d(${moveX}px,${moveY}px,0) scale(1.035)`;
+      stage.addEventListener("pointermove", e => {
+        if (e.pointerType !== "mouse") return;
+        const r = stage.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - .5;
+        const y = (e.clientY - r.top) / r.height - .5;
+        cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          logo.style.transform = \`rotateX(\${y * -8}deg) rotateY(\${x * 10}deg) translate3d(\${x * 9}px,\${y * 9}px,0) scale(1.035)\`;
         });
       });
-
-      art.addEventListener("pointerleave", resetLogo);
+      stage.addEventListener("pointerleave", reset);
     })();
   </script>
-
 </body>
 </html>

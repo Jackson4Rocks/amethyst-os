@@ -1,0 +1,16 @@
+{
+  "name": "Calypso Linux",
+  "short_name": "Calypso",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#00d98b",
+  "icons": [
+    {
+      "src": "assets/calypso-mark.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
