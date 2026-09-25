@@ -4,19 +4,31 @@ The reference desktop configuration for Amethyst OS.
 
 ## Design
 
-The setup intentionally keeps the desktop small and cohesive:
+AURORA is intentionally built as a small, custom desktop stack:
 
-- Hyprland for the compositor
-- DankMaterialShell for the main shell
-- Kitty for the terminal
-- Fastfetch for the terminal welcome
-- Zsh as the interactive shell
-- Hyprpaper for wallpaper rendering
-- Matugen for wallpaper-derived palettes
-- Fuzzel for a lightweight application launcher
-- Yazi for terminal file management
+- Hyprland — compositor
+- **Quickshell — desktop shell**
+- Kitty — terminal
+- Fastfetch — terminal welcome
+- Zsh — interactive shell
+- Hyprpaper — wallpaper rendering
+- Matugen — wallpaper-derived colors
+- Fuzzel — lightweight app launcher
+- Yazi — terminal file manager
 
-DankMaterialShell is already built with Quickshell, so AURORA avoids stacking a second bar/window shell on top of DMS.
+Quickshell configs live in `~/.config/quickshell/<name>`; AURORA uses the named `amethyst` config and starts it with `qs -c amethyst`. citeturn912860search2turn362347search1
+
+## Shell design
+
+The default shell is a floating, centered top panel with:
+
+- AURORA branding
+- live Hyprland workspace pills
+- active-window title
+- clock
+- wallpaper-derived colors
+
+Quickshell provides native Hyprland workspace access and can create one panel per connected monitor. citeturn893622search2turn362347search1
 
 ## Keybinds
 
@@ -34,7 +46,7 @@ DankMaterialShell is already built with Quickshell, so AURORA avoids stacking a 
 - Print — region screenshot
 - SUPER + Print — full-screen screenshot
 
-Arrow-key focus / move / resize bindings are also provided.
+Arrow-key focus, move, and resize bindings are also provided.
 
 ## Wallpaper-driven color
 
@@ -42,15 +54,17 @@ Use:
 
     aos-wallpaper ~/Pictures/wallpapers/my-wallpaper.png
 
-Matugen derives a dark palette from the image and renders the Amethyst theme files. Hyprpaper changes the live wallpaper through its IPC interface.
+Matugen generates the Quickshell theme, Kitty colors, and Fuzzel colors from the wallpaper. Quickshell watches its config files for changes, so the shell can update when the generated `Theme.qml` changes. citeturn362347search1
 
 ## Installation
 
     cd dotfiles
     bash scripts/install.sh
 
-For the Amethyst OS ISO, copy these files into /etc/skel so every new live user receives the AURORA defaults.
+For the Amethyst OS ISO, place the same files into `/etc/skel` so new users receive the AURORA defaults.
 
 ## Notes
 
-The Hyprland configuration targets the modern Lua-based configuration system used by Hyprland 0.55+.
+The Hyprland configuration targets the Lua-based configuration system used by current Hyprland releases. citeturn133000search3turn133000search5
+
+Quickshell is intentionally treated as the framework for the Amethyst shell rather than relying on another full desktop shell. Its current documentation describes it as a toolkit for building bars, widgets, notifications, lock screens, and other desktop components. citeturn764349search0
