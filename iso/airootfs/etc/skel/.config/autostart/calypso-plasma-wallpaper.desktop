@@ -2,7 +2,7 @@
 Type=Application
 Name=Calypso Plasma Wallpaper
 Comment=Apply the Calypso Linux default wallpaper
-Exec=plasma-apply-wallpaperimage %h/.local/share/calypso/wallpapers/Calypso-Default.svg
+Exec=calypso-apply-wallpaper
 Terminal=false
 OnlyShowIn=KDE;
 X-KDE-autostart-after=panel
