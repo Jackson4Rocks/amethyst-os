@@ -1,4 +1,4 @@
--- Amethyst OS AURORA
+-- Calypso Linux — Aurora Dotfiles
 -- Minimal Hyprland setup for Hyprland 0.55+ / Lua configuration.
 
 hl.config({
@@ -77,18 +77,18 @@ hl.env("GDK_BACKEND", "wayland,x11")
 hl.env("SDL_VIDEODRIVER", "wayland")
 hl.env("MOZ_ENABLE_WAYLAND", "1")
 
-hl.curve("aosEase", {
+hl.curve("auroraEase", {
   type = "bezier",
   points = { { 0.16, 1.0 }, { 0.3, 1.0 } },
 })
 
-hl.animation({ leaf = "windows", enabled = true, speed = 7, bezier = "aosEase", style = "slide" })
-hl.animation({ leaf = "windowsIn", enabled = true, speed = 7, bezier = "aosEase", style = "popin 92%" })
-hl.animation({ leaf = "windowsOut", enabled = true, speed = 6, bezier = "aosEase", style = "popin 92%" })
-hl.animation({ leaf = "windowsMove", enabled = true, speed = 7, bezier = "aosEase" })
-hl.animation({ leaf = "fade", enabled = true, speed = 6, bezier = "aosEase" })
-hl.animation({ leaf = "layers", enabled = true, speed = 7, bezier = "aosEase", style = "slide" })
-hl.animation({ leaf = "workspaces", enabled = true, speed = 7, bezier = "aosEase", style = "slidefade" })
+hl.animation({ leaf = "windows", enabled = true, speed = 7, bezier = "auroraEase", style = "slide" })
+hl.animation({ leaf = "windowsIn", enabled = true, speed = 7, bezier = "auroraEase", style = "popin 92%" })
+hl.animation({ leaf = "windowsOut", enabled = true, speed = 6, bezier = "auroraEase", style = "popin 92%" })
+hl.animation({ leaf = "windowsMove", enabled = true, speed = 7, bezier = "auroraEase" })
+hl.animation({ leaf = "fade", enabled = true, speed = 6, bezier = "auroraEase" })
+hl.animation({ leaf = "layers", enabled = true, speed = 7, bezier = "auroraEase", style = "slide" })
+hl.animation({ leaf = "workspaces", enabled = true, speed = 7, bezier = "auroraEase", style = "slidefade" })
 
 local terminal = "kitty"
 local file_manager = "kitty -- yazi"
@@ -107,7 +107,7 @@ hl.bind(main_mod .. " + SHIFT + Q", hl.dsp.window.kill(), { description = "Kill 
 
 hl.bind(main_mod .. " + SHIFT + M", exec("loginctl terminate-user \"$USER\""), { description = "Log out" })
 hl.bind(main_mod .. " + SHIFT + R", exec("hyprctl reload"), { description = "Reload Hyprland" })
-hl.bind(main_mod .. " + SHIFT + W", exec("aos-wallpaper"), { description = "Choose wallpaper and recolor theme" })
+hl.bind(main_mod .. " + SHIFT + W", exec("calypso-wallpaper"), { description = "Choose wallpaper and recolor Aurora Dotfiles" })
 
 hl.bind(main_mod .. " + LEFT", exec("hyprctl dispatch movefocus l"), { description = "Focus left" })
 hl.bind(main_mod .. " + RIGHT", exec("hyprctl dispatch movefocus r"), { description = "Focus right" })
@@ -169,5 +169,5 @@ hl.bind(main_mod .. " + PRINT", exec("sh -lc 'grim - | wl-copy'"), {
 hl.on("hyprland.start", function()
   hl.exec_cmd("dbus-update-activation-environment --systemd --all")
   hl.exec_cmd("hyprpaper")
-  hl.exec_cmd("qs -c amethyst")
+  hl.exec_cmd("qs -c aurora")
 end)
