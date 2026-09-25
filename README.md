@@ -20,7 +20,6 @@ The project is being built around:
 - 🐚 **Zsh** — interactive shell
 - 🖥️ **Kitty** — terminal
 - ⚡ **Fastfetch** — system information
-- 💜 **Amethyst / AURORA** — custom branding and artwork
 - 🛠️ **AOS Installer** — Archinstall-based installation flow
 
 ## 🌐 Website
@@ -48,10 +47,6 @@ Amethyst OS
     └── Custom AURORA artwork
 ```
 
-## 🪪 Brand System
-
-**One logo. Everywhere.** The canonical Amethyst OS mark lives at `assets/amethyst-mark.svg`. Use this same mark for the website, desktop shell, Fastfetch, wallpapers, screenshots, and release artwork.
-
 ## 🎛️ AURORA Dotfiles
 
 The repository now includes the reference Amethyst desktop configuration under dotfiles/.
@@ -75,7 +70,7 @@ Amethyst OS is an **active personal project** and is still evolving. Expect chan
 ## 👤 Maintainer
 
 **Leon Sony**
-
+I made this project for fun and general curiosity. You're welcome to contribute to the project, Contact me through Telegram
 ---
 
 <p align="center">
