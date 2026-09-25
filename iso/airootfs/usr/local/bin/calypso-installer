@@ -197,13 +197,17 @@ ROOT_UUID="$(blkid -s UUID -o value "$ROOT_PART")"
 printf '\nConfiguring installed Calypso Linux...\n'
 
 arch-chroot /mnt /bin/bash -s -- \
-    "$TIMEZONE" "$HOSTNAME" "$USERNAME" "$ROOT_UUID" <<'CHROOT'
+    "$TIMEZONE" "$HOSTNAME" "$USERNAME" "$ROOT_UUID" \
+    "$DESKTOP_ID" "$DESKTOP_NAME" "$DESKTOP_SESSION" <<'CHROOT'
 set -e
 
 TIMEZONE="$1"
 HOSTNAME="$2"
 USERNAME="$3"
 ROOT_UUID="$4"
+DESKTOP_ID="$5"
+DESKTOP_NAME="$6"
+DESKTOP_SESSION="$7"
 
 ln -sf "/usr/share/zoneinfo/$TIMEZONE" /etc/localtime
 hwclock --systohc
