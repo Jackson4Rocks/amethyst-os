@@ -150,7 +150,7 @@ ShellRoot {
 
                                 Text {
                                     width: 160
-                                    text: Hyprland.activeToplevel ? Hyprland.activeToplevel.title : "AURORA"
+                                    text: Hyprland.activeToplevel ? Hyprland.activeToplevel.title : "CALYPSO"
                                     color: theme.onSurfaceVariant
                                     font.pixelSize: 10
                                     elide: Text.ElideRight
