@@ -20,7 +20,7 @@ need() { command -v "$1" >/dev/null 2>&1 || die "Missing command: $1"; }
 clear
 printf '%s\n' '============================================================'
 printf '%b%s%b\n' "$CYAN" 'CALYPSO LINUX' "$RESET"
-printf '%s\n' '             PLASMA + AURORA DOTFILES'
+printf '%s\n' '                 PLASMA + HYPRLAND'
 printf '%s\n' '                 GUIDED INSTALLER'
 printf '%s\n' '============================================================'
 printf '\n'
@@ -148,6 +148,9 @@ install -m 0755 /usr/local/bin/calypso-install-wallpapers /mnt/usr/local/bin/cal
 BASE=(base base-devel linux linux-firmware sudo zsh git curl networkmanager systemd-resolvconf sddm kitty fastfetch pipewire pipewire-pulse wireplumber xdg-desktop-portal xdg-desktop-portal-gtk xorg-xwayland mesa polkit brightnessctl playerctl grim slurp wl-clipboard power-profiles-daemon noto-fonts)
 printf '\nInstalling Calypso Linux + %s...\n' "$DESKTOP_NAME"
 pacstrap -K /mnt "${BASE[@]}" "${DESKTOP_PACKAGES[@]}"
+
+install -d -m 0755 /mnt/usr/share/fastfetch/logos
+install -m 0644 /usr/share/fastfetch/logos/calypso.txt /mnt/usr/share/fastfetch/logos/calypso.txt
 
 CPU="$(lscpu | awk -F: '/Vendor ID/{gsub(/^[ \t]+|[ \t]+$/, "", $2); print $2; exit}')"
 case "$CPU" in
