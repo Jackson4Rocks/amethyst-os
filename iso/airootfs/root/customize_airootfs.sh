@@ -28,8 +28,8 @@ PRETTY_NAME="Calypso Linux"
 VERSION="0.2"
 VERSION_ID="0.2"
 HOME_URL="https://github.com/Jackson4Rocks/calypso-linux"
-SUPPORT_URL="https://github.com/Jackson4Rocks/amethyst-os/issues"
-BUG_REPORT_URL="https://github.com/Jackson4Rocks/amethyst-os/issues"
+SUPPORT_URL="https://github.com/Jackson4Rocks/calypso-linux/issues"
+BUG_REPORT_URL="https://github.com/Jackson4Rocks/calypso-linux/issues"
 EOF_OS
 
 rm -f /etc/os-release
@@ -179,10 +179,11 @@ chmod 0700 /home/calypso/.config 2>/dev/null || true
 echo
 echo "============================================================"
 echo "                 CALYPSO LINUX READY"
-echo "                 AURORA DOTFILES"
+echo "            PLASMA + AURORA DOTFILES"
 echo "============================================================"
 printf 'User       : %s\n' "$(id -un calypso)"
 printf 'Shell      : %s\n' "$(getent passwd calypso | cut -d: -f7)"
+printf 'KDE Plasma : %s\n' "$(command -v plasmashell >/dev/null 2>&1 && echo installed || echo missing)"
 printf 'KDE Plasma : %s\n' "$(command -v plasmashell >/dev/null 2>&1 && echo installed || echo missing)"
 printf 'Hyprland   : %s\n' "$(command -v hyprland >/dev/null 2>&1 && echo installed || echo missing)"
 printf 'Quickshell : %s\n' "$(command -v qs >/dev/null 2>&1 && echo installed || echo missing)"
