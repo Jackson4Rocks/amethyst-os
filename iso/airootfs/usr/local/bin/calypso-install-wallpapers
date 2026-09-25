@@ -11,6 +11,10 @@ mkdir -p "$TARGET"
 download() {
     local url="$1"
     local out="$2"
+    if [ -s "$TARGET/$out" ]; then
+        printf 'Wallpaper already present: %s\n' "$out"
+        return 0
+    fi
     printf 'Wallpaper: %s\n' "$out"
     if curl -fL --retry 3 --connect-timeout 10 --max-time 120 -o "$TARGET/$out" "$url"; then
         chmod 0644 "$TARGET/$out"
