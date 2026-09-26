@@ -1,6 +1,16 @@
 ---
 componentName: calypso
 
+welcomeStyleCalamares: false
+welcomeExpandingLogo: false
+
+windowExpanding: normal
+windowSize: 900px,600px
+windowPlacement: center
+
+sidebar: widget,left
+navigation: widget,bottom
+
 strings:
   productName: "Calypso Linux"
   shortProductName: "Calypso"
@@ -16,5 +26,12 @@ images:
   productIcon: "calypso-mark.svg"
   productLogo: "calypso-mark.svg"
   productWelcome: "calypso-mark.svg"
+
+style:
+  SidebarBackground: "#11161A"
+  SidebarText: "#E8F0EC"
+  SidebarTextCurrent: "#11161A"
+  SidebarBackgroundCurrent: "#24C78A"
+
 slideshow: "show.qml"
 slideshowAPI: 2
