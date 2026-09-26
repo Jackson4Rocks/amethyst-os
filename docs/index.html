@@ -11,22 +11,19 @@
 <link rel="icon" type="image/png" sizes="512x512" href="../assets/calypso-mark.png?v=8">
 <link rel="apple-touch-icon" sizes="512x512" href="../assets/calypso-mark.png?v=8">
 <link rel="manifest" href="../site.webmanifest">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 <title>Calypso Linux — Wiki</title>
 <style>
 :root{--bg:#030705;--panel:#07160f;--panel2:#0a2016;--mint:#9bffe0;--green:#25d89a;--white:#f7fff9;--muted:#8fa89d;--dim:#5d7569;--line:rgba(137,255,215,.16);--line2:rgba(137,255,215,.34);--max:1380px}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;color:var(--white);font-family:"DM Sans",system-ui,-apple-system,Segoe UI,sans-serif;background:radial-gradient(1050px 760px at 86% 0,rgba(44,255,183,.11),transparent 61%),radial-gradient(850px 600px at 0 48%,rgba(29,178,124,.07),transparent 62%),linear-gradient(180deg,#030705,#06110c 48%,#020604);line-height:1.65;overflow-x:hidden}
+body{margin:0;color:var(--white);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(1050px 760px at 86% 0,rgba(44,255,183,.11),transparent 61%),radial-gradient(850px 600px at 0 48%,rgba(29,178,124,.07),transparent 62%),linear-gradient(180deg,#030705,#06110c 48%,#020604);line-height:1.65;overflow-x:hidden}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(180deg,black,transparent 95%)}
 a{color:inherit;text-decoration:none}
 .shell{width:min(var(--max),calc(100% - 24px));margin:12px auto;border:1px solid var(--line);border-radius:30px;overflow:hidden;background:linear-gradient(180deg,rgba(4,13,9,.96),rgba(1,4,2,.98));box-shadow:0 35px 120px rgba(0,0,0,.5)}
 .top{min-height:80px;padding:0 25px;display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--line);background:rgba(4,12,8,.78);backdrop-filter:blur(18px);position:sticky;top:0;z-index:20}
 .brand{display:flex;align-items:center;gap:12px}
 .brand img{width:44px;height:44px;padding:6px;border-radius:13px;border:1px solid var(--line2);background:rgba(9,30,21,.76)}
-.wordmark-main{display:block;font-family:"Playfair Display",Georgia,serif;font-size:18px;letter-spacing:.15em;line-height:1;text-transform:uppercase}
+.wordmark-main{display:block;font-family:ui-serif,Georgia,"Times New Roman",serif;font-size:18px;letter-spacing:.15em;line-height:1;text-transform:uppercase}
 .wordmark-sub{display:block;color:var(--mint);margin-top:6px;font-size:7px;font-weight:800;letter-spacing:.48em;text-transform:uppercase}
 .top-links{display:flex;align-items:center;gap:9px}
 .top-links a{padding:8px 12px;border:1px solid var(--line);border-radius:999px;color:#9eb3aa;font-size:10px;transition:.2s ease}
@@ -41,7 +38,7 @@ a{color:inherit;text-decoration:none}
 .content{padding:62px 68px 100px;max-width:1120px}
 .kicker{color:var(--mint);font-size:9px;font-weight:800;letter-spacing:.26em;text-transform:uppercase}
 .hero{padding-bottom:28px}
-.hero h1{margin:15px 0 18px;font-family:"Playfair Display",Georgia,serif;font-size:clamp(62px,8vw,104px);font-weight:500;line-height:.88;letter-spacing:-.065em}
+.hero h1{margin:15px 0 18px;font-family:ui-serif,Georgia,"Times New Roman",serif;font-size:clamp(62px,8vw,104px);font-weight:500;line-height:.88;letter-spacing:-.065em}
 .hero h1 span{color:var(--mint)}
 .hero p{max-width:800px;color:#a4b8ae;font-size:14px;line-height:1.85;margin:0}
 .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:25px}
@@ -51,16 +48,16 @@ a{color:inherit;text-decoration:none}
 .hero-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:35px}
 .hero-card{padding:19px;border:1px solid var(--line);border-radius:18px;background:radial-gradient(circle at 100% 0,rgba(100,255,210,.06),transparent 35%),linear-gradient(150deg,rgba(7,27,18,.78),rgba(0,5,3,.92))}
 .hero-card small{display:block;color:#547468;font-size:8px;font-weight:800;letter-spacing:.2em}
-.hero-card strong{display:block;margin-top:8px;font-family:"Playfair Display",Georgia,serif;font-size:25px;font-weight:500;line-height:1}
+.hero-card strong{display:block;margin-top:8px;font-family:ui-serif,Georgia,"Times New Roman",serif;font-size:25px;font-weight:500;line-height:1}
 .hero-card p{margin:9px 0 0;color:#70867b;font-size:10px;line-height:1.65}
 .section{padding-top:72px;scroll-margin-top:105px}
 .section-head{display:grid;grid-template-columns:1fr .82fr;gap:55px;align-items:end;margin-bottom:27px}
-.section h2{margin:9px 0 0;font-family:"Playfair Display",Georgia,serif;font-size:clamp(38px,5vw,65px);font-weight:500;line-height:.94;letter-spacing:-.05em}
+.section h2{margin:9px 0 0;font-family:ui-serif,Georgia,"Times New Roman",serif;font-size:clamp(38px,5vw,65px);font-weight:500;line-height:.94;letter-spacing:-.05em}
 .intro{max-width:760px;color:#82978d;font-size:12px;line-height:1.8}
 .section-head .intro{margin:0 0 3px auto;max-width:510px}
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
 .card{padding:24px;border:1px solid var(--line);border-radius:20px;background:radial-gradient(circle at 100% 0,rgba(100,255,210,.06),transparent 30%),linear-gradient(155deg,rgba(8,29,20,.76),rgba(0,5,3,.92))}
-.card h3{margin:16px 0 9px;font-family:"Playfair Display",Georgia,serif;font-size:31px;font-weight:500;line-height:1}
+.card h3{margin:16px 0 9px;font-family:ui-serif,Georgia,"Times New Roman",serif;font-size:31px;font-weight:500;line-height:1}
 .card p{margin:0;color:#71867c;font-size:11px;line-height:1.78}
 .choice-note{margin-bottom:14px;padding:12px 14px;border:1px solid var(--line);border-radius:13px;color:#71867c;background:rgba(155,255,224,.025);font-size:10px}
 .fact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
@@ -87,7 +84,7 @@ a{color:inherit;text-decoration:none}
 .profile{display:grid;grid-template-columns:160px 1fr;gap:24px;padding:25px;border:1px solid var(--line2);border-radius:22px;background:radial-gradient(circle at 100% 0,rgba(95,255,205,.1),transparent 34%),linear-gradient(145deg,rgba(7,29,20,.78),rgba(1,6,4,.95))}
 .profile-mark{width:128px;height:128px;display:grid;place-items:center;border:1px solid var(--line);border-radius:20px;background:rgba(155,255,224,.035)}
 .profile-mark img{width:92px;height:92px}.profile-avatar{object-fit:cover;border:1px solid var(--line2);box-shadow:0 0 34px rgba(37,216,154,.16)}
-.profile h3{margin:0 0 7px;font-family:"Playfair Display",Georgia,serif;font-size:33px;font-weight:500;line-height:1}
+.profile h3{margin:0 0 7px;font-family:ui-serif,Georgia,"Times New Roman",serif;font-size:33px;font-weight:500;line-height:1}
 .profile p{margin:0;color:#7b9085;font-size:11px;line-height:1.8}
 .profile-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}
 .pill{padding:7px 10px;border:1px solid var(--line);border-radius:999px;color:#b9d1c6;font-size:9px;background:rgba(155,255,224,.025)}
@@ -225,7 +222,7 @@ footer strong{color:#7fe8c3}
 <p class="intro">Calypso started as a personal Linux project and grew into an experiment in distro design, desktop configuration, branding, and learning how all the pieces of a Linux distribution fit together.</p>
 </div>
 <div class="profile">
-<div class="profile-mark"><img class="profile-avatar" src="https://avatars.githubusercontent.com/u/192235822?v=4" alt="Leon Sony GitHub profile picture"></div>
+<div class="profile-mark"><img class="profile-avatar" loading="lazy" decoding="async" src="https://avatars.githubusercontent.com/u/192235822?v=4" alt="Leon Sony GitHub profile picture"></div>
 <div>
 <h3>Leon Sony</h3>
 <p>Calypso's maintainer and creator. Leon is 15 and builds the project as a hands-on way to learn Linux development, system configuration, web design, packaging, and the realities of maintaining a distro in public.<br><br>Not a fun thing to learn thats for sure ;)</p>
