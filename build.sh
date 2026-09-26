@@ -7,7 +7,34 @@ CALAMARES_DIR="${PROFILE}/packages/calamares"
 LOCAL_REPO="/tmp/calypso-calamares-repo"
 TEMP_PACMAN_CONF="/tmp/calypso-pacman.conf"
 WORK_DIR="${HOME}/calypso-build"
-OUT_DIR="${HOME}/calypso-out"
+OUT_DIR="\${HOME}/calypso-out"
+FAST_MODE=false
+
+usage() {
+  cat <<'EOF'
+Usage: bash build.sh [--fast]
+
+  --fast    Reuse the existing Calamares package and mkarchiso work tree
+            when available. This is intended for quick iteration.
+EOF
+}
+
+for arg in "$@"; do
+  case "\${arg}" in
+    --fast)
+      FAST_MODE=true
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    *)
+      echo "Unknown argument: \${arg}" >&2
+      usage >&2
+      exit 1
+      ;;
+  esac
+done
 
 cleanup() {
   rm -rf -- "${LOCAL_REPO}" "${TEMP_PACMAN_CONF}"
