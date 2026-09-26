@@ -22,7 +22,7 @@ Calypso is designed to stay fast and lean, with a focused software set and no un
 
 Release ISOs and mirrors will be linked here as they are published.
 
-**SourceForge:** _release link coming soon_
+**SourceForge:** https://sourceforge.net/projects/calypso-linux/files/
 
 ## 🧩 Project
 
