@@ -1,3 +1,27 @@
 #!/bin/sh
 set -eu
-exec plasma-apply-wallpaperimage "$HOME/.local/share/calypso/wallpapers/Calypso-Default.svg"
+
+USER_WALLPAPER="$HOME/.local/share/calypso/wallpapers/Calypso-Default.svg"
+SYSTEM_WALLPAPER="/usr/share/backgrounds/calypso/Calypso-Default.svg"
+
+if [ -f "$USER_WALLPAPER" ]; then
+    WALLPAPER="$USER_WALLPAPER"
+elif [ -f "$SYSTEM_WALLPAPER" ]; then
+    WALLPAPER="$SYSTEM_WALLPAPER"
+else
+    exit 0
+fi
+
+# Plasma can start before the shell and wallpaper plugin are ready.
+sleep 4
+
+attempt=1
+while [ "$attempt" -le 3 ]; do
+    if plasma-apply-wallpaperimage "$WALLPAPER"; then
+        exit 0
+    fi
+    sleep 2
+    attempt=$((attempt + 1))
+done
+
+exit 0
