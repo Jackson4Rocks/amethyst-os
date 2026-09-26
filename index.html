@@ -247,6 +247,17 @@ img,svg{display:block}
 .showcase-label{display:flex;justify-content:space-between;align-items:flex-end;margin-top:18px}
 .showcase-label strong{display:block;font:500 35px/1 var(--serif)}.showcase-label span{display:block;margin-top:6px;color:#6d877a;font:500 8px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase}
 .showcase-aside{font:500 9px/1 var(--mono);color:#6e867b;letter-spacing:.15em;text-transform:uppercase;text-align:right}
+.screen-gallery{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;margin-top:28px}
+.screen-card{border:1px solid var(--line);background:linear-gradient(145deg,rgba(6,21,13,.82),rgba(1,6,4,.96));padding:12px;overflow:hidden;transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease}
+.screen-card:hover{transform:translateY(-5px);border-color:var(--line-strong);box-shadow:0 30px 80px rgba(0,0,0,.28)}
+.screen-media{position:relative;aspect-ratio:16/9;overflow:hidden;border:1px solid rgba(165,255,225,.1);background:#030805}
+.screen-media img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .5s ease}
+.screen-card:hover .screen-media img{transform:scale(1.025);filter:saturate(1.06)}
+.screen-overlay{position:absolute;inset:auto 0 0 0;padding:28px 16px 14px;background:linear-gradient(180deg,transparent,rgba(1,6,4,.95))}
+.screen-overlay strong{display:block;font:500 28px/1 var(--serif);letter-spacing:-.035em}
+.screen-overlay span{display:block;margin-top:5px;color:#8ca59a;font:500 8px/1 var(--mono);letter-spacing:.15em;text-transform:uppercase}
+.screen-note{display:flex;justify-content:space-between;gap:12px;margin-top:12px;color:#647d70;font:500 8px/1.5 var(--mono);letter-spacing:.08em;text-transform:uppercase}
+
 .hypr-frame{margin-top:24px;position:relative;aspect-ratio:21/8;border:1px solid var(--line);background:#040b07;overflow:hidden}
 .hypr-inner{position:absolute;inset:18px;display:grid;grid-template-columns:1.7fr 1fr;gap:12px}
 .term-window,.term-stack>div{border:1px solid rgba(165,255,225,.12);background:linear-gradient(155deg,rgba(7,25,16,.9),rgba(0,6,4,.96));position:relative;overflow:hidden}
@@ -363,7 +374,7 @@ img,svg{display:block}
   .philosophy-grid{grid-template-columns:repeat(2,1fr)}
   .layer-stack{min-height:460px}
 }
-@media(max-width:740px){
+@media(max-width:860px){.screen-gallery{grid-template-columns:1fr}}\n@media(max-width:740px){
   .wrap{width:calc(100% - 10px);margin:5px auto;border-radius:20px}.container{padding-inline:18px}.section{padding:88px 18px 0}
   .nav{min-height:68px;padding:0 14px}.brand-mark{width:39px;height:39px}.brand-name{font-size:15px}.brand-sub{font-size:6px}
   .mobile-menu a:last-child{border-bottom:0}
@@ -529,6 +540,23 @@ img,svg{display:block}
           <div class="term-stack"><div></div><div></div></div>
         </div>
         <div class="hypr-badge"><small>Recommended alternative</small><strong>Hyprland</strong></div>
+      </div>
+
+      <div class="screen-gallery">
+        <article class="screen-card reveal">
+          <div class="screen-media">
+            <img src="https://kde.org/content/plasma-desktop/plasma-sweet.png" alt="KDE Plasma desktop screenshot" loading="lazy" referrerpolicy="no-referrer">
+            <div class="screen-overlay"><strong>KDE Plasma</strong><span>Official Plasma screenshot</span></div>
+          </div>
+          <div class="screen-note"><span>KDE PLASMA · DESKTOP</span><span>kde.org ↗</span></div>
+        </article>
+        <article class="screen-card reveal">
+          <div class="screen-media">
+            <img src="./assets/hyprland-representative.svg" alt="Representative Hyprland desktop view" loading="lazy">
+            <div class="screen-overlay"><strong>Hyprland</strong><span>Representative Calypso setup</span></div>
+          </div>
+          <div class="screen-note"><span>HYPRLAND · TILING</span><span>CALYPSO</span></div>
+        </article>
       </div>
     </div>
   </section>
