@@ -29,15 +29,31 @@ command -v repo-add >/dev/null 2>&1 || {
   exit 1
 }
 
-echo "==> Building custom Calamares package..."
-(
-  cd "${CALAMARES_DIR}"
-  rm -f -- calamares-*.pkg.tar.* calamares-*.tar.gz
-  makepkg --syncdeps --noconfirm --cleanbuild --clean
-)
+echo "==> Preparing custom Calamares package..."
 
-CALAMARES_PKG="$(find "${CALAMARES_DIR}" -maxdepth 1 -type f -name 'calamares-*.pkg.tar.*' -print -quit)"
-[[ -n "${CALAMARES_PKG}" ]] || {
+CALAMARES_PKG=""
+if \${FAST_MODE}; then
+  CALAMARES_PKG="\$(find "\${CALAMARES_DIR}" -maxdepth 1 -type f -name 'calamares-*.pkg.tar.*' -print -quit)"
+fi
+
+if [[ -n "\${CALAMARES_PKG}" ]]; then
+  echo "    Reusing existing package: \$(basename "\${CALAMARES_PKG}")"
+else
+  echo "==> Building custom Calamares package..."
+  (
+    cd "\${CALAMARES_DIR}"
+    if \${FAST_MODE}; then
+      makepkg --syncdeps --noconfirm
+    else
+      rm -f -- calamares-*.pkg.tar.* calamares-*.tar.gz
+      makepkg --syncdeps --noconfirm --cleanbuild --clean
+    fi
+  )
+
+  CALAMARES_PKG="\$(find "\${CALAMARES_DIR}" -maxdepth 1 -type f -name 'calamares-*.pkg.tar.*' -print -quit)"
+fi
+
+[[ -n "\${CALAMARES_PKG}" ]] || {
   echo "Calamares package was not produced." >&2
   exit 1
 }
@@ -60,16 +76,29 @@ awk '
   { print }
 ' "${PROFILE}/pacman.conf" > "${TEMP_PACMAN_CONF}"
 
-echo "==> Cleaning previous Calypso build..."
-sudo rm -rf -- "${WORK_DIR}" "${OUT_DIR}"
-mkdir -p -- "${WORK_DIR}" "${OUT_DIR}"
+if \${FAST_MODE}; then
+  echo "==> Fast mode: reusing Calypso build and output directories..."
+  mkdir -p -- "\${WORK_DIR}" "\${OUT_DIR}"
+else
+  echo "==> Cleaning previous Calypso build..."
+  sudo rm -rf -- "\${WORK_DIR}" "\${OUT_DIR}"
+  mkdir -p -- "\${WORK_DIR}" "\${OUT_DIR}"
+fi
 
 echo "==> Building Calypso Linux..."
-sudo mkarchiso -v -r \
-  -C "${TEMP_PACMAN_CONF}" \
-  -w "${WORK_DIR}" \
-  -o "${OUT_DIR}" \
-  "${PROFILE}"
+if \${FAST_MODE}; then
+  sudo mkarchiso -v \
+    -C "\${TEMP_PACMAN_CONF}" \
+    -w "\${WORK_DIR}" \
+    -o "\${OUT_DIR}" \
+    "\${PROFILE}"
+else
+  sudo mkarchiso -v -r \
+    -C "\${TEMP_PACMAN_CONF}" \
+    -w "\${WORK_DIR}" \
+    -o "\${OUT_DIR}" \
+    "\${PROFILE}"
+fi
 
 echo
 echo "==> Calypso ISO build complete."
