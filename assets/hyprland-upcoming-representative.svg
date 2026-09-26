@@ -44,11 +44,11 @@
 
 <g transform="translate(1082 526)">
  <rect width="474" height="272" rx="12" fill="#04100a" fill-opacity=".92" stroke="#76ffd2" stroke-opacity=".16"/>
- <text x="20" y="34" fill="#9fffe0" font-family="monospace" font-size="11">CALYPSO / HYPRLAND</text>
- <text x="20" y="70" fill="#eafff5" font-family="Georgia" font-size="31">Keyboard first.</text>
+ <text x="20" y="34" fill="#9fffe0" font-family="monospace" font-size="11">CALYPSO / FUTURE HYPRLAND</text>
+ <text x="20" y="70" fill="#eafff5" font-family="Georgia" font-size="31">Future design.</text>
  <text x="20" y="106" fill="#6c887b" font-family="sans-serif" font-size="12">Tiling windows. Focused defaults.</text>
  <g fill="#08281b" stroke="#58dcae" stroke-opacity=".18"><rect x="20" y="143" width="112" height="32" rx="16"/><rect x="142" y="143" width="112" height="32" rx="16"/><rect x="264" y="143" width="112" height="32" rx="16"/></g>
  <g fill="#9bd3bd" font-family="monospace" font-size="8"><text x="39" y="163">WAYBAR</text><text x="164" y="163">KITTY</text><text x="282" y="163">FUZzel</text></g>
- <text x="20" y="208" fill="#5e776b" font-family="monospace" font-size="9">DOTFILES · UPCOMING</text>
+ <text x="20" y="208" fill="#5e776b" font-family="monospace" font-size="9">FUTURE DESIGN · HYPRLAND</text>
 </g>
 </svg>
