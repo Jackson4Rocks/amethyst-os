@@ -63,3 +63,9 @@ You can reach the project through the [Telegram group](https://t.me/CalypsoLinux
 <p align="center">
   <sub>CALYPSO LINUX · KDE PLASMA · HYPRLAND · ARCH LINUX · FAST + LEAN</sub>
 </p>
+
+## Copyright and attribution
+
+Copyright © 2026 JacksonTech. Calypso Linux branding and project-specific materials are attributed to JacksonTech unless a file states otherwise.
+
+Arch Linux, KDE Plasma, Hyprland, and other third-party components retain their respective copyrights and licenses.
