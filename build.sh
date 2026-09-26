@@ -7,7 +7,7 @@ CALAMARES_DIR="${PROFILE}/packages/calamares"
 LOCAL_REPO="/tmp/calypso-calamares-repo"
 TEMP_PACMAN_CONF="/tmp/calypso-pacman.conf"
 WORK_DIR="${HOME}/calypso-build"
-OUT_DIR="\${HOME}/calypso-out"
+OUT_DIR="${HOME}/calypso-out"
 FAST_MODE=false
 
 usage() {
@@ -20,7 +20,7 @@ EOF
 }
 
 for arg in "$@"; do
-  case "\${arg}" in
+  case "${arg}" in
     --fast)
       FAST_MODE=true
       ;;
@@ -29,7 +29,7 @@ for arg in "$@"; do
       exit 0
       ;;
     *)
-      echo "Unknown argument: \${arg}" >&2
+      echo "Unknown argument: ${arg}" >&2
       usage >&2
       exit 1
       ;;
@@ -59,17 +59,17 @@ command -v repo-add >/dev/null 2>&1 || {
 echo "==> Preparing custom Calamares package..."
 
 CALAMARES_PKG=""
-if \${FAST_MODE}; then
-  CALAMARES_PKG="\$(find "\${CALAMARES_DIR}" -maxdepth 1 -type f -name 'calamares-*.pkg.tar.*' -print -quit)"
+if ${FAST_MODE}; then
+  CALAMARES_PKG="$(find "${CALAMARES_DIR}" -maxdepth 1 -type f -name 'calamares-*.pkg.tar.*' -print -quit)"
 fi
 
-if [[ -n "\${CALAMARES_PKG}" ]]; then
-  echo "    Reusing existing package: \$(basename "\${CALAMARES_PKG}")"
+if [[ -n "${CALAMARES_PKG}" ]]; then
+  echo "    Reusing existing package: $(basename "${CALAMARES_PKG}")"
 else
   echo "==> Building custom Calamares package..."
   (
-    cd "\${CALAMARES_DIR}"
-    if \${FAST_MODE}; then
+    cd "${CALAMARES_DIR}"
+    if ${FAST_MODE}; then
       makepkg --syncdeps --noconfirm
     else
       rm -f -- calamares-*.pkg.tar.* calamares-*.tar.gz
@@ -77,10 +77,10 @@ else
     fi
   )
 
-  CALAMARES_PKG="\$(find "\${CALAMARES_DIR}" -maxdepth 1 -type f -name 'calamares-*.pkg.tar.*' -print -quit)"
+  CALAMARES_PKG="$(find "${CALAMARES_DIR}" -maxdepth 1 -type f -name 'calamares-*.pkg.tar.*' -print -quit)"
 fi
 
-[[ -n "\${CALAMARES_PKG}" ]] || {
+[[ -n "${CALAMARES_PKG}" ]] || {
   echo "Calamares package was not produced." >&2
   exit 1
 }
@@ -103,28 +103,28 @@ awk '
   { print }
 ' "${PROFILE}/pacman.conf" > "${TEMP_PACMAN_CONF}"
 
-if \${FAST_MODE}; then
+if ${FAST_MODE}; then
   echo "==> Fast mode: reusing Calypso build and output directories..."
-  mkdir -p -- "\${WORK_DIR}" "\${OUT_DIR}"
+  mkdir -p -- "${WORK_DIR}" "${OUT_DIR}"
 else
   echo "==> Cleaning previous Calypso build..."
-  sudo rm -rf -- "\${WORK_DIR}" "\${OUT_DIR}"
-  mkdir -p -- "\${WORK_DIR}" "\${OUT_DIR}"
+  sudo rm -rf -- "${WORK_DIR}" "${OUT_DIR}"
+  mkdir -p -- "${WORK_DIR}" "${OUT_DIR}"
 fi
 
 echo "==> Building Calypso Linux..."
-if \${FAST_MODE}; then
+if ${FAST_MODE}; then
   sudo mkarchiso -v \
-    -C "\${TEMP_PACMAN_CONF}" \
-    -w "\${WORK_DIR}" \
-    -o "\${OUT_DIR}" \
-    "\${PROFILE}"
+    -C "${TEMP_PACMAN_CONF}" \
+    -w "${WORK_DIR}" \
+    -o "${OUT_DIR}" \
+    "${PROFILE}"
 else
   sudo mkarchiso -v -r \
-    -C "\${TEMP_PACMAN_CONF}" \
-    -w "\${WORK_DIR}" \
-    -o "\${OUT_DIR}" \
-    "\${PROFILE}"
+    -C "${TEMP_PACMAN_CONF}" \
+    -w "${WORK_DIR}" \
+    -o "${OUT_DIR}" \
+    "${PROFILE}"
 fi
 
 echo
