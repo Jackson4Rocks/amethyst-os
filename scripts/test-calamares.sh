@@ -24,6 +24,26 @@ grep -q '^slideshow: "show.qml"' "${CONFIG_SRC}/branding/calypso/branding.desc"
 
 cp -a "${CONFIG_SRC}/." "${TEST_DIR}/"
 
+# Calamares treats --config as its application-data directory and expects the
+# installed QML payload under <config>/qml. Link the host package QML data
+# into the temporary config tree so this developer test uses the same layout
+# as the real live image.
+CALAMARES_QML_DIR=""
+for candidate in /usr/share/calamares/qml /usr/local/share/calamares/qml; do
+  if [[ -d "${candidate}" ]]; then
+    CALAMARES_QML_DIR="${candidate}"
+    break
+  fi
+done
+
+if [[ -z "${CALAMARES_QML_DIR}" ]]; then
+  echo "Calamares QML data directory was not found." >&2
+  echo "Expected /usr/share/calamares/qml or /usr/local/share/calamares/qml." >&2
+  exit 1
+fi
+
+ln -s "${CALAMARES_QML_DIR}" "${TEST_DIR}/qml"
+
 echo "==> Calypso Calamares configuration checks passed."
 echo "==> Temporary config: ${TEST_DIR}"
 echo
