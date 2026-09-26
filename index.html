@@ -395,6 +395,23 @@ img,svg{display:block}
   .reveal{opacity:1;transform:none}
   .cursor-glow{display:none}
 }
+.desktop-choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.desktop-choice{position:relative;border:1px solid var(--line);background:linear-gradient(145deg,rgba(6,21,13,.84),rgba(1,6,4,.97));padding:12px;overflow:hidden;transition:transform .4s cubic-bezier(.2,.72,.25,1),border-color .35s ease,box-shadow .35s ease}
+.desktop-choice:hover{transform:translateY(-7px);border-color:var(--line-strong);box-shadow:0 35px 90px rgba(0,0,0,.3)}
+.desktop-shot{position:relative;aspect-ratio:16/9;overflow:hidden;border:1px solid rgba(165,255,225,.10);background:#020805}
+.desktop-shot img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.72,.25,1),filter .5s ease}
+.desktop-choice:hover .desktop-shot img{transform:scale(1.035);filter:saturate(1.08) contrast(1.02)}
+.desktop-shot:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 58%,rgba(1,7,4,.66));pointer-events:none}
+.desktop-choice-copy{padding:17px 8px 7px}
+.desktop-choice-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px}
+.desktop-choice-copy h3{margin:0;font:500 38px/.95 var(--serif);letter-spacing:-.04em}
+.desktop-choice-copy p{margin:9px 0 0;max-width:520px;color:#778f83;font:300 11px/1.7 var(--sans)}
+.desktop-choice-meta{margin-top:15px;display:flex;gap:7px;flex-wrap:wrap}
+.desktop-tag{padding:7px 10px;border:1px solid rgba(165,255,225,.12);border-radius:999px;color:#7f9d90;background:rgba(165,255,225,.025);font:500 8px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.desktop-tag.accent{color:var(--mint);border-color:rgba(165,255,225,.24)}
+.desktop-choice-index{padding-top:5px;color:#547367;font:600 8px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;white-space:nowrap}
+.desktop-disclaimer{margin-top:18px;color:#526c60;font:500 8px/1.6 var(--mono);letter-spacing:.1em;text-transform:uppercase;text-align:center}
+@media(max-width:860px){.desktop-choice-grid{grid-template-columns:1fr}.desktop-choice-copy h3{font-size:32px}}
 </style>
 </head>
 <body>
@@ -512,52 +529,51 @@ img,svg{display:block}
     </div>
 
     <div class="desktop-showcase">
-      <div class="desktop-frame reveal" data-parallax="0.025">
-        <div class="desktop-screen">
-          <div class="plasma-top"><div class="dots"><i></i><i></i><i></i></div><div class="time">23:42 · MON, SEP 22</div></div>
-          <div class="mist"></div><div class="mountain"></div>
-          <aside class="plasma-panel">
-            <div class="panel-header"><span>Calypso</span><span>System</span></div>
-            <div class="panel-line w1"></div><div class="panel-line w3"></div><div class="panel-line w2"></div>
-            <div class="panel-list">
-              <span class="active">Workspace</span><span>Applications</span><span>Appearance</span><span>Network</span>
+      <div class="desktop-choice-grid">
+        <article class="desktop-choice reveal" data-parallax="0.018">
+          <div class="desktop-shot">
+            <img src="./assets/kde-plasma-representative.svg" alt="Representative KDE Plasma desktop preview for Calypso Linux" loading="lazy">
+          </div>
+          <div class="desktop-choice-copy">
+            <div class="desktop-choice-top">
+              <div>
+                <div class="label">MAIN DESKTOP</div>
+                <h3>KDE Plasma</h3>
+                <p>A complete desktop environment with familiar workflows, deep customization, and the polished Calypso visual language.</p>
+              </div>
+              <span class="desktop-choice-index">01 · KDE</span>
             </div>
-          </aside>
-          <div class="bottom-dock"><span class="dock-dot active"></span><span class="dock-dot"></span><span class="dock-dot"></span><span class="dock-dot"></span><span class="dock-dot"></span></div>
-        </div>
-      </div>
-      <div class="showcase-label reveal">
-        <div><strong>KDE Plasma</strong><span>CALYPSO DEFAULT · WAYLAND</span></div>
-        <div class="showcase-aside">Main desktop<br>Designed for daily use</div>
-      </div>
-
-      <div class="hypr-frame reveal" data-parallax="-0.018">
-        <div class="hypr-inner">
-          <div class="term-window">
-            <div class="term-header"><span>term — zsh</span><span>~</span></div>
-            <div class="term-body"><span class="bright">❯</span> fastfetch<br><span class="fade">OS:</span> Calypso Linux<br><span class="fade">WM:</span> Hyprland<br><span class="fade">Shell:</span> zsh<br><span class="fade">Theme:</span> Calypso Emerald<br><span class="fade">Status:</span> <span class="bright">ready</span></div>
+            <div class="desktop-choice-meta">
+              <span class="desktop-tag accent">KDE PLASMA</span>
+              <span class="desktop-tag">WAYLAND</span>
+              <span class="desktop-tag">CALYPSO DARK</span>
+            </div>
           </div>
-          <div class="term-stack"><div></div><div></div></div>
-        </div>
-        <div class="hypr-badge"><small>Recommended alternative</small><strong>Hyprland</strong></div>
-      </div>
-
-      <div class="screen-gallery">
-        <article class="screen-card reveal">
-          <div class="screen-media">
-            <img src="https://kde.org/content/plasma-desktop/plasma-sweet.png" alt="KDE Plasma desktop screenshot" loading="lazy" referrerpolicy="no-referrer">
-            <div class="screen-overlay"><strong>KDE Plasma</strong><span>Official Plasma screenshot</span></div>
-          </div>
-          <div class="screen-note"><span>KDE PLASMA · DESKTOP</span><span>kde.org ↗</span></div>
         </article>
-        <article class="screen-card reveal">
-          <div class="screen-media">
-            <img src="./assets/hyprland-representative.svg" alt="Representative Hyprland desktop view" loading="lazy">
-            <div class="screen-overlay"><strong>Hyprland</strong><span>Representative Calypso setup</span></div>
+
+        <article class="desktop-choice reveal" data-parallax="-0.012">
+          <div class="desktop-shot">
+            <img src="./assets/hyprland-upcoming-representative.svg" alt="Representative upcoming Hyprland Calypso dotfiles preview" loading="lazy">
           </div>
-          <div class="screen-note"><span>HYPRLAND · TILING</span><span>CALYPSO</span></div>
+          <div class="desktop-choice-copy">
+            <div class="desktop-choice-top">
+              <div>
+                <div class="label">UPCOMING DOTFILES</div>
+                <h3>Hyprland</h3>
+                <p>A keyboard-first tiling workflow for users who want tighter control over windows, workspaces, and the compositor.</p>
+              </div>
+              <span class="desktop-choice-index">02 · HYPR</span>
+            </div>
+            <div class="desktop-choice-meta">
+              <span class="desktop-tag accent">HYPRLAND</span>
+              <span class="desktop-tag">WAYBAR</span>
+              <span class="desktop-tag">KITTY</span>
+              <span class="desktop-tag">DOTFILES · SOON</span>
+            </div>
+          </div>
         </article>
       </div>
+      <div class="desktop-disclaimer">Representative previews · KDE Plasma is the current main desktop · Hyprland preview shows the direction of the upcoming Calypso dotfiles</div>
     </div>
   </section>
 
