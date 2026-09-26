@@ -49,7 +49,7 @@
 <div class="frame">
 <header class="top container">
 <a class="brand" href="#top" aria-label="Calypso Linux home"><img class="brand-mark" src="./assets/calypso-mark.svg?v=9" alt="Calypso Linux logo"><span><span class="wordmark-main">CALYPSO</span><span class="wordmark-sub">LINUX</span></span></a>
-<nav aria-label="Primary"><a href="#features">Why Calypso</a><a href="#desktop">Desktop</a><a href="#installer">Installer</a><a href="#architecture">Build</a><button class="nav-download" id="downloadButton" type="button">Downloads</button><a href="./docs/">Docs</a><a href="#community">Community</a><a class="nav-cta" href="https://github.com/Jackson4Rocks/calypso-linux" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
+<nav aria-label="Primary"><a href="#features">Why Calypso</a><a href="#desktop">Desktop</a><a href="#installer">Installer</a><a href="#architecture">Build</a><a class="nav-download" href="https://sourceforge.net/projects/calypso-linux/files/" target="_blank" rel="noreferrer">Downloads ↗</a><a href="./docs/">Docs</a><a href="#community">Community</a><a class="nav-cta" href="https://github.com/Jackson4Rocks/calypso-linux" target="_blank" rel="noreferrer">GitHub ↗</a></nav>
 </header>
 
 <main id="top">
@@ -115,39 +115,13 @@
 </div>
 </section>
 
-<section class="section final container"><div class="final-card reveal"><div class="label">CALYPSO LINUX</div><h2>Make Linux<br>feel deliberate.</h2><p>Start with KDE Plasma. Add Hyprland when you want a different window-management style. Build it, inspect it, remix it, and keep the project yours.</p><div class="final-actions"><button class="btn btn-primary download-trigger" type="button">Downloads</button><a class="btn" href="https://github.com/Jackson4Rocks/calypso-linux" target="_blank" rel="noreferrer">Open GitHub ↗</a><a class="btn" href="https://t.me/CalypsoLinux" target="_blank" rel="noreferrer">Join Telegram ↗</a></div></div></section>
+<section class="section final container"><div class="final-card reveal"><div class="label">CALYPSO LINUX</div><h2>Make Linux<br>feel deliberate.</h2><p>Start with KDE Plasma. Add Hyprland when you want a different window-management style. Build it, inspect it, remix it, and keep the project yours.</p><div class="final-actions"><a class="btn btn-primary" href="https://sourceforge.net/projects/calypso-linux/files/" target="_blank" rel="noreferrer">Downloads ↗</a><a class="btn" href="https://github.com/Jackson4Rocks/calypso-linux" target="_blank" rel="noreferrer">Open GitHub ↗</a><a class="btn" href="https://t.me/CalypsoLinux" target="_blank" rel="noreferrer">Join Telegram ↗</a></div></div></section>
 </main>
 
 <footer><div class="footer"><span>© Calypso Linux · <strong>KDE Plasma + recommended Hyprland</strong></span><span>Arch-based · Open source</span><span>Maintained by Leon Sony · Independent project</span></div></footer>
 </div>
 
-<div class="download-modal" id="downloadModal" aria-hidden="true">
-  <div class="download-backdrop" data-close-download></div>
-  <div class="download-dialog" role="dialog" aria-modal="true" aria-labelledby="downloadTitle">
-    <button class="download-close" type="button" aria-label="Close downloads" data-close-download>×</button>
-    <div class="label">CALYPSO DOWNLOADS</div>
-    <h2 id="downloadTitle">Coming soon.</h2>
-    <p>Calypso Linux ISO releases are still being prepared. Downloads will appear here when the first public release is ready.</p>
-    <div class="download-box">
-      <strong>Public ISO</strong>
-      <span>Release channel not available yet.</span>
-    </div>
-    <a class="btn btn-primary" href="https://github.com/Jackson4Rocks/calypso-linux" target="_blank" rel="noreferrer">Follow development ↗</a>
-  </div>
-</div>
-
 <script>
-(()=>{
-  const modal=document.getElementById("downloadModal");
-  const openers=[document.getElementById("downloadButton"),...document.querySelectorAll(".download-trigger")].filter(Boolean);
-  if(modal&&openers.length){
-    const open=()=>{modal.classList.add("is-open");modal.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";const close=modal.querySelector(".download-close");if(close)close.focus()};
-    const close=()=>{modal.classList.remove("is-open");modal.setAttribute("aria-hidden","true");document.body.style.overflow=""};
-    openers.forEach(el=>el.addEventListener("click",open));
-    modal.querySelectorAll("[data-close-download]").forEach(el=>el.addEventListener("click",close));
-    document.addEventListener("keydown",e=>{if(e.key==="Escape"&&modal.classList.contains("is-open"))close()});
-  }
-})();
 (()=>{
   const reduce=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const items=document.querySelectorAll(".reveal");
