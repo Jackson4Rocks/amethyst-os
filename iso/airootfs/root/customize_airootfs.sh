@@ -35,6 +35,16 @@ EOF_SUDO
 chmod 0440 /etc/sudoers.d/calypso
 
 cp -a /etc/skel/. /home/calypso/
+
+# Start the live desktop in KDE's dark visual mode.
+install -d -m 0700 /home/calypso/.config
+cat > /home/calypso/.config/kdeglobals <<'EOF_KDEGLOBALS'
+[General]
+ColorScheme=BreezeDark
+
+[KDE]
+LookAndFeelPackage=org.kde.breeze.desktop
+EOF_KDEGLOBALS
 install -d -m 0755 /home/calypso/.config/systemd/user/default.target.wants
 
 if [ -f /etc/skel/.config/systemd/user/calypso-live-welcome.service ]; then
